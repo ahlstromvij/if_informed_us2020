@@ -76,13 +76,9 @@ AGE_CHOICES= [
     (90, '90'),
     ]
 
-EDUCATION_CHOICES= [
-    ('1,0,0,0,0,0', 'No High School'),
-    ('0,1,0,0,0,0', 'High School'),
-    ('0,0,1,0,0,0', 'Some College'),
-    ('0,0,0,1,0,0', '2-year College'),
-    ('0,0,0,0,1,0', '4-year College'),
-    ('0,0,0,0,0,1', 'Postgraduate'),
+GENDER_CHOICES= [
+    (0, 'Female'),
+    (1, 'Male'),
     ]
 
 INCOME_CHOICES= [
@@ -104,80 +100,78 @@ INCOME_CHOICES= [
     (14, '$500,000 or more per year'),
     ]
 
-GENDER_CHOICES= [
-    (0, 'Female'),
-    (1, 'Male'),
-    ]
-
-LIVING_CHOICES= [
-    ('1,0,0,0,0', 'Own outright'),
-    ('0,1,0,0,0', 'Own on mortgage'),
-    ('0,0,1,0,0', 'Rent privately'),
-    ('0,0,0,1,0', 'Rent from local authority'),
-    ('0,0,0,0,1', 'Housing association'),
-    ]
-
-RELIGION_CHOICES= [
-    ('1,0,0,0,0,0,0', 'Christianity'),
-    ('0,1,0,0,0,0,0', 'Hinduism'),
-    ('0,0,1,0,0,0,0', 'Islam'),
-    ('0,0,0,1,0,0,0', 'Judaism'),
-    ('0,0,0,0,0,1,0', 'Other religion'),
-    ('0,0,0,0,1,0,0', 'No religion'),
-    ('0,0,0,0,0,0,1', 'Prefer not to say'),
-    ]
-
-ETHNICITY_CHOICES= [
-    ('1,0,0,0,0,0', 'White'),
-    ('0,1,0,0,0,0', 'Asian'),
-    ('0,0,1,0,0,0', 'Black'),
-    ('0,0,0,1,0,0', 'Mixed'),
-    ('0,0,0,0,1,0', 'Other ethnicity'),
-    ('0,0,0,0,0,1', 'Prefer not to say'),
-    ]
-
-REGION_CHOICES= [
-    ('1,0,0,0,0,0,0,0,0,0,0', 'East Midlands'),
-    ('0,1,0,0,0,0,0,0,0,0,0', 'East of England'),
-    ('0,0,1,0,0,0,0,0,0,0,0', 'London'),
-    ('0,0,0,1,0,0,0,0,0,0,0', 'North East'),
-    ('0,0,0,0,1,0,0,0,0,0,0', 'North West'),
-    ('0,0,0,0,0,1,0,0,0,0,0', 'Scotland'),
-    ('0,0,0,0,0,0,1,0,0,0,0', 'South East'),
-    ('0,0,0,0,0,0,0,1,0,0,0', 'South West'),
-    ('0,0,0,0,0,0,0,0,1,0,0', 'Wales'),
-    ('0,0,0,0,0,0,0,0,0,1,0', 'West Midlands'),
-    ('0,0,0,0,0,0,0,0,0,0,1', 'Yorkshire and Humber'),
+EDUCATION_CHOICES= [
+    ('1,0,0,0,0,0', 'No High School'),
+    ('0,1,0,0,0,0', 'High School'),
+    ('0,0,1,0,0,0', 'Some College'),
+    ('0,0,0,1,0,0', '2-year College'),
+    ('0,0,0,0,1,0', '4-year College'),
+    ('0,0,0,0,0,1', 'Postgraduate'),
     ]
 
 MARITAL_CHOICES= [
-    ('1,0,0,0,0,0,0', 'Civil partnership'),
-    ('0,1,0,0,0,0,0', 'Divorced'),
-    ('0,0,1,0,0,0,0', 'Living with partner'),
-    ('0,0,0,1,0,0,0', 'Married'),
-    ('0,0,0,0,0,1,0', 'Separated'),
-    ('0,0,0,0,1,0,0', 'Single'),
-    ('0,0,0,0,0,0,1', 'Widowed'),
+    ('1,0,0,0,0,0', 'Married'),
+    ('0,1,0,0,0,0', 'Separated'),
+    ('0,0,1,0,0,0', 'Divorced'),
+    ('0,0,0,1,0,0', 'Widowed'),
+    ('0,0,0,0,1,0', 'Single'),
+    ('0,0,0,0,0,1', 'Civil partnership'),
     ]
 
-BORN_CHOICES= [
-    ('1,0,0,0,0,0,0', 'England'),
-    ('0,1,0,0,0,0,0', 'Scotland'),
-    ('0,0,1,0,0,0,0', 'Wales'),
-    ('0,0,0,1,0,0,0', 'Northern Ireland'),
-    ('0,0,0,0,0,1,0', 'Commonwealth'),
-    ('0,0,0,0,1,0,0', 'European Union'),
-    ('0,0,0,0,0,0,1', 'Rest of the world'),
+WORK_CHOICES= [
+    ('1,0,0,0,0,0,0,0', 'Full-time work'),
+    ('0,1,0,0,0,0,0,0', 'Part-time work'),
+    ('0,0,1,0,0,0,0,0', 'Unemployed'),
+    ('0,0,0,1,0,0,0,0', 'Retired'),
+    ('0,0,0,0,1,0,0,0', 'Permanently disabled'),
+    ('0,0,0,0,0,1,0,0', 'Homemaker'),
+    ('0,0,0,0,0,0,1,0', 'Student'),
+    ('0,0,0,0,0,0,0,1', 'Other employment'),
     ]
+
+REGION_CHOICES= [
+    ('1,0,0,0', 'Northeast'),
+    ('0,1,0,0', 'Midwest'),
+    ('0,0,1,0', 'South'),
+    ('0,0,0,1', 'West'),
+    ]
+
+RELIGION_CHOICES= [
+    ('1,0,0,0,0,0,0', 'Christian'),
+    ('0,1,0,0,0,0,0', 'Mormon'),
+    ('0,0,1,0,0,0,0', 'Jewish'),
+    ('0,0,0,1,0,0,0', 'Muslim'),
+    ('0,0,0,0,1,0,0', 'Buddhist'),
+    ('0,0,0,0,0,1,0', 'No religion'),
+    ('0,0,0,0,0,0,1', 'Other religion'),
+    ]
+
+IMMIGRATION_CHOICES= [
+    ('1,0,0,0', 'Immigrated citizen'),
+    ('0,1,0,0', 'First generation'),
+    ('0,0,1,0', 'Second generation'),
+    ('0,0,0,1', 'Third generation'),
+    ]
+
+ETHNICITY_CHOICES= [
+    ('1,0,0,0,0,0,0', 'White'),
+    ('0,1,0,0,0,0,0', 'Black'),
+    ('0,0,1,0,0,0,0', 'Hispanic'),
+    ('0,0,0,1,0,0,0', 'Asian'),
+    ('0,0,0,0,1,0,0', 'Native american'),
+    ('0,0,0,0,0,1,0', 'Mixed'),
+    ('0,0,0,0,0,0,1', 'Other race'),
+    ]
+
 
 class UserInputForm(forms.Form):
     age = forms.CharField(label='What is your age?', widget=forms.Select(choices=AGE_CHOICES))
-    education = forms.CharField(label='What is your highest level of education?', widget=forms.Select(choices=EDUCATION_CHOICES))
-    income = forms.CharField(label='What is your annual income (before tax)?', widget=forms.Select(choices=INCOME_CHOICES))
     gender = forms.CharField(label='Are you female or male?', widget=forms.Select(choices=GENDER_CHOICES))
-    living_situation = forms.CharField(label='Tell us about your living situation', widget=forms.Select(choices=LIVING_CHOICES))
-    religion = forms.CharField(label='Tell us what religion (if any) you identify with', widget=forms.Select(choices=RELIGION_CHOICES))
-    ethnicity = forms.CharField(label='Tell us your ethnicity', widget=forms.Select(choices=ETHNICITY_CHOICES))
-    region = forms.CharField(label='Tell us where you live', widget=forms.Select(choices=REGION_CHOICES))
+    income = forms.CharField(label='What is your annual income (before tax)?', widget=forms.Select(choices=INCOME_CHOICES))
+    education = forms.CharField(label='What is your highest level of education?', widget=forms.Select(choices=EDUCATION_CHOICES))
     marital_status = forms.CharField(label='Tell us your marital status', widget=forms.Select(choices=MARITAL_CHOICES))
-    country_birth = forms.CharField(label='Tell us where you were born', widget=forms.Select(choices=BORN_CHOICES))
+    work = forms.CharField(label='What is your work status?', widget=forms.Select(choices=WORK_CHOICES))
+    region = forms.CharField(label='Tell us where you live', widget=forms.Select(choices=REGION_CHOICES))
+    religion = forms.CharField(label='Tell us what religion (if any) you identify with', widget=forms.Select(choices=RELIGION_CHOICES))
+    immigration = forms.CharField(label='What is your immigration background?', widget=forms.Select(choices=IMMIGRATION_CHOICES))
+    ethnicity = forms.CharField(label='Tell us your ethnicity', widget=forms.Select(choices=ETHNICITY_CHOICES))

@@ -1,0 +1,226 @@
+<h2>IF INFORMED</h2>
+<div id="immigration">
+    <strong>1</strong> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Immigrants: More or Fewer?</h3>
+    <p>In absolute numbers, the United States has a larger immigrant population than any other country, with 47 million immigrants as of 2015. This represents 19.1% of the 244 million international migrants worldwide, and 14.4% of the U.S. population.</p>
+    <p>Do you think the number of immigrants from foreign countries who are permitted to come to the United States to live should be increased?</p>
+    <p>If you were fully informed, you would be <strong>{{ imm_position }}</strong> ({{ immigration_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="illimcrime">
+    <a onclick="skip_to_1()">1</a> |
+    <strong>2</strong> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Illegal immmigration and crime</h3>
+    <p>Many worry that illegal immigration to the Unites States leads to an increase in crime.</p>
+    <p>In your view, does illegal immigration increase the crime rate in the United States?</p>
+    <p>If you were fully informed, you would be <strong>{{ illimcrime_position }}</strong> ({{ illimcrime_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="immigcit">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <strong>3</strong> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Path to citizenship for illegal immigrants</h3>
+    <p>There are currently about 12 million unauthorised immigrants residing in the United States (Pew Research Center).</p>
+    <p>Do you favor allowing unauthorized immigrants currently living in the United States to remain in the country and eventually qualify for citizenship?</p>
+    <p>If you were fully informed, you would be <strong>{{ imigcit_position }}</strong> ({{ imigcit_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="ice">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <strong>4</strong> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Immigration and Customs Enforcement</h3>
+    <p>ICE is a federal agency under the US Department of Homeland Security, principally responsible for immigration enforcement.</p>
+    <p>Do you approve of the way ICE are doing their job?</p>
+    <p>If you were fully informed, you would be <strong>{{ ice_position }}</strong> ({{ ice_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="aca">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <strong>5</strong> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Repealing the Affordable Care Act</h3>
+    <p>A 2017 Congressional Research Service report noted that, since the Affordable Care Act (“Obama Care”) was passed in 2010, Congress has been deeply divided over its future. After much debate about repealing, defunding, delaying or amending the law, 2013 saw a partial shutdown of government that lasted over two weeks because of a disagreement between the Democratic-controlled Senate and the Republican-led House over the inclusion of ACA language in the a spending bill.</p>
+    <p>Do you approve of repealing the Affordable Care Act?</p>
+    <p>If you were fully informed, you would be <strong>{{ aca_position }}</strong> ({{ aca_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="diversity">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <strong>6</strong> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Diversity: Good or Bad?</h3>
+    <p>As the United States becomes more racially and ethnically diverse, Americans have a complicated set of views about the impact of diversity and the best way to achieve it. Most say it’s a good thing that the country has a diverse population, but many also say this introduces its own set of challenges.</p>
+    <p>On balance, do you think having an increasing number of people of many different races, ethnic groups and nationalities in the United States makes this country a better place to live?</p>
+    <p>If you were fully informed, you would be <strong>{{ diversity_position }}</strong> ({{ diversity_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="gunsar">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <strong>7</strong> |
+    <a onclick="skip_to_8()">8</a>
+    <br />
+    <h3>Banning Assault Rifles</h3>
+    <p>Following a close vote, the Violent Crime Control and Law Enforcement Act of 2004 instituted a 10-year ban on the manufacture for civilian use of assault weapons. The ban expired on September 13, 2004, in accordance with its sunset provision. Several constitutional challenges were filed against provisions of the ban, but all were rejected by the courts. There have been multiple attempts to renew the ban, but none have succeeded.</p>
+    <p>Do you favor banning the sale of semi-automatic “assault-style” rifles?</p>
+    <p>If you were fully informed, you would be <strong>{{ gunsar_position }}</strong> ({{ gunsar_probs }}%) to answer 'yes' to this question.</p>
+    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+</div>
+
+<div id="liberal_score">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <strong>8</strong>
+    <br />
+    <h3>Would you be a fully informed conservative or progressive?</h3>
+    <p>Where would your fully informed self fall on the spectrum from conservative to progressive, compared to some prominent political figures?</p>
+    <p>Your liberalism score would be  {{ liberal_score }} out of 7, making your informed self a <strong>{{ liberal_position }}</strong>.</p>
+    <p>This compares as follows:<br />
+    - Pres. Donald Trump: 0 out of 7.<br />
+    - Susan Collins (R-ME): 2 out of 7<br />
+    - Nancy Pelosi (D-CA): 6 out of 7.<br />
+    - Alexandria Ocasio-Cortez (D-NY): 7 out of 7.</p>
+
+    <button onclick="move_back()"> << </button>
+</div>
+
+
+<script>
+    var page1 = document.getElementById("immigration");
+    var page2 = document.getElementById("illimcrime");
+    var page3 = document.getElementById("immigcit");
+    var page4 = document.getElementById("ice");
+    var page5 = document.getElementById("aca");
+    var page6 = document.getElementById("diversity");
+    var page7 = document.getElementById("gunsar");
+    var page8 = document.getElementById("liberal_score");
+
+    page1.style.display = "block";
+    page2.style.display = "none";
+    page3.style.display = "none";
+    page4.style.display = "none";
+    page5.style.display = "none";
+    page6.style.display = "none";
+    page7.style.display = "none";
+    page8.style.display = "none";
+
+    var pages = [page1,page2,page3,page4,page5,page6,page7,page8]
+    var current_page_index = 0
+
+    function move_ahead() {
+        pages[current_page_index].style.display = "none";
+        pages[current_page_index + 1].style.display = "block";
+        current_page_index++
+    }
+
+    function move_back() {
+        pages[current_page_index].style.display = "none";
+        pages[current_page_index - 1].style.display = "block";
+        current_page_index--
+    }
+
+    function skip_to_1() {
+        pages[current_page_index].style.display = "none";
+        pages[0].style.display = "block";
+        current_page_index = 0
+    }
+
+    function skip_to_2() {
+        pages[current_page_index].style.display = "none";
+        pages[1].style.display = "block";
+        current_page_index = 1
+    }
+
+    function skip_to_3() {
+        pages[current_page_index].style.display = "none";
+        pages[2].style.display = "block";
+        current_page_index = 2
+    }
+
+    function skip_to_4() {
+        pages[current_page_index].style.display = "none";
+        pages[3].style.display = "block";
+        current_page_index = 3
+    }
+
+    function skip_to_5() {
+        pages[current_page_index].style.display = "none";
+        pages[4].style.display = "block";
+        current_page_index = 4
+    }
+
+    function skip_to_6() {
+        pages[current_page_index].style.display = "none";
+        pages[5].style.display = "block";
+        current_page_index = 5
+    }
+
+    function skip_to_7() {
+        pages[current_page_index].style.display = "none";
+        pages[6].style.display = "block";
+        current_page_index = 6
+    }
+
+    function skip_to_8() {
+        pages[current_page_index].style.display = "none";
+        pages[7].style.display = "block";
+        current_page_index = 7
+    }
+
+</script>
