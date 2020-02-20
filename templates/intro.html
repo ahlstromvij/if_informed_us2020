@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>IF INFORMED</h2>
+
+<h3>What will happen?</h3>
+<p>On the next page, we will ask you a few questions about your age, gender, income, race, and so on.</p>
+<p>On the basis of data from the American National Election Studies (ANES), we will then estimate how you likely would have voted, if you were fully informed.</p>
+
+<h3>Why?</h3>
+<p>We think it wortwhile to listen to their more informed friends’ opinions. We think: if this person is 'quite like me' and really knows what’s going on, then their opinion is worth hearing.</p>
+<p>You can think of this website as telling you what a particularly knowledgeable friend thinks about a number of political issues—where that friend just happens to be a highly-informed version of you.</p>
+
+<h3>Who are we?</h3>
+<p>If Informed is a collaboration between <a href="http://www.ahlstromvij.com">Kristoffer Ahlstrom-Vij</a>, a researcher at Birkbeck, University of London, who works on the role of knowledge in politics, and <a href="https://www.linkedin.com/in/alfredmalmros/">Alfred Malmros</a>, founder of the think-tank Early Studies.
+
+<form action="{% url 'questions' %}">
+    <input type="submit" value="Got it" />
+</form>
+
+{% endblock content %}

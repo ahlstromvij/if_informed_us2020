@@ -1,0 +1,21 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+
+        <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+        <title>If Informed</title>
+    </head>
+    <body>
+        <div class="container">
+            {% block content %}
+            {% endblock content %}
+            <div class="bottom_copy">
+                <br />
+                    Copyright &copy; 2020 If Informed. All Rights Reserved | <a href="mailto:info@ifinformed.com">info@ifinformed.com</a>
+            </div>
+        </div>
+    </body>

@@ -1,6 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h2>IF INFORMED</h2>
 <div id="immigration">
-    <strong>1</strong> |
+    <a class="navigation_digit">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
     <a onclick="skip_to_4()">4</a> |
@@ -11,14 +15,13 @@
     <br />
     <h3>Immigrants: More or Fewer?</h3>
     <p>In absolute numbers, the United States has a larger immigrant population than any other country, with 47 million immigrants as of 2015. This represents 19.1% of the 244 million international migrants worldwide, and 14.4% of the U.S. population.</p>
-    <p>Do you think the number of immigrants from foreign countries who are permitted to come to the United States to live should be increased?</p>
+    <strong><p>Do you think the number of immigrants from foreign countries who are permitted to come to the United States to live should be increased?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ imm_position }}</strong> ({{ immigration_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="illimcrime">
     <a onclick="skip_to_1()">1</a> |
-    <strong>2</strong> |
+    <a class="navigation_digit">2</a> |
     <a onclick="skip_to_3()">3</a> |
     <a onclick="skip_to_4()">4</a> |
     <a onclick="skip_to_5()">5</a> |
@@ -28,15 +31,14 @@
     <br />
     <h3>Illegal immmigration and crime</h3>
     <p>Many worry that illegal immigration to the Unites States leads to an increase in crime.</p>
-    <p>In your view, does illegal immigration increase the crime rate in the United States?</p>
+    <strong><p>In your view, does illegal immigration increase the crime rate in the United States?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ illimcrime_position }}</strong> ({{ illimcrime_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="immigcit">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
-    <strong>3</strong> |
+    <a class="navigation_digit">3</a> |
     <a onclick="skip_to_4()">4</a> |
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
@@ -45,16 +47,15 @@
     <br />
     <h3>Path to citizenship for illegal immigrants</h3>
     <p>There are currently about 12 million unauthorised immigrants residing in the United States (Pew Research Center).</p>
-    <p>Do you favor allowing unauthorized immigrants currently living in the United States to remain in the country and eventually qualify for citizenship?</p>
+    <strong><p>Do you favor allowing unauthorized immigrants currently living in the United States to remain in the country and eventually qualify for citizenship?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ imigcit_position }}</strong> ({{ imigcit_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="ice">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
-    <strong>4</strong> |
+    <a class="navigation_digit">4</a> |
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
@@ -62,9 +63,8 @@
     <br />
     <h3>Immigration and Customs Enforcement</h3>
     <p>ICE is a federal agency under the US Department of Homeland Security, principally responsible for immigration enforcement.</p>
-    <p>Do you approve of the way ICE are doing their job?</p>
+    <strong><p>Do you approve of the way ICE are doing their job?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ ice_position }}</strong> ({{ ice_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="aca">
@@ -72,16 +72,15 @@
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
     <a onclick="skip_to_4()">4</a> |
-    <strong>5</strong> |
+    <a class="navigation_digit">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
     <a onclick="skip_to_8()">8</a>
     <br />
     <h3>Repealing the Affordable Care Act</h3>
     <p>A 2017 Congressional Research Service report noted that, since the Affordable Care Act (“Obama Care”) was passed in 2010, Congress has been deeply divided over its future. After much debate about repealing, defunding, delaying or amending the law, 2013 saw a partial shutdown of government that lasted over two weeks because of a disagreement between the Democratic-controlled Senate and the Republican-led House over the inclusion of ACA language in the a spending bill.</p>
-    <p>Do you approve of repealing the Affordable Care Act?</p>
+    <strong><p>Do you approve of repealing the Affordable Care Act?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ aca_position }}</strong> ({{ aca_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="diversity">
@@ -90,15 +89,14 @@
     <a onclick="skip_to_3()">3</a> |
     <a onclick="skip_to_4()">4</a> |
     <a onclick="skip_to_5()">5</a> |
-    <strong>6</strong> |
+    <a class="navigation_digit">6</a> |
     <a onclick="skip_to_7()">7</a> |
     <a onclick="skip_to_8()">8</a>
     <br />
     <h3>Diversity: Good or Bad?</h3>
     <p>As the United States becomes more racially and ethnically diverse, Americans have a complicated set of views about the impact of diversity and the best way to achieve it. Most say it’s a good thing that the country has a diverse population, but many also say this introduces its own set of challenges.</p>
-    <p>On balance, do you think having an increasing number of people of many different races, ethnic groups and nationalities in the United States makes this country a better place to live?</p>
+    <strong><p>On balance, do you think having an increasing number of people of many different races, ethnic groups and nationalities in the United States makes this country a better place to live?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ diversity_position }}</strong> ({{ diversity_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="gunsar">
@@ -108,14 +106,13 @@
     <a onclick="skip_to_4()">4</a> |
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
-    <strong>7</strong> |
+    <a class="navigation_digit">7</a> |
     <a onclick="skip_to_8()">8</a>
     <br />
     <h3>Banning Assault Rifles</h3>
     <p>Following a close vote, the Violent Crime Control and Law Enforcement Act of 2004 instituted a 10-year ban on the manufacture for civilian use of assault weapons. The ban expired on September 13, 2004, in accordance with its sunset provision. Several constitutional challenges were filed against provisions of the ban, but all were rejected by the courts. There have been multiple attempts to renew the ban, but none have succeeded.</p>
-    <p>Do you favor banning the sale of semi-automatic “assault-style” rifles?</p>
+    <strong><p>Do you favor banning the sale of semi-automatic “assault-style” rifles?</p></strong>
     <p>If you were fully informed, you would be <strong>{{ gunsar_position }}</strong> ({{ gunsar_probs }}%) to answer 'yes' to this question.</p>
-    <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
 </div>
 
 <div id="liberal_score">
@@ -126,7 +123,7 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <strong>8</strong>
+    <a class="navigation_digit">8</a>
     <br />
     <h3>Would you be a fully informed conservative or progressive?</h3>
     <p>Where would your fully informed self fall on the spectrum from conservative to progressive, compared to some prominent political figures?</p>
@@ -136,12 +133,57 @@
     - Susan Collins (R-ME): 2 out of 7<br />
     - Nancy Pelosi (D-CA): 6 out of 7.<br />
     - Alexandria Ocasio-Cortez (D-NY): 7 out of 7.</p>
-
-    <button onclick="move_back()"> << </button>
 </div>
 
+<button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
+<br />
+<br />
+
+<button type="button" class="collapsible">How does this work?</button>
+<div class="collapsible-content">
+    <br />
+    Consider a simple example:
+    <p>Say I want to predict how much you earn but all I know about you is your age. I might ask lots of people their age and their income, and then note the relationship.</p>
+    <p>Maybe it turns out that, in general, the older you are, the more you make (until retirement age, say). If I describe that relationship using an equation — being of this age means likely earning this much — I now have a model that I can use to predict your income.</p>
+    <p>Now, perhaps a better model would also look at people’s level of education, years of relevant work experience, and so forth. And when we include further variables like this, we can do something else: we can estimate how much you would have earned, had you been different along one of the variables involved.</p>
+    <p>For example, maybe you never went to university. How much would you have earned now if you did? We plug in all of the relevant values for you into the model (your age and so on), but set the level of the education variable to ‘university educated’ and, voilà, the model estimates how much someone who’s just like you, except for being more highly educated, would likely earn.</p>
+    In our model of informed political opinion, we do something similar. We ask you to plug in a variety of demographic and socioeconomic variables. But the model has an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value. That's how we estimate what political attitudes you likely would have held, had you been fully informed.
+</div>
+
+<button type="button" class="collapsible">Why did you not ask me about my values?</button>
+<div class="collapsible-content">
+    <br />
+    The reason we estimate your informed vote on the basis of demographic variables while excluding attitudinal and values variables is not that the latter aren’t predictive of how you <i>will</i> vote (they are); it’s that they are not predictive of how you <i>would</i> vote, if fully informed.
+    <p>This is because, if you were more informed, it's quite possible that you would embrace different values and have different political attitudes from what you currently do.</p>
+    That means that, if you include attitudinal and values variables in the model, you hold fixed things that in fact vary with increased knowledge, which in turn would bias your estimate. In the literature, this is known as 'controlling for a mediator'. Julia Rohrer has <a href="https://journals.sagepub.com/doi/10.1177/2515245917745629">a good and accessible paper on this</a>, for those interested in more details.
+</div>
+
+<button type="button" class="collapsible">How do you measure what it is to be 'fully informed'?</button>
+<div class="collapsible-content">
+    <br />
+    You do it by asking large numbers of people to, for example, pair up named individuals with their political offices, or about political platforms, political practices, and so forth.
+    <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are. </p>
+    <p>In light of this tradition, the main surveys of political attitudes, such as the <a class="bold_link" href="https://electionstudies.org/">American National Election Studies</a> and the <a class="bold_link" href="https://www.britishelectionstudy.com/">British Election Study</a>, now generally include a number of such factual questions in their national surveys.</p>
+    <p>Researchers can then use these to define what you can think of as a 'political knowledge score'. That’s the score we set to the maximum in our model, when estimating your fully informed opinions.</p>
+    Those interested in more details may consult the central books on ‘information effects’ by <a class="bold_link" href="https://yalebooks.yale.edu/book/9780300072754/what-americans-know-about-politics-and-why-it-matters">Michael X. Delli Carpini and Scott Keeter</a> and <a class="bold_link" href="https://www.cambridge.org/core/books/collective-preferences-in-democratic-politics/C12E833FF34C53E5DCC560C65691F1F3">Scott Althaus</a>. Studies on information effects in electoral contexts specifically have been conducted in <a class="bold_link" href="https://www.jstor.org/stable/2111700?seq=1">the US</a>, <a class="bold_link" href="https://ejpr.onlinelibrary.wiley.com/doi/abs/10.1111/j.1475-6765.2008.00835.x">Canada</a>, <a class="bold_link" href="https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9477.2007.00182.x">Sweden</a>, <a class="bold_link" href="https://academic.oup.com/ijpor/article-abstract/21/4/525/764905">Denmark</a>, and for the <a class="bold_link" href="https://www.tandfonline.com/doi/abs/10.1080/00344893.2010.518078">European Parliament</a>, to name a few examples.
+</div>
 
 <script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+      coll[i].addEventListener("click", function() {
+        this.classList.toggle("active");
+        var content = this.nextElementSibling;
+        if (content.style.maxHeight){
+          content.style.maxHeight = null;
+        } else {
+          content.style.maxHeight = content.scrollHeight + "px";
+        }
+      });
+    }
+
     var page1 = document.getElementById("immigration");
     var page2 = document.getElementById("illimcrime");
     var page3 = document.getElementById("immigcit");
@@ -164,15 +206,21 @@
     var current_page_index = 0
 
     function move_ahead() {
-        pages[current_page_index].style.display = "none";
-        pages[current_page_index + 1].style.display = "block";
-        current_page_index++
+        if(current_page_index!==7) {
+            pages[current_page_index].style.display = "none";
+            pages[current_page_index + 1].style.display = "block";
+            current_page_index++
+        }
+        else {}
     }
 
     function move_back() {
-        pages[current_page_index].style.display = "none";
-        pages[current_page_index - 1].style.display = "block";
-        current_page_index--
+        if(current_page_index!==0) {
+            pages[current_page_index].style.display = "none";
+            pages[current_page_index - 1].style.display = "block";
+            current_page_index--
+        }
+        else {}
     }
 
     function skip_to_1() {
@@ -224,3 +272,5 @@
     }
 
 </script>
+
+{% endblock content %}

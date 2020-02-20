@@ -1,0 +1,64 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:100,400,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,400,700&display=swap);
+
+* {
+    font-family: 'Raleway' !important;
+}
+
+p {
+    font-size: 14px !important;
+}
+
+.container {
+    padding: 0px 15px 15px 15px;
+}
+
+.bottom_copy {
+    font-size: 11px;
+    text-align: center;
+}
+
+.navigation_digit {
+    font-weight: bold;
+}
+
+.collapsible {
+    background-color: #f1f1f1;
+    color: black;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-family: 'Raleway';
+    font-size: 14px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+}
+
+.active, .collapsible:hover {
+    background-color: #f1f1f1;
+}
+
+.collapsible-content {
+    padding-top: 0px;
+    padding-bottom: 15px;
+    padding-left: 0px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #FFFFFF;
+    font-size: 14px;
+}
+
+.collapsible:after {
+    content: '\02795'; /* Unicode character for "plus" sign (+) */
+    font-size: 10px;
+    color: white;
+    float: right;
+}
+
+.active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+}

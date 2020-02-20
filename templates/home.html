@@ -1,3 +1,12 @@
-<!-- templates/home.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h2>IF INFORMED</h2>
-<a href="{% url 'questions' %}">Let's go</a>
+<h3>What political positions would you take, if you were fully informed?</h3>
+
+<form action="{% url 'intro' %}">
+    <input type="submit" value="Let's find out" />
+</form>
+
+{% endblock content %}

@@ -13,6 +13,9 @@ from django.conf import settings
 class HomePageView(TemplateView):
 	template_name = 'home.html'
 
+class IntroPageView(TemplateView):
+	template_name = 'intro.html'
+
 def questions(request):
     form = UserInputForm()
     return render(request, 'userinputform.html', {'form':form});
