@@ -201,9 +201,9 @@ class ResultsView(TemplateView):
         if liberal_score >= 2.5 and liberal_score <= 4:
             context["liberal_position"] = "moderate conservative"
         if liberal_score > 4 and liberal_score <= 5.5:
-            context["liberal_position"] = "moderate liberal"
+            context["liberal_position"] = "moderate progressive"
         if liberal_score >  5.5:
-            context["liberal_position"] = "committed liberal"
+            context["liberal_position"] = "committed progressive"
 
         context["liberal_score"] = round(liberal_score,2)
 
