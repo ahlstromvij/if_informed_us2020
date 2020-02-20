@@ -1,1 +1,1 @@
-web: gunicorn pm_project.wsgi --log-file –
+web: gunicorn if_informed_us.wsgi --log-file -
