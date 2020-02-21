@@ -3,7 +3,7 @@
 {% block content %}
 
 <h2>IF INFORMED</h2>
-<div id="immigration">
+<div id="billtax">
     <a class="navigation_digit">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
@@ -11,15 +11,18 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Immigrants: More or Fewer?</h3>
-    <p>In absolute numbers, the United States has a larger immigrant population than any other country, with 47 million immigrants as of 2015. This represents 19.1% of the 244 million international migrants worldwide, and 14.4% of the U.S. population.</p>
-    <strong><p>Do you think the number of immigrants from foreign countries who are permitted to come to the United States to live should be increased?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ imm_position }}</strong> ({{ immigration_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Taxation: Taxing the Rich</h3>
+    <p>More text.</p>
+    <strong><p>Do you favor taxing those making $10 million a year or more at a 70% rate?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ billtax_position }}</strong> ({{ billtax_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
-<div id="illimcrime">
+<div id="richpoor2">
     <a onclick="skip_to_1()">1</a> |
     <a class="navigation_digit">2</a> |
     <a onclick="skip_to_3()">3</a> |
@@ -27,15 +30,18 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Illegal immmigration and crime</h3>
-    <p>Many worry that illegal immigration to the Unites States leads to an increase in crime.</p>
-    <strong><p>In your view, does illegal immigration increase the crime rate in the United States?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ illimcrime_position }}</strong> ({{ illimcrime_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Taxation: Reducing Inequality</h3>
+    <p>Text.</p>
+    <strong><p>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich people and poor people?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ richpoor2_position }}</strong> ({{ richpoor2_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
-<div id="immigcit">
+<div id="trade2">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a class="navigation_digit">3</a> |
@@ -43,15 +49,18 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Path to citizenship for illegal immigrants</h3>
-    <p>There are currently about 12 million unauthorised immigrants residing in the United States (Pew Research Center).</p>
-    <strong><p>Do you favor allowing unauthorized immigrants currently living in the United States to remain in the country and eventually qualify for citizenship?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ imigcit_position }}</strong> ({{ imigcit_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Economy and Trade: Trade and Jobs</h3>
+    <p>Text.</p>
+    <strong><p>Has international trade increased the number of jobs available in the United States?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ trade2_position }}</strong> ({{ trade2_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
-<div id="ice">
+<div id="trade4">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
@@ -59,15 +68,18 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Immigration and Customs Enforcement</h3>
-    <p>ICE is a federal agency under the US Department of Homeland Security, principally responsible for immigration enforcement.</p>
-    <strong><p>Do you approve of the way ICE are doing their job?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ ice_position }}</strong> ({{ ice_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Economy and Trade: Is International Trade Good?</h3>
+    <p>Text.</p>
+    <strong><p>Does increasing trade with other countries make the U.S. economy better?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ trade4_position }}</strong> ({{ trade4_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
-<div id="aca">
+<div id="immignum">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
@@ -75,15 +87,18 @@
     <a class="navigation_digit">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Repealing the Affordable Care Act</h3>
-    <p>A 2017 Congressional Research Service report noted that, since the Affordable Care Act (“Obama Care”) was passed in 2010, Congress has been deeply divided over its future. After much debate about repealing, defunding, delaying or amending the law, 2013 saw a partial shutdown of government that lasted over two weeks because of a disagreement between the Democratic-controlled Senate and the Republican-led House over the inclusion of ACA language in the a spending bill.</p>
-    <strong><p>Do you approve of repealing the Affordable Care Act?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ aca_position }}</strong> ({{ aca_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Immigration: Increase Numbers?</h3>
+    <p>Text.</p>
+    <strong><p>Do you think the number of immigrants from foreign countries who are permitted to come to the United States to live should be increased? </p></strong>
+    <p>If you were fully informed, you would be <strong>{{ immignum_position }}</strong> ({{ immignum_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
-<div id="diversity">
+<div id="dreamer">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
@@ -91,15 +106,18 @@
     <a onclick="skip_to_5()">5</a> |
     <a class="navigation_digit">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Diversity: Good or Bad?</h3>
-    <p>As the United States becomes more racially and ethnically diverse, Americans have a complicated set of views about the impact of diversity and the best way to achieve it. Most say it’s a good thing that the country has a diverse population, but many also say this introduces its own set of challenges.</p>
-    <strong><p>On balance, do you think having an increasing number of people of many different races, ethnic groups and nationalities in the United States makes this country a better place to live?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ diversity_position }}</strong> ({{ diversity_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Immigration: Dreamers</h3>
+    <p>Text.</p>
+    <strong><p>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school be allowed to live and work in the United States?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ dreamer_position }}</strong> ({{ dreamer_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
-<div id="gunsar">
+<div id="freecol">
     <a onclick="skip_to_1()">1</a> |
     <a onclick="skip_to_2()">2</a> |
     <a onclick="skip_to_3()">3</a> |
@@ -107,12 +125,72 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a class="navigation_digit">7</a> |
-    <a onclick="skip_to_8()">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_7()">9</a> |
+    <a onclick="skip_to_7()">10</a> |
+    <a onclick="skip_to_7()">11</a>
     <br />
-    <h3>Banning Assault Rifles</h3>
-    <p>Following a close vote, the Violent Crime Control and Law Enforcement Act of 2004 instituted a 10-year ban on the manufacture for civilian use of assault weapons. The ban expired on September 13, 2004, in accordance with its sunset provision. Several constitutional challenges were filed against provisions of the ban, but all were rejected by the courts. There have been multiple attempts to renew the ban, but none have succeeded.</p>
-    <strong><p>Do you favor banning the sale of semi-automatic “assault-style” rifles?</p></strong>
-    <p>If you were fully informed, you would be <strong>{{ gunsar_position }}</strong> ({{ gunsar_probs }}%) to answer 'yes' to this question.</p>
+    <h3>Social Provisions: Free College</h3>
+    <p>Text. The $79 billion per year cost would be paid for with higher taxes.</p>
+    <strong><p>Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ freecol_position }}</strong> ({{ freecol_probs }}%) to answer 'yes' to this question.</p>
+</div>
+
+<div id="prek">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a class="navigation_digit">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a>
+    <br />
+    <h3>Social Provisions: Expanding Pre-K</h3>
+    <p>Text. The $24 billion a year cost would be paid for by higher taxes.</p>
+    <strong><p>Do you favor expanding funding for pre-kindergarten programs so that it is available for all children nationwide?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ prek_position }}</strong> ({{ prek_probs }}%) to answer 'yes' to this question.</p>
+</div>
+
+<div id="diversity5">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a class="navigation_digit">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a>
+    <br />
+    <h3>Diversity and Race: Is Diversity Good?</h3>
+    <p>Text.</p>
+    <strong><p>Does the increasing number of people of many different races and ethnic groups in the United States make this country a better place to live?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ diversity5_position }}</strong> ({{ diversity5_probs }}%) to answer 'yes' to this question.</p>
+</div>
+
+<div id="rr2">
+    <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a class="navigation_digit">10</a> |
+    <a onclick="skip_to_11()">11</a>
+    <br />
+    <h3>Diversity and Race: Slavery and Discrimination</h3>
+    <p>Text.</p>
+    <strong><p>Do you agree with the idea that generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class?</p></strong>
+    <p>If you were fully informed, you would be <strong>{{ rr2_position }}</strong> ({{ rr2_probs }}%) to answer 'yes' to this question.</p>
 </div>
 
 <div id="liberal_score">
@@ -123,13 +201,16 @@
     <a onclick="skip_to_5()">5</a> |
     <a onclick="skip_to_6()">6</a> |
     <a onclick="skip_to_7()">7</a> |
-    <a class="navigation_digit">8</a>
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a class="navigation_digit">11</a>
     <br />
     <h3>Would you be a fully informed conservative or progressive?</h3>
     <p>Where would your fully informed self fall on the spectrum from conservative to progressive, compared to some prominent political figures?</p>
     <p>Think of it this way: for each of the questions we've seen, one of the answers (yes/no) is the one a progressive would likely give (e.g., yes, diversity is good; no, don't repeal ACA, etc.); the other one, is the answer a conservative (of the kind currently dominating the Republican party) would likely give.</p>
-    <p>So, if we add up the probabilities that you would give the 'progressive' answer to each of these questions, we get a number between 0 and 7, with 7 representing a 100% probability of giving the progressive answer to each.</p>
-    <p>Based on this, your 'progressivism score' would be  {{ liberal_score }} out of 7, making your informed self a <strong>{{ liberal_position }}</strong>.</p>
+    <p>So, if we add up the probabilities that you would give the 'progressive' answer to each of these questions, we get a number between 0 and 10, with 10 representing a 100% probability of giving the progressive answer to each.</p>
+    <p>Based on this, your 'progressivism score' would be  {{ liberal_score }} out of 10, making your informed self a <strong>{{ liberal_position }}</strong>.</p>
     <p>This compares as follows, in terms of the answers we would likely get from the following, given their political track-record:</p>
     <p>
         - Pres. Donald Trump: 0 out of 7.<br />
@@ -188,14 +269,17 @@
       });
     }
 
-    var page1 = document.getElementById("immigration");
-    var page2 = document.getElementById("illimcrime");
-    var page3 = document.getElementById("immigcit");
-    var page4 = document.getElementById("ice");
-    var page5 = document.getElementById("aca");
-    var page6 = document.getElementById("diversity");
-    var page7 = document.getElementById("gunsar");
-    var page8 = document.getElementById("liberal_score");
+    var page1 = document.getElementById("billtax");
+    var page2 = document.getElementById("richpoor2");
+    var page3 = document.getElementById("trade2");
+    var page4 = document.getElementById("trade4");
+    var page5 = document.getElementById("immignum");
+    var page6 = document.getElementById("dreamer");
+    var page7 = document.getElementById("freecol");
+    var page8 = document.getElementById("prek");
+    var page9 = document.getElementById("diversity5");
+    var page10 = document.getElementById("rr2");
+    var page11 = document.getElementById("liberal_score");
 
     page1.style.display = "block";
     page2.style.display = "none";
@@ -205,12 +289,15 @@
     page6.style.display = "none";
     page7.style.display = "none";
     page8.style.display = "none";
+    page9.style.display = "none";
+    page10.style.display = "none";
+    page11.style.display = "none";
 
-    var pages = [page1,page2,page3,page4,page5,page6,page7,page8]
+    var pages = [page1,page2,page3,page4,page5,page6,page7,page8,page9,page10,page11]
     var current_page_index = 0
 
     function move_ahead() {
-        if(current_page_index!==7) {
+        if(current_page_index!==10) {
             pages[current_page_index].style.display = "none";
             pages[current_page_index + 1].style.display = "block";
             current_page_index++
@@ -273,6 +360,24 @@
         pages[current_page_index].style.display = "none";
         pages[7].style.display = "block";
         current_page_index = 7
+    }
+
+    function skip_to_9() {
+        pages[current_page_index].style.display = "none";
+        pages[8].style.display = "block";
+        current_page_index = 8
+    }
+
+    function skip_to_10() {
+        pages[current_page_index].style.display = "none";
+        pages[9].style.display = "block";
+        current_page_index = 9
+    }
+
+    function skip_to_11() {
+        pages[current_page_index].style.display = "none";
+        pages[10].style.display = "block";
+        current_page_index = 10
     }
 
 </script>
