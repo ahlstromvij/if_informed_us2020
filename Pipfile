@@ -13,6 +13,7 @@ numpy = "*"
 gunicorn = "==19.9.0"
 django-heroku = "*"
 whitenoise = "==3.3.1"
+django-chartjs = "*"
 
 [requires]
 python_version = "3.7"

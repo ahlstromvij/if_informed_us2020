@@ -244,17 +244,24 @@ class ResultsView(TemplateView):
         if probs_formatted_rr2[1] >= 0.8:
             context['rr2_position'] = "highly likely"
 
-        liberal_score = probs_formatted_billtax[1] + probs_formatted_trade2[1] + probs_formatted_trade4[1] + probs_formatted_richpoor2[1] + probs_formatted_immignum[1] + probs_formatted_dreamer[1] + probs_formatted_freecol[1] + probs_formatted_diversity5[1] + probs_formatted_prek[1] + probs_formatted_rr2[1]
+        econ_liberal_score = (probs_formatted_billtax[0] + probs_formatted_richpoor2[0] + probs_formatted_trade2[1] + probs_formatted_trade4[1] + probs_formatted_freecol[0] + probs_formatted_prek[0])/(6/5)
+        social_liberal_score = (probs_formatted_immignum[1] + probs_formatted_dreamer[1] + probs_formatted_diversity5[1] + probs_formatted_rr2[1])/(4/5)
 
-        if liberal_score < 2:
-            context["liberal_position"] = "committed conservative"
-        if liberal_score >= 2 and liberal_score < 5:
-            context["liberal_position"] = "moderate conservative"
-        if liberal_score >= 5 and liberal_score < 8:
-            context["liberal_position"] = "moderate progressive"
-        if liberal_score >= 8:
-            context["liberal_position"] = "committed progressive"
+        context["econ_liberal_score"] = round(econ_liberal_score,2)
+        context["social_liberal_score"] = round(social_liberal_score,2)
 
-        context["liberal_score"] = round(liberal_score,2)
+        if econ_liberal_score < 2:
+            context["econ_liberal_position"] = "economically conservative"
+        if econ_liberal_score >= 2 and econ_liberal_score <= 3:
+            context["econ_liberal_position"] = "economically moderate"
+        if econ_liberal_score > 3:
+            context["econ_liberal_position"] = "economically liberal"
+
+        if social_liberal_score < 2:
+            context["social_liberal_position"] = "socially conservative"
+        if social_liberal_score >= 2 and social_liberal_score <= 3:
+            context["social_liberal_position"] = "socially moderate"
+        if social_liberal_score > 3:
+            context["social_liberal_position"] = "socially liberal"
 
         return render(request, 'results.html', context)
