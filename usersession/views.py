@@ -251,11 +251,11 @@ class ResultsView(TemplateView):
         context["social_liberal_score"] = round(social_liberal_score,2)
 
         if econ_liberal_score < 2:
-            context["econ_liberal_position"] = "economically progressive"
+            context["econ_liberal_position"] = "fiscally progressive"
         if econ_liberal_score >= 2 and econ_liberal_score <= 3:
-            context["econ_liberal_position"] = "economically moderate"
+            context["econ_liberal_position"] = "fiscally moderate"
         if econ_liberal_score > 3:
-            context["econ_liberal_position"] = "economically conservative"
+            context["econ_liberal_position"] = "fiscally conservative"
 
         if social_liberal_score < 2:
             context["social_liberal_position"] = "socially conservative"

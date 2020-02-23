@@ -281,7 +281,7 @@
     <br />
     <h3>Would you be a fully informed conservative or progressive?</h3>
     <a id="user_answers"><a>
-    <p>Economic conservatives want free markets and small government, and are contrasted with economic progressives, who see a substantial role for government in people's lives.</p>
+    <p>Fiscal conservatives want free markets and small government. Fiscal progressives see a substantial role for government in people's lives.</p>
     <p>Social progressives value diversity and social justice, and stand in opposition to social conservatives.</p>
     <p>In each case, moderates take a position in between.</p>
     <p><strong>Where would your fully informed self fall along these two dimensions?</strong></p>
@@ -290,6 +290,7 @@
     <div class="table-responsive" id="liberal_graph">
         <canvas id="myChart" style="height:400px" class="table"></canvas>
     </div>
+    <p id="note_on_scales">The fiscal conservatism scale is derived by adding up the probabilities of ‘no’ to Q1, 2, 7 and 8, and of ‘yes’ on Q3 and 4, and the social progressivism scale by adding up the probabilities of ‘yes’ to Q5, 6, 9, and 10. Both sums are scaled to 5.</p>
 </div>
 
 <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
@@ -522,7 +523,7 @@
                         x: 3.75,
                         y: 4.17}
                         ],
-                    label: "Pelosi",
+                    label: "Bloomberg",
                     backgroundColor: 'rgba(149, 144, 255, 1)',
                     radius: 7,
                     pointRadius: 7,
@@ -532,7 +533,7 @@
                         x: 5,
                         y: 0}
                         ],
-                    label: "AOC",
+                    label: "Sanders",
                     backgroundColor: 'rgba(245, 100, 227, 1)',
                     radius: 7,
                     pointRadius: 7,
@@ -542,7 +543,11 @@
         },
         options: {
             legend: {
-                position: 'top'
+                position: 'top',
+                labels: {
+                    defaultFontFamily: 'Helvetica Neue',
+                    fontColor: 'black'
+                }
             },
             scales: {
                 yAxes: [{
@@ -553,7 +558,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Econ. Conservative -->'
+                            labelString: 'Fisc. Conservative -->'
                         }
                 }],
                 xAxes: [{
