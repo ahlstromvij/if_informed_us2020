@@ -279,12 +279,14 @@
     <a onclick="skip_to_10()">10</a> |
     <a class="navigation_digit">11</a>
     <br />
-    <h3>Would you be a fully informed conservative or liberal?</h3>
+    <h3>Would you be a fully informed conservative or progressive?</h3>
     <a id="user_answers"><a>
-    <p>Economic liberals want free markets, low taxes, and small government. Social liberals value diversity and social justice. In each case, moderates take a position in between.</p>
+    <p>Economic conservatives want free markets and small government, and are contrasted with economic progressives, who see a substantial role for government in people's lives.</p>
+    <p>Social progressives value diversity and social justice, and stand in opposition to social conservatives.</p>
+    <p>In each case, moderates take a position in between.</p>
     <p><strong>Where would your fully informed self fall along these two dimensions?</strong></p>
     <p>Based on the estimates we have already shown you, your fully informed self would likely be <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>.</p>
-    <p>Your positions here compare as follows, in terms of the answers we would expect from the following politicians:</p>
+    <p>Your positions compare as follows to the answers we would expect from the following politicians:</p>
     <div class="table-responsive" id="liberal_graph">
         <canvas id="myChart" style="height:400px" class="table"></canvas>
     </div>
@@ -551,7 +553,7 @@
                         },
                         scaleLabel: {
                             display: true,
-                            labelString: 'Economically Liberal'
+                            labelString: 'Econ. Conservative -->'
                         }
                 }],
                 xAxes: [{
@@ -564,7 +566,7 @@
                         position: 'bottom',
                         scaleLabel: {
                             display: true,
-                            labelString: 'Socially Liberal'
+                            labelString: 'Socially Progressive -->'
                         }
                 }]
             }
