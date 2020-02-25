@@ -2,7 +2,6 @@
 
 {% block content %}
 
-<h2>IF INFORMED</h2>
 <div class="page" id="billtax">
     <a class="navigation_digit">1</a> |
     <a onclick="skip_to_2()">2</a> |
@@ -290,7 +289,8 @@
     <div class="table-responsive" id="liberal_graph">
         <canvas id="myChart" style="height:400px" class="table"></canvas>
     </div>
-    <p id="note_on_scales">The fiscal conservatism scale is derived by adding up the probabilities of ‘no’ to Q1, 2, 7 and 8, and of ‘yes’ on Q3 and 4, and the social progressivism scale by adding up the probabilities of ‘yes’ to Q5, 6, 9, and 10. Both sums are scaled to 5.</p>
+    <p id="note_on_scales"><strong>Note on scales:</strong> The fiscal conservatism scale is derived by adding up the probabilities of ‘no’ to Q1, 2, 7 and 8, and of ‘yes’ on Q3 and 4, and the social progressivism scale by adding up the probabilities of ‘yes’ to Q5, 6, 9, and 10. Both sums are scaled to 5.</p>
+    </div>
 </div>
 
 <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
@@ -323,7 +323,7 @@
    <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are. </p>
    <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies and the British Election Study, now generally include a number of such factual questions in their national surveys.</p>
    <p>Researchers can then use these to define what you can think of as a 'political knowledge score'. That’s the score we set to the maximum in our model, when estimating your fully informed opinions.</p>
-   Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter and Scott Althaus's work on 'information effects'.
+   Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's and also Scott Althaus's work on 'information effects'.
 </div>
 
 <script>
