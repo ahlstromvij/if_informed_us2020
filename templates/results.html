@@ -16,7 +16,7 @@
     <a onclick="skip_to_11()">11</a>
     <br />
     <h3>Taxation: Taxing the Rich</h3>
-    <p>In an interview, Alexandria Ocasio-Cortez (D-NY) suggested that income above $10m may need to be taxed up to 70%. Currently, the highest marginal Federal tax rate in the US is 37%.</p>
+    <p>In an interview, Rep. Alexandria Ocasio-Cortez (D-NY) suggested that income above $10m may need to be taxed up to 70%. Currently, the highest marginal Federal tax rate in the US is 37%.</p>
     <strong><p>Do you favor taxing those making $10 million a year or more at a 70% rate?</p></strong>
 
     <div class="question" id="billtax_question">
@@ -43,7 +43,7 @@
     <a onclick="skip_to_11()">11</a>
     <br />
     <h3>Taxation: Reducing Inequality</h3>
-    <p>Many people are concerned about levels of inequality between the rich and the poor. Some moreover feel that government should play a role in reducing these levels.</p>
+    <p>Many people are concerned about the level of inequality between the rich and the poor. Some moreover feel that government should play a role in reducing inequality.</p>
     <strong><p>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?</p></strong>
 
     <div class="question" id="richpoor2_question">
@@ -70,7 +70,7 @@
     <a onclick="skip_to_11()">11</a>
     <br />
     <h3>International Trade: Impact on Jobs</h3>
-    <p>In a globalised economy, international trade plays a central role in the lives of all of us, from the services we expect, and the products we want. At the same time, some worry that international trade has a negative impact on U.S. jobs.</p>
+    <p>In a globalised economy, international trade plays a central role in the lives of all of us, from the services we expect to the jobs we do. At the same time, some worry that international trade has a negative impact on U.S. jobs.</p>
     <strong><p>Has international trade increased the number of jobs available in the United States?</p></strong>
 
     <div class="question" id="trade2_question">
@@ -97,7 +97,7 @@
     <a onclick="skip_to_11()">11</a>
     <br />
     <h3>International Trade: Impact on the Economy</h3>
-    <p>Another worry that some have is that international trade is bad for the U.S. economy, unless the government steps in to protect it.</p>
+    <p>Another worry that some have is that international trade is bad for the U.S. economy more generally, unless the government steps in to protect it.</p>
     <strong><p>Does increasing trade with other countries make the U.S. economy better?</p></strong>
 
     <div class="question" id="trade4_question">
@@ -150,7 +150,7 @@
     <br />
     <h3>Immigration: Dreamers</h3>
     <p>Daca is a federal government program created in 2012 to protect people brought to the US illegally as children. Those with Daca status are known as "Dreamers". By the time Trump announced his decision in 2017 to rescind the program, 787,580 had been granted approval.</p>
-    <strong><p>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school be allowed to live and work in the United States?</p></strong>
+    <strong><p>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?</p></strong>
 
     <div class="question" id="dreamer_question">
         <input type="button" value="Yes" onclick="radio_answer(1,5);">&nbsp;
@@ -261,7 +261,7 @@
         <input type="button" value="No" onclick="radio_answer(0,9);">
     </div>
 
-    <div class="result" id="rr2_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>.If you were fully informed, you would be <strong>{{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'</strong>  to this question.</div>
+    <div class="result" id="rr2_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'</strong>  to this question.</div>
     <br />
 </div>
 
@@ -280,7 +280,7 @@
     <br />
     <h3>Would you be a fully informed conservative or progressive?</h3>
     <a id="user_answers"><a>
-    <p>Fiscal conservatives want free markets and small government. Fiscal progressives see a substantial role for government in people's lives.</p>
+    <p>Fiscal conservatives want free markets and small government. By contrast, fiscal progressives see a substantial role for government in people's lives.</p>
     <p>Social progressives value diversity and social justice, and stand in opposition to social conservatives.</p>
     <p>In each case, moderates take a position in between.</p>
     <p><strong>Where would your fully informed self fall along these two dimensions?</strong></p>
@@ -290,7 +290,6 @@
         <canvas id="myChart" style="height:400px" class="table"></canvas>
     </div>
     <p id="note_on_scales"><strong>Note on scales:</strong> The fiscal conservatism scale is derived by adding up the probabilities of ‘no’ to Q1, 2, 7 and 8, and of ‘yes’ on Q3 and 4, and the social progressivism scale by adding up the probabilities of ‘yes’ to Q5, 6, 9, and 10. Both sums are scaled to 5.</p>
-    </div>
 </div>
 
 <button onclick="move_back()"> << </button> &nbsp; &nbsp; <button onclick="move_ahead()"> >> </button>
@@ -303,9 +302,9 @@
     Consider a simple example:
     <p>Say I want to predict how much you earn but all I know about you is your age. I might ask lots of people their age and their income, and then note the relationship.</p>
     <p>Maybe it turns out that, in general, the older you are, the more you make (until retirement age, say). If I describe that relationship using an equation — being of this age means likely earning this much — I now have a model that I can use to predict your income.</p>
-    <p>Now, perhaps a better model would also look at people’s level of education, years of relevant work experience, and so forth. And when we include further variables like this, we can do something else: we can estimate how much you would have earned, had you been different along one of the variables involved.</p>
-    <p>For example, maybe you never went to university. How much would you have earned now if you did? We plug in all of the relevant values for you into the model (your age and so on), but set the level of the education variable to ‘university educated’ and, voilà, the model estimates how much someone who’s just like you, except for being more highly educated, would likely earn.</p>
-    In our model of informed political opinion, we do something similar. We ask you to plug in a variety of demographic and socioeconomic variables. But the model has an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value. That's how we estimate what political attitudes you likely would have held, had you been fully informed.
+    <p>Perhaps a better model would also look at people’s level of education, years of relevant work experience, and so forth. And when we include further variables like this, we can do something else: we can estimate how much you <i>would</i> have earned, had you been different along one of the variables involved.</p>
+    <p>For example, maybe you never went to university. How much would you have earned now if you did? We plug in all of the relevant values for you into the model (your age and so on), but set the level of the education variable to ‘university educated’ and, <i>voilà</i>, the model estimates how much someone who’s just like you, except for being more highly educated, would likely earn.</p>
+    In our models of informed political opinion, we do something similar. We ask you to plug in a variety of demographic and socioeconomic variables. But the model has an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value. That's how we estimate what political attitudes you likely would have held, had you been fully informed.
 </div>
 
 <button type="button" class="collapsible">Why did you not ask me about my values?</button>
@@ -320,10 +319,10 @@
 <div class="collapsible-content">
     <br />
     You do it by asking large numbers of people to, for example, pair up named individuals with their political offices, or about political platforms, political practices, and so forth.
-   <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are. </p>
-   <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies and the British Election Study, now generally include a number of such factual questions in their national surveys.</p>
-   <p>Researchers can then use these to define what you can think of as a 'political knowledge score'. That’s the score we set to the maximum in our model, when estimating your fully informed opinions.</p>
-   Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's and also Scott Althaus's work on 'information effects'.
+    <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are. </p>
+    <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies and the British Election Study, now generally include a number of such factual questions in their national surveys.</p>
+    <p>Researchers can then use these to define what you can think of as a 'political knowledge score'. That’s the score we set to the maximum in our models, when estimating your fully informed opinions.</p>
+    Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's and also Scott Althaus's work on 'information effects'.
 </div>
 
 <script>

@@ -4,7 +4,7 @@
 
 <div class="center_and_padding">
     <form action="/results/" method="post">
-        <div class="black_pane">Please answer the following questions: </div>
+        <div>Please answer the following questions: </div>
         {% csrf_token %}
         {{ form.as_p }}
         <input class="black_pane" type="submit" value="Submit" style="padding-top: 5px;text-align: left;padding: 10px 10px 10px 10px;"/>
