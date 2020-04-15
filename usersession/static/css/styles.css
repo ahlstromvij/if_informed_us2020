@@ -1,11 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:100,400,700&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Inconsolata:100,400,700&display=swap);
 
 * {
-    font-family: 'Raleway' !important;
+    font-family: 'Raleway';
 }
 
 p {
-    font-size: 14px !important;
+    font-size: 15px;
 }
 
 #logo {
@@ -14,7 +15,36 @@ p {
 }
 
 .result {
-    font-size: 14px !important;
+    font-size: 14px;
+}
+
+.submit_button {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 14px;
+    padding: 5px 7px 5px 7px;
+}
+
+.navigation_button {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 13px;
+    padding: 2px 8px 3px 8px;
+}
+
+code {
+    font-family: monospace, serif;
+    font-weight: 100;
+    color: #2b2d2f;
+    background-color: #EEE;
+    padding: 2px;
+}
+
+.radio_button {
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    font-size: 12px;
+    padding: 3px 5px 3px 5px;
 }
 
 #note_on_scales {
@@ -22,7 +52,7 @@ p {
 }
 
 .container {
-    padding: 0px 15px 15px 15px;
+    padding: 5px 25px 25px 25px;
 }
 
 .bottom_copy {

@@ -7,9 +7,9 @@
         <div>Please answer the following questions: </div>
         {% csrf_token %}
         {{ form.as_p }}
-        <input class="black_pane" type="submit" value="Submit" style="padding-top: 5px;text-align: left;padding: 10px 10px 10px 10px;"/>
+        <input class="submit_button" type="submit" value="Submit"/>
     </form>
-    <p id="privacy-note"><strong>Privacy Notice:</strong> Please note that we don't store or otherwise retain any of your responses.</p>
+    <p id="privacy_note"><strong>Privacy Notice:</strong> Please note that we don't store or otherwise retain any of your responses.</p>
 </div>
 
 {% endblock content %}

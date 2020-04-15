@@ -27,102 +27,88 @@ class ResultsView(TemplateView):
         context = {}
 
         user_input_raw = [
-            request.POST['gender'],
-            '0.832905',
+			'1',
+			request.POST['gender'],
             request.POST['age'],
             request.POST['education'],
             request.POST['marital_status'],
             request.POST['ethnicity'],
-            request.POST['work'],
             request.POST['income'],
             request.POST['religion'],
-            request.POST['region'],
         ]
 
         user_input = [float(x) for item in user_input_raw for x in item.split(',')]
 
-        user_series = pd.Series(user_input,index=['gender',
-                                                'ability',
-                                                'age_under30',
+        user_series = pd.Series(user_input,index=['ability_binary',
+                                                'gender',
                                                 'age_30to40',
                                                 'age_40to50',
                                                 'age_50to60',
                                                 'age_60to70',
                                                 'age_over70',
-                                                'no_hs',
+                                                'age_under30',
+                                                'four_yr_college',
                                                 'high_school',
+                                                'no_hs',
+                                                'post_grad',
                                                 'some_college',
                                                 'two_yr_college',
-                                                'four_yr_college',
-                                                'post_grad',
-                                                'married',
-                                                'separated',
-                                                'divorced',
-                                                'widowed',
-                                                'never_married',
                                                 'civil',
-                                                'white',
+                                                'divorced',
+                                                'married',
+                                                'never_married',
+                                                'separated',
+                                                'widowed',
+                                                'asian',
                                                 'black',
                                                 'hispanic',
-                                                'asian',
-                                                'native_american',
                                                 'mixed',
+                                                'native_american',
                                                 'other_race',
-                                                'full_time',
-                                                'part_time',
-                                                'unemployed',
-                                                'retired',
-                                                'disabled',
-                                                'homemaker',
-                                                'student',
-                                                'other_empl',
-                                                'inc_less20k',
+                                                'white',
+                                                'inc_120-200k',
                                                 'inc_20-30k',
                                                 'inc_30-60k',
                                                 'inc_60-120k',
-                                                'inc_120-200k',
+                                                'inc_less20k',
                                                 'inc_over200k',
-                                                'christian',
-                                                'mormon',
-                                                'jewish',
-                                                'muslim',
                                                 'buddhist',
+                                                'christian',
+                                                'jewish',
+                                                'mormon',
+                                                'muslim',
                                                 'no_rel',
-                                                'other_rel',
-                                                'northeast',
-                                                'midwest',
-                                                'south',
-                                                'west'])
+                                                'other_rel'])
 
-        file1 = open(os.path.join(settings.STATIC_ROOT, 'scikit/log_reg_billtax.joblib'),'rb')
-        log_reg_billtax = load(file1)
-        probs_billtax = log_reg_billtax.predict_proba([user_series])
-        probs_formatted_billtax = [round(elem, 2) for elem in probs_billtax.tolist()[0]]
-        context["billtax_probs"] = round(probs_formatted_billtax[1] * 100, 0)
+        file1 = open(os.path.join(settings.STATIC_ROOT, 'scikit/log_reg_gw1.joblib'),'rb')
+        log_reg_gw1 = load(file1)
+        probs_gw1 = log_reg_gw1.predict_proba([user_series])
+        probs_formatted_gw1 = [round(elem, 2) for elem in probs_gw1.tolist()[0]]
+        context["gw1_probs"] = round(probs_formatted_gw1[1] * 100, 0)
 
-        if probs_formatted_billtax[1] <= 0.2:
-            context['billtax_position'] = "highly unlikely"
-        if probs_formatted_billtax[1] > 0.2 and probs_formatted_billtax[1] < 0.5:
-            context['billtax_position'] = "unlikely"
-        if probs_formatted_billtax[1] >= 0.5 and probs_formatted_billtax[1] < 0.8:
-            context['billtax_position'] = "likely"
-        if probs_formatted_billtax[1] >= 0.8:
-            context['billtax_position'] = "highly likely"
+        if probs_formatted_gw1[1] <= 0.2:
+            context['gw1_position'] = "highly unlikely"
+        if probs_formatted_gw1[1] > 0.2 and probs_formatted_gw1[1] < 0.5:
+            context['gw1_position'] = "unlikely"
+        if probs_formatted_gw1[1] >= 0.5 and probs_formatted_gw1[1] < 0.8:
+            context['gw1_position'] = "likely"
+        if probs_formatted_gw1[1] >= 0.8:
+            context['gw1_position'] = "highly likely"
 
-        file2 = open(os.path.join(settings.STATIC_ROOT, 'scikit/log_reg_trade2.joblib'),'rb')
-        log_reg_trade2 = load(file2)
-        probs_trade2 = log_reg_trade2.predict_proba([user_series])
-        probs_formatted_trade2 = [round(elem, 2) for elem in probs_trade2.tolist()[0]]
-        context["trade2_probs"] = round(probs_formatted_trade2[1] * 100, 0)
+        file2 = open(os.path.join(settings.STATIC_ROOT, 'scikit/log_reg_refugees.joblib'),'rb')
+        log_reg_refugees = load(file2)
+        probs_refugees = log_reg_refugees.predict_proba([user_series])
+        probs_formatted_refugees = [round(elem, 2) for elem in probs_refugees.tolist()[0]]
+        context["refugees_probs"] = round(probs_formatted_refugees[1] * 100, 0)
 
-        if probs_formatted_trade2[1] <= 0.2:
-            context['trade2_position'] = "highly unlikely"
-        if probs_formatted_trade2[1] > 0.2 and probs_formatted_trade2[1] < 0.5:
-            context['trade2_position'] = "unlikely"
-        if probs_formatted_trade2[1] >= 0.5 and probs_formatted_trade2[1] < 0.8:
-            context['trade2_position'] = "likely"
-        if probs_formatted_trade2[1] >= 0.8:
-            context['trade2_position'] = "highly likely"
+        if probs_formatted_refugees[1] <= 0.2:
+            context['refugees_position'] = "highly unlikely"
+        if probs_formatted_refugees[1] > 0.2 and probs_formatted_refugees[1] < 0.5:
+            context['refugees_position'] = "unlikely"
+        if probs_formatted_refugees[1] >= 0.5 and probs_formatted_refugees[1] < 0.8:
+            context['refugees_position'] = "likely"
+        if probs_formatted_refugees[1] >= 0.8:
+            context['refugees_position'] = "highly likely"
 
         file3 = open(os.path.join(settings.STATIC_ROOT, 'scikit/log_reg_trade4.joblib'),'rb')
         log_reg_trade4 = load(file3)
@@ -244,8 +230,23 @@ class ResultsView(TemplateView):
         if probs_formatted_rr2[1] >= 0.8:
             context['rr2_position'] = "highly likely"
 
-        econ_liberal_score = (probs_formatted_billtax[0] + probs_formatted_richpoor2[0] + probs_formatted_trade2[1] + probs_formatted_trade4[1] + probs_formatted_freecol[0] + probs_formatted_prek[0])/(6/5)
-        social_liberal_score = (probs_formatted_immignum[1] + probs_formatted_dreamer[1] + probs_formatted_diversity5[1] + probs_formatted_rr2[1])/(4/5)
+        file11 = open(os.path.join(settings.STATIC_ROOT, 'scikit/log_reg_taxecon.joblib'),'rb')
+        log_reg_taxecon = load(file11)
+        probs_taxecon = log_reg_taxecon.predict_proba([user_series])
+        probs_formatted_taxecon = [round(elem, 2) for elem in probs_taxecon.tolist()[0]]
+        context["taxecon_probs"] = round(probs_formatted_taxecon[1] * 100, 0)
+
+        if probs_formatted_taxecon[1] <= 0.2:
+            context['taxecon_position'] = "highly unlikely"
+        if probs_formatted_taxecon[1] > 0.2 and probs_formatted_taxecon[1] < 0.5:
+            context['taxecon_position'] = "unlikely"
+        if probs_formatted_taxecon[1] >= 0.5 and probs_formatted_taxecon[1] < 0.8:
+            context['taxecon_position'] = "likely"
+        if probs_formatted_taxecon[1] >= 0.8:
+            context['taxecon_position'] = "highly likely"
+
+        econ_liberal_score = probs_formatted_taxecon[1] + probs_formatted_freecol[0] + probs_formatted_richpoor2[0] + probs_formatted_prek[0] + probs_formatted_gw1[0]
+        social_liberal_score = probs_formatted_diversity5[1] + probs_formatted_rr2[1] + probs_formatted_immignum[1] + probs_formatted_dreamer[1] + probs_formatted_refugees[1]
 
         context["econ_liberal_score"] = round(econ_liberal_score,2)
         context["social_liberal_score"] = round(social_liberal_score,2)
