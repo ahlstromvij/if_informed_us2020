@@ -67,5 +67,5 @@ class UserInputForm(forms.Form):
     education = forms.CharField(label='What is your highest level of education?', widget=forms.Select(choices=EDUCATION_CHOICES))
     marital_status = forms.CharField(label='Tell us your marital status', widget=forms.Select(choices=MARITAL_CHOICES))
     ethnicity = forms.CharField(label='Tell us your ethnicity', widget=forms.Select(choices=ETHNICITY_CHOICES))
-    income = forms.CharField(label='What is your annual income (before tax)?', widget=forms.Select(choices=INCOME_CHOICES))
+    income = forms.CharField(label='What is your annual household income (before tax)?', widget=forms.Select(choices=INCOME_CHOICES))
     religion = forms.CharField(label='Tell us what religion (if any) you identify with', widget=forms.Select(choices=RELIGION_CHOICES))
