@@ -1,5 +1,9 @@
 from django import forms
 
+OK_CHOICES= [
+    (1, 'OK'),
+    ]
+
 GENDER_CHOICES= [
     (0, 'Female'),
     (1, 'Male'),
@@ -62,10 +66,10 @@ RELIGION_CHOICES= [
     ]
 
 class UserInputForm(forms.Form):
-    gender = forms.CharField(label='Are you female or male?', widget=forms.Select(choices=GENDER_CHOICES))
-    age = forms.CharField(label='What is your age?', widget=forms.Select(choices=AGE_CHOICES))
-    education = forms.CharField(label='What is your highest level of education?', widget=forms.Select(choices=EDUCATION_CHOICES))
-    marital_status = forms.CharField(label='Tell us your marital status', widget=forms.Select(choices=MARITAL_CHOICES))
-    ethnicity = forms.CharField(label='Tell us your ethnicity', widget=forms.Select(choices=ETHNICITY_CHOICES))
+    gender = forms.CharField(label='First, are you female or male?', widget=forms.Select(choices=GENDER_CHOICES))
+    age = forms.CharField(label='Thank you! What is your age?', widget=forms.Select(choices=AGE_CHOICES))
+    education = forms.CharField(label='And what is your highest level of education?', widget=forms.Select(choices=EDUCATION_CHOICES))
+    marital_status = forms.CharField(label='Please tell us your marital status', widget=forms.Select(choices=MARITAL_CHOICES))
+    ethnicity = forms.CharField(label='And please tell us your ethnicity', widget=forms.Select(choices=ETHNICITY_CHOICES))
     income = forms.CharField(label='What is your annual household income (before tax)?', widget=forms.Select(choices=INCOME_CHOICES))
-    religion = forms.CharField(label='Tell us what religion (if any) you identify with', widget=forms.Select(choices=RELIGION_CHOICES))
+    religion = forms.CharField(label='And the final question: What religion (if any) do you identify with?', widget=forms.Select(choices=RELIGION_CHOICES))

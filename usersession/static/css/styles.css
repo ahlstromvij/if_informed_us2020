@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:100,400,700&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Inconsolata:100,400,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,300,400,700&display=swap);
 
 * {
     font-family: 'Raleway';
@@ -19,17 +18,40 @@ p {
 }
 
 .submit_button {
-    border-radius: 5px;
-    -moz-border-radius: 5px;
-    font-size: 14px;
-    padding: 5px 7px 5px 7px;
+    font-weight: 300;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    font-size: 15px;
+    padding: 14px;
+    color: black;
+    background-color: white;
+}
+.submit_button:hover {
+    font-weight: 300;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    font-size: 15px;
+    padding: 14px;
+    color: white;
+    background-color: black;
 }
 
 .navigation_button {
-    border-radius: 5px;
-    -moz-border-radius: 5px;
+    border-radius: 15px;
+    -moz-border-radius: 15px;
     font-size: 13px;
-    padding: 2px 8px 3px 8px;
+    padding: 5px 15px 8px 15px;
+    color: black;
+    background-color: white;
+}
+
+.navigation_button:hover {
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    font-size: 13px;
+    padding: 5px 15px 8px 15px;
+    color: white;
+    background-color: black;
 }
 
 code {
@@ -41,10 +63,23 @@ code {
 }
 
 .radio_button {
-    border-radius: 5px;
-    -moz-border-radius: 5px;
+    font-weight: 300;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
     font-size: 12px;
-    padding: 3px 5px 3px 5px;
+    padding: 8px 13px 8px 13px;
+    color: black;
+    background-color: white;
+}
+
+.radio_button:hover {
+    font-weight: 300;
+    border-radius: 25px;
+    -moz-border-radius: 25px;
+    font-size: 12px;
+    padding: 8px 13px 8px 13px;
+    color: white;
+    background-color: black;
 }
 
 #note_on_scales {
