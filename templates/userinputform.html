@@ -10,14 +10,18 @@
         context: document.getElementById("cf-context"),
         theme: "light",
         hideUserInputOnNoneTextInput: true,
-        showProgressBar: false,
+        showProgressBar: true,
       });
     };
 </script>
 
 <div class="center_and_padding" id="cf-context" role="cf-context" cf-context>
     <form action="/results/" method="post" id="questions" cf-form>
-        <cf-robot-message cf-questions="Hi there. Welcome to <b>If Informed</b>!"></cf-robot-message>
+        <label for="checking_in_0">Hi there. Welcome to <b>If Informed</b>!</label>
+        <select id="checking_in_0">
+            <option name="cfc-intro" id="intro-yes" value="yes">Hi!</option>
+        </select>
+
         <cf-robot-message cf-questions="In a moment, we will ask you a few questions about your age, gender, income, race, and so on."></cf-robot-message>
 
         <label for="checking_in_1">On the basis of data from the American National Election Studies, we will then estimate what position you likely would have taken on a number of political issues, had you been fully informed.</label>
