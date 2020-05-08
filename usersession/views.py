@@ -11,7 +11,7 @@ import os
 from django.conf import settings
 
 class HomePageView(TemplateView):
-	template_name = 'home.html'
+	template_name = 'questions.html' # changed from home
 
 class IntroPageView(TemplateView):
 	template_name = 'intro.html'

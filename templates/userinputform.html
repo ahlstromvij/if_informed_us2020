@@ -1,23 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>
-
-<script>
-    window.onload = function() {
-      var conversationalForm = window.cf.ConversationalForm.startTheConversation({
-        formEl: document.getElementById("questions"),
-        context: document.getElementById("cf-context"),
-        theme: "light",
-        hideUserInputOnNoneTextInput: true,
-        showProgressBar: true,
-      });
-    };
-</script>
 
 <div class="center_and_padding" id="cf-context" role="cf-context" cf-context>
     <form action="/results/" method="post" id="questions" cf-form>
-        <label for="checking_in_0">Hi there. Welcome to <b>If Informed</b>!</label>
+        <label for="checking_in_0">Hi there. Welcome to <strong>If Informed</strong>!</label>
         <select id="checking_in_0">
             <option name="cfc-intro" id="intro-yes" value="yes">Hi!</option>
         </select>
@@ -37,13 +24,19 @@
             <option name="cfc-intro" id="intro-yes" value="yes">And who are you?</option>
         </select>
 
-        <label for="checking_in_4">If Informed is a collaboration between <a href='http://www.ahlstromvij.com'>Kristoffer Ahlstrom-Vij</a>, a researcher at Birkbeck, University of London, who works on knowledge and politics, and <a href='https://www.linkedin.com/in/alfredmalmros/'>Alfred Malmros</a>, founder of the think-tank Early Studies.</label>
+        <label for="checking_in_4">If Informed is a collaboration between <a href="http://www.ahlstromvij.com">Kristoffer Ahlstrom-Vij</a>, a researcher at Birkbeck, University of London, who works on knowledge and politics, and <a href="https://www.linkedin.com/in/alfredmalmros/">Alfred Malmros</a>, founder of the think-tank Early Studies.</label>
         <select id="checking_in_4">
             <option>Got it. Let's go.</option>
         </select>
 
         {% csrf_token %}
         {{ form.as_p }}
+
+        <label for="checking_in_5">That's it! Now for the fun part. On the next page, you'll get a chance to compare yourself to a fully informed version of yourself. Ready?</label>
+        <select id="checking_in_5">
+            <option>Yes!</option>
+        </select>
+
     </form>
 </div>
 
