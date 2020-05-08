@@ -17,6 +17,11 @@ p {
     color: black;
 }
 
+.conversation {
+    height: 500px;
+    visibility: hidden;
+}
+
 .result {
     font-size: 14px;
 }

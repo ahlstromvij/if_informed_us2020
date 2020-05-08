@@ -1,8 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script>
+    window.onload = function() {
+      var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+        formEl: document.getElementById("questions"),
+        context: document.getElementById("cf-context"),
+        theme: "light",
+        hideUserInputOnNoneTextInput: true,
+        showProgressBar: true,
+        preventAutoFocus: false,
+      });
+    };
+</script>
 
-<div class="center_and_padding" id="cf-context" role="cf-context" cf-context>
+<div class="conversation" id="cf-context" role="cf-context" cf-context>
     <form action="/results/" method="post" id="questions" cf-form>
         <label for="checking_in_0">Hi there. Welcome to <strong>If Informed</strong>!</label>
         <select id="checking_in_0">
