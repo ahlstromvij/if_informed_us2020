@@ -66,7 +66,7 @@ RELIGION_CHOICES= [
     ]
 
 class UserInputForm(forms.Form):
-    gender = forms.CharField(label='First, are you female or male?', widget=forms.Select(choices=GENDER_CHOICES))
+    gender = forms.CharField(label='OK, great. So, first question: are you female or male?', widget=forms.Select(choices=GENDER_CHOICES))
     age = forms.CharField(label='Thank you! What is your age?', widget=forms.Select(choices=AGE_CHOICES))
     education = forms.CharField(label='And what is your highest level of education?', widget=forms.Select(choices=EDUCATION_CHOICES))
     marital_status = forms.CharField(label='Please tell us your marital status', widget=forms.Select(choices=MARITAL_CHOICES))
