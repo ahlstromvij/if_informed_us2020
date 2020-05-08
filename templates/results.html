@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/space10-community/conversational-form@1.0.1/dist/conversational-form.min.js" crossorigin></script>
+
+<script>
+    window.onload = function() {
+      var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+        formEl: document.getElementById("questions"),
+        context: document.getElementById("cf-context"),
+        theme: "light",
+        hideUserInputOnNoneTextInput: true,
+        showProgressBar: false,
+      });
+    };
+</script>
 
 <div class="page" id="taxecon">
     <a class="navigation_digit">1</a> |
