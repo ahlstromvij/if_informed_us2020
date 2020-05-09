@@ -1,6 +1,14 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="typewriter d-inline-flex">
+    <h2><a id="logo_results" href="{% url 'home' %}">IF INFORMED</a></h2>
+</div>
+
+<!-- <div class="progress" style="height: 3px;">
+  <div class="progress-bar w-75 bg-dark" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+</div> -->
+
 <div class="page" id="taxecon">
     <a class="navigation_digit">1</a> |
     <a onclick="skip_to_2()">2</a> |
@@ -17,11 +25,11 @@
     <br />
     <h3>1. Taxation: Cutting Taxes</h3>
     <p>The 2017 Tax Cuts and Jobs Act (TCJA) cut income tax rates, doubled the standard deduction, eliminated personal exemptions, and cut the corporate tax rate from 35% to 21%.</p>
-    <strong><p>Do you think these tax cuts have helped the economy?</p></strong>
+    <strong><p class="typewriter">Do you think these tax cuts have helped the economy?</p></strong>
 
     <div class="question" id="billtax_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,0);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,0);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,0);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,0);">
     </div>
 
     <div class="result" id="billtax_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -48,8 +56,8 @@
     <strong><p>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?</p></strong>
 
     <div class="question" id="richpoor2_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,1);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,1);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,1);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,1);">
     </div>
 
     <div class="result" id="richpoor2_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -76,8 +84,8 @@
     <strong><p>Does increasing trade with other countries make the U.S. economy better?</p></strong>
 
     <div class="question" id="trade4_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,2);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,2);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,2);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,2);">
     </div>
 
     <div class="result" id="trade4_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -104,8 +112,8 @@
     <strong><p>Do you favour increased government regulation on businesses that produce a great deal of greenhouse emissions?</p></strong>
 
     <div class="question" id="trade4_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,3);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,3);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,3);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,3);">
     </div>
 
     <div class="result" id="trade4_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -131,8 +139,8 @@
     <strong><p>Do you think the number of immigrants from foreign countries who are permitted to come to the U.S. to live should be increased?</p></strong>
 
     <div class="question" id="immignum_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,4);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,4);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,4);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,4);">
     </div>
 
     <div class="result" id="immignum_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -158,8 +166,8 @@
     <strong><p>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?</p></strong>
 
     <div class="question" id="dreamer_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,5);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,5);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,5);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,5);">
     </div>
 
     <div class="result" id="dreamer_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -185,8 +193,8 @@
     <strong><p>Do you favor allowing refugees who are fleeing war, persecution, or natural disasters in other countries to come to live in the U.S.?</p></strong>
 
     <div class="question" id="dreamer_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,6);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,6);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,6);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,6);">
     </div>
 
     <div class="result" id="dreamer_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -212,8 +220,8 @@
     <strong><p>Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted?</p></strong>
 
     <div class="question" id="freecol_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,7);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,7);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,7);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,7);">
     </div>
 
     <div class="result" id="freecol_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>.If you were fully informed, you would be <strong>{{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -239,8 +247,8 @@
     <strong><p>Do you favor expanding funding for pre-kindergarten programs so that it is available for all children nationwide?</p></strong>
 
     <div class="question" id="prek_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,8);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,8);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,8);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,8);">
     </div>
 
     <div class="result" id="prek_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ prek_position }} ({{ prek_probs }}%) to answer 'yes' </strong> to this question.</div>
@@ -266,8 +274,8 @@
     <strong><p>Does the increasing number of people of many different races and ethnic groups in the U.S. make this country a better place to live?</p></strong>
 
     <div class="question" id="diversity5_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,9);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,9);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,9);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,9);">
     </div>
 
     <div class="result" id="diversity5_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'</strong> to this question.</div>
@@ -293,8 +301,8 @@
     <strong><p>Do you agree with the idea that generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class?</p></strong>
 
     <div class="question" id="rr2_question">
-        <input type="button" class="radio_button" value="Yes" onclick="radio_answer(1,10);">&nbsp;
-        <input type="button" class="radio_button" value="No" onclick="radio_answer(0,10);">
+        <input type="button" class="btn btn-outline-dark" value="Yes" onclick="radio_answer(1,10);">&nbsp;
+        <input type="button" class="btn btn-outline-dark" value="No" onclick="radio_answer(0,10);">
     </div>
 
     <div class="result" id="rr2_result">It looks like <strong>your fully informed self would <a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'</strong>  to this question.</div>
@@ -328,36 +336,40 @@
     <p id="note_on_scales"><strong>Note on scales:</strong> Your fiscal conservatism score is calculated by adding up the  estimated probabilities of ‘no’ on Q2, 4, 8 9, and of ‘yes’ on Q3 (&#x03B1; = 0.73), and the social progressivism score by adding up the estimated probabilities of ‘yes’ on Q5, 6, 7, 10, 11 (&#x03B1; = 0.77)</p>
 </div>
 
-<input type="button" class="navigation_button" value="<<" onclick="move_back()">&nbsp;&nbsp;
-<input type="button" class="navigation_button" value=">>" onclick="move_ahead()">
+<input type="button" class="btn btn-outline-dark" value="<<" onclick="move_back()">&nbsp;&nbsp;
+<input type="button" class="btn btn-outline-dark" value=">>" onclick="move_ahead()">
 <br />
 <br />
 
 <button type="button" class="collapsible">How does this work?</button>
 <div class="collapsible-content">
+    <br />
     <p>By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes.</p>
-    <p>Moreover, once you have determined that, you can go one step further and estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed.</p>
+    <p>Moreover, once you have done that, you can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed.</p>
     <p>That’s what we’re estimating for you here. We ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.</p>
-    <p>In the literature, this is known as counterfactual modeling, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realising a situation that is not (hence, counterfactual): one where you are fully informed, yet otherwise exactly the way you are.</p>
+    <p>This is known as counterfactual modeling, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realising a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are.</p>
 </div>
 
 <button type="button" class="collapsible">Why did you not ask me about my values?</button>
 <div class="collapsible-content">
-    <p class="more-info">The reason we don’t ask you about your values is not that they aren’t predictive of what political attitudes you <i>will</i> take (they are); it’s that they are not predictive of what attitudes you <i>would</i> take, if fully informed.</p>
+    <br />
+    <p class="more-info">Your values are predictive of what political attitudes you <i>will</i> take (they are), but not of what attitudes you <i>would</i> take, if fully informed.</p>
     <p>This is because, if you were more informed, it's quite possible that you would embrace different values from what you currently do.</p>
     <p>That means that, if you include values variables in the model, you hold fixed things that in fact vary with increased knowledge, which biases your estimate. (In the counterfactual modeling literature, this is known as 'controlling for a mediator'.)</p>
 </div>
 
 <button type="button" class="collapsible">How do you measure what it is to be 'fully informed'?</button>
 <div class="collapsible-content">
+    <br />
     <p>You do it by asking large numbers of people to, for example, pair up named individuals with their political offices, or about political platforms, political practices, and so forth.</p>
     <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are.</p>
-    <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies and the British Election Study, now generally include a number of such factual questions in their national surveys. Researchers can then use these to define a 'political knowledge score'. That’s the score we set to the maximum in our models, when estimating your fully informed opinions.</p>
+    <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies,  generally include a number of such factual questions in their national surveys. Researchers can use these to define a 'knowledge score'. That’s the score we set to the maximum in our models, when estimating your fully informed opinions.</p>
     <p>Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's, Larry Bartels', and Scott Althaus's work on 'information effects'.</p>
 </div>
 
-<button type="button" class="collapsible">Further technical details</button>
+<button type="button" class="collapsible">Technical details</button>
 <div class="collapsible-content">
+    <br />
     <p>The dataset used is the ANES 2019 Pilot Study. The knowledge variable was constructed using an item response theory model in R’s <code>ltm</code> package from four knowledge items in the dataset. Tests on the resulting model suggested unidimensionality, local independence, and a good fit. The causal effect of knowledge on each of the political attitudes items was estimated using doubly robust estimation: propensity scores were calculated using R’s <code>twang</code> package, and then used as weights in a set of logistic regression models, first fitted using <code>glm</code> in R for purposes of diagnostics (to confirm significance of the knowledge variable, measure fit, rule out multicolinearity, and check for robustness in light of any influential observations) and then again using <code>LogisticRegression</code> in <code>scikit-learn</code> for online deployment with Django.</p>
 </div>
 
@@ -439,6 +451,7 @@
             pages[current_page_index].style.display = "none";
             pages[current_page_index + 1].style.display = "block";
             current_page_index++
+            $('.progress-bar').css('width', '20%');
         }
         else {}
     }
