@@ -4,6 +4,10 @@ input[type="button"], input[type=submit]{
     -webkit-appearance: none;
 }
 
+body {
+    background-color: #2C2C2E;
+}
+
 * {
     font-family: 'Raleway';
 }
@@ -14,7 +18,7 @@ p {
 
 #logo {
     text-decoration: none;
-    color: black;
+    color: white;
 
     /* -webkit-animation: fadein 5s; /*
     /* -moz-animation: fadein 5s; /*
@@ -25,7 +29,7 @@ p {
 
 #logo_results {
     text-decoration: none;
-    color: black;
+    color: white;
 }
 
 @keyframes fadein {
@@ -57,12 +61,16 @@ p {
     to   { opacity: 1; }
 }
 
+.page {
+    color: white;
+}
+
 .typewriter h2 {
     text-align: left;
     text-decoration: none;
     color: black;
     overflow: hidden; /* Ensures the content is not revealed until the animation */
-    border-right: .10em solid black; /* The typwriter cursor */
+    border-right: .10em solid white; /* The typwriter cursor */
     white-space: nowrap; /* Keeps the content on a single line */
     margin: 0 auto; /* Gives that scrolling effect as the typing happens */
     letter-spacing: .15em; /* Adjust as needed */
@@ -152,9 +160,20 @@ h3 {
     padding-top: 15px;
 }
 
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
 .bottom_copy {
     font-size: 11px;
     text-align: center;
+    color: white;
 }
 
 .navigation_digit {
@@ -162,8 +181,9 @@ h3 {
 }
 
 .collapsible {
-    background-color: #f1f1f1;
-    color: black;
+    /* background-color: #f1f1f1; */
+    background-color: #515155;
+    color: white;
     cursor: pointer;
     width: 100%;
     border: none;
@@ -177,7 +197,8 @@ h3 {
 }
 
 .active, .collapsible:hover {
-    background-color: #f1f1f1;
+    background-color: white;
+    color: #2C2C2E;
 }
 
 .collapsible-content {
@@ -187,7 +208,8 @@ h3 {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.2s ease-out;
-    background-color: #FFFFFF;
+    background-color: #2C2C2E;
+    color: white;
     font-size: 14px;
 }
 
@@ -201,4 +223,5 @@ h3 {
 
 .active:after {
     content: "\2796"; /* Unicode character for "minus" sign (-) */
+    color: white;
 }
