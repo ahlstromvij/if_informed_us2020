@@ -207,10 +207,10 @@ a:hover {
 .collapsible-content {
     padding-top: 0px;
     padding-bottom: 10px;
-    padding-left: 0px;
+    padding-left: 8px;
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.2s ease-out;
+    transition: max-height 0.3s ease-out;
     background-color: #2C2C2E;
     color: white;
     font-size: 14px;
