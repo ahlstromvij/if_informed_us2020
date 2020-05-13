@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:100,300,400,700&display=swap);
+@import url(https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,700&display=swap);
 
 input[type="button"], input[type=submit]{
     -webkit-appearance: none;
@@ -65,6 +65,10 @@ p {
     color: white;
 }
 
+.white {
+    color: white;
+}
+
 .typewriter h2 {
     text-align: left;
     text-decoration: none;
@@ -77,6 +81,14 @@ p {
     animation:
     typing 1.2s steps(11, end),
     blink-caret .75s step-end infinite;
+}
+
+.conversational-form cf-chat-response.user.can-edit{
+    pointer-events: none;
+}
+
+.dark-theme .conversational-form {
+  font-family: 'Raleway';
 }
 
 /* The typing effect */
@@ -202,6 +214,18 @@ a:hover {
 .active, .collapsible:hover {
     background-color: white;
     color: #3A3A3C;
+}
+
+.label {
+    color: white;
+}
+
+#taxecon_comparison {
+    color: white;
+}
+
+#context_var {
+    color: white;
 }
 
 .collapsible-content {

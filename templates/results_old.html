@@ -1,0 +1,676 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="typewriter d-inline-flex">
+    <h2><a id="logo_results" href="{% url 'home' %}">INFORMED YOU</a></h2>
+</div>
+
+<div class="progress" style="height: 3px;">
+  <div class="progress-bar bg-light" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+
+<div class="page" id="taxecon">
+    <!-- <a class="navigation_digit">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>1. Taxation: Cutting Taxes</h3>
+    <p>The 2017 Tax Cuts and Jobs Act (TCJA) cut income tax rates, doubled the standard deduction, eliminated personal exemptions, and cut the corporate tax rate from 35% to 21%.</p>
+    <strong><p class="typewriter">Do you think these tax cuts have helped the economy?</p></strong>
+
+    <div class="question" id="billtax_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,0);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,0);">
+    </div>
+
+    <div class="result" id="billtax_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+
+</div>
+
+<div class="page" id="richpoor2">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a class="navigation_digit">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>2. Taxation: Reducing Inequality</h3>
+    <p>Many people are concerned about the level of inequality between the rich and the poor.</p>
+    <strong><p>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?</p></strong>
+
+    <div class="question" id="richpoor2_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,1);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,1);">
+    </div>
+
+    <div class="result" id="richpoor2_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+
+</div>
+
+<div class="page" id="trade4">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a class="navigation_digit">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>3. International Trade: Impact on the Economy</h3>
+    <p>Some worry that international trade is bad for the U.S. economy, unless the government steps in to protect it.</p>
+    <strong><p>Does increasing trade with other countries make the U.S. economy better?</p></strong>
+
+    <div class="question" id="trade4_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,2);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,2);">
+    </div>
+
+    <div class="result" id="trade4_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+
+</div>
+
+<div class="page" id="gw1">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a class="navigation_digit">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>4. Climate Change: Regulating Emissions</h3>
+    <p>After China, the US emits the largest amount of greenhouse gases, heat-trapping gases that contribute to climate change.</p>
+    <strong><p>Do you favour increased government regulation on businesses that produce a great deal of greenhouse emissions?</p></strong>
+
+    <div class="question" id="trade4_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,3);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,3);">
+    </div>
+
+    <div class="result" id="trade4_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="immignum">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a class="navigation_digit">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>5. Immigration: Increase Numbers?</h3>
+    <p>Immigration has been a major source of population growth and cultural change throughout much of the history of the United States.</p>
+    <strong><p>Do you think the number of immigrants from foreign countries who are permitted to come to the U.S. to live should be increased?</p></strong>
+
+    <div class="question" id="immignum_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,4);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,4);">
+    </div>
+
+    <div class="result" id="immignum_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="dreamer">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a class="navigation_digit">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>6. Immigration: Dreamers</h3>
+    <p>Daca is a federal government program created in 2012 to protect people brought to the US illegally as children. Those with Daca status are known as "Dreamers". By the time President Trump announced his decision in 2017 to rescind the program, 787,580 had been granted approval.</p>
+    <strong><p>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?</p></strong>
+
+    <div class="question" id="dreamer_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,5);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,5);">
+    </div>
+
+    <div class="result" id="dreamer_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="refugees">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a class="navigation_digit">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>7. Immigration: Refugees</h3>
+    <p>The US plans to admit a maximum of 18,000 refugees in 2020, down from a cap of 30,000 in 2019. This would be the lowest number of refugees resettled in a single year since 1980, when Congress created the refugee resettlement program.</p>
+    <strong><p>Do you favor allowing refugees who are fleeing war, persecution, or natural disasters in other countries to come to live in the U.S.?</p></strong>
+
+    <div class="question" id="dreamer_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,6);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,6);">
+    </div>
+
+    <div class="result" id="dreamer_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="freecol">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_6()">7</a> |
+    <a class="navigation_digit">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>8. Public Services: Free College</h3>
+    <p>Several Democratic politicians and members of Congress have endorsed the idea of free College tuition. This  would cost at least $79 billion a year, according to the most recent Department of Education data. Taxpayers would need to foot the bill.</p>
+    <strong><p>Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted?</p></strong>
+
+    <div class="question" id="freecol_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,7);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,7);">
+    </div>
+
+    <div class="result" id="freecol_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>.If you were fully informed, you would be <strong>{{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="prek">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a class="navigation_digit">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>9. Public Services: Expanding Pre-K</h3>
+    <p>A growing body of research on the benefits of early childhood education has put public funding for pre-kindergarten (“Pre-K”) in the spotlight across the country. Expanding Pre-K to cover everyone would cost $24 billion a year. This would be paid for by higher taxes.</p>
+    <strong><p>Do you favor expanding funding for pre-kindergarten programs so that it is available for all children nationwide?</p></strong>
+
+    <div class="question" id="prek_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,8);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,8);">
+    </div>
+
+    <div class="result" id="prek_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ prek_position }} ({{ prek_probs }}%) to answer 'yes' </strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="diversity5">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a class="navigation_digit">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>10. Diversity and Race: Is Diversity Good?</h3>
+    <p>As the United States becomes more racially and ethnically diverse, American’s differing views about the impact and value of diversity are being brought to the fore.</p>
+    <strong><p>Does the increasing number of people of many different races and ethnic groups in the U.S. make this country a better place to live?</p></strong>
+
+    <div class="question" id="diversity5_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,9);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,9);">
+    </div>
+
+    <div class="result" id="diversity5_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'</strong> to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="rr2">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a class="navigation_digit">11</a> |
+    <a onclick="skip_to_12()">12</a>
+    <br /> -->
+    <h3>11. Diversity and Race: Slavery and Discrimination</h3>
+    <p>Throughout the 17th and 18th centuries people were brought American colonies as slaves. Though the Union victory in the Civil War freed the nation’s four million enslaved people, the legacy of slavery continues to influence American society.</p>
+    <strong><p>Do you agree with the idea that generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class?</p></strong>
+
+    <div class="question" id="rr2_question">
+        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,10);">&nbsp;
+        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,10);">
+    </div>
+
+    <div class="result" id="rr2_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'</strong>  to this question.</div>
+    <br />
+</div>
+
+<div class="page" id="liberal_score">
+    <!-- <a onclick="skip_to_1()">1</a> |
+    <a onclick="skip_to_2()">2</a> |
+    <a onclick="skip_to_3()">3</a> |
+    <a onclick="skip_to_4()">4</a> |
+    <a onclick="skip_to_5()">5</a> |
+    <a onclick="skip_to_6()">6</a> |
+    <a onclick="skip_to_7()">7</a> |
+    <a onclick="skip_to_8()">8</a> |
+    <a onclick="skip_to_9()">9</a> |
+    <a onclick="skip_to_10()">10</a> |
+    <a onclick="skip_to_11()">11</a> |
+    <a class="navigation_digit">12</a>
+    <br /> -->
+    <h3>12. Would you be a fully informed conservative or progressive?</h3>
+    <a id="user_answers"><a>
+    <p>Fiscal conservatives want free markets and small government, while fiscal progressives see a substantial role for government in people's lives.</p>
+    <p>Social progressives value diversity and social justice, and stand in opposition to social conservatives.</p>
+    <p><strong>Where would your fully informed self fall along these two dimensions?</strong></p>
+    <p>Based on the estimates we have already shown you, your fully informed self would likely be <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>.</p>
+    <p>Your positions compare as follows to the answers we would expect from the following politicians:</p>
+    <div class="table-responsive" id="liberal_graph">
+        <canvas id="myChart" style="height:400px" class="table"></canvas>
+    </div>
+    <p id="note_on_scales"><strong>Note on scales:</strong> Your fiscal conservatism score is calculated by adding up the  estimated probabilities of ‘no’ on Q2, 4, 8 9, and of ‘yes’ on Q3 (&#x03B1; = 0.73), and the social progressivism score by adding up the estimated probabilities of ‘yes’ on Q5, 6, 7, 10, 11 (&#x03B1; = 0.77)</p>
+</div>
+
+<input type="button" class="btn btn-outline-light" value="<<" onclick="move_back()">&nbsp;&nbsp;
+<input type="button" class="btn btn-outline-light float-right" value=">>" onclick="move_ahead()">
+<br />
+<br />
+
+<button type="button" class="collapsible">How does this work?</button>
+<div class="collapsible-content">
+    <br />
+    <p>By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes.</p>
+    <p>Moreover, once you have done that, you can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed.</p>
+    <p>That’s what we’re estimating for you here. We ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.</p>
+    <p>This is known as counterfactual modeling, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realising a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are.</p>
+</div>
+
+<button type="button" class="collapsible">Why did you not ask me about my values?</button>
+<div class="collapsible-content">
+    <br />
+    <p class="more-info">Your values are predictive of what political attitudes you <i>will</i> take (they are), but not of what attitudes you <i>would</i> take, if fully informed.</p>
+    <p>This is because, if you were more informed, it's quite possible that you would embrace different values from what you currently do.</p>
+    <p>That means that, if you include values variables in the model, you hold fixed things that in fact vary with increased knowledge, which biases your estimate. (In the counterfactual modeling literature, this is known as 'controlling for a mediator'.)</p>
+</div>
+
+<button type="button" class="collapsible">How do you measure what it is to be 'fully informed'?</button>
+<div class="collapsible-content">
+    <br />
+    <p>You do it by asking large numbers of people to, for example, pair up named individuals with their political offices, or about political platforms, political practices, and so forth.</p>
+    <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are.</p>
+    <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies,  generally include a number of such factual questions in their national surveys. Researchers can use these to define a 'knowledge score'. That’s the score we set to the maximum in our models, when estimating your fully informed opinions.</p>
+    <p>Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's, Larry Bartels's, and Scott Althaus's work on 'information effects'.</p>
+</div>
+
+<button type="button" class="collapsible">Technical details</button>
+<div class="collapsible-content">
+    <br />
+    <p>The dataset used is the ANES 2019 Pilot Study. The knowledge variable was constructed using an item response theory model in R’s <code>ltm</code> package from four knowledge items in the dataset. Tests on the resulting model suggested unidimensionality, local independence, and a good fit. The causal effect of knowledge on each of the political attitudes items was estimated using doubly robust estimation: propensity scores were calculated using R’s <code>twang</code> package, and then used as weights in a set of logistic regression models, first fitted using <code>glm</code> in R for purposes of diagnostics (to confirm significance of the knowledge variable, measure fit, rule out multicolinearity, and check for robustness in light of any influential observations) and then again using <code>LogisticRegression</code> in <code>scikit-learn</code> for online deployment with Django.</p>
+</div>
+
+<script>
+
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
+
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.maxHeight){
+                content.style.maxHeight = null;
+            } else {
+                content.style.maxHeight = content.scrollHeight + "px";
+            }
+        });
+    }
+
+    var all_results = document.getElementsByClassName("result");
+    var all_questions = document.getElementsByClassName("question");
+
+    // all_results[0].style.display = "none";
+    // all_results[1].style.display = "none";
+    // all_results[2].style.display = "none";
+    // all_results[3].style.display = "none";
+    // all_results[4].style.display = "none";
+    // all_results[5].style.display = "none";
+    // all_results[6].style.display = "none";
+    // all_results[7].style.display = "none";
+    // all_results[8].style.display = "none";
+    // all_results[9].style.display = "none";
+    // all_results[10].style.display = "none";
+
+    // all_results[0].style.opacity = "0";
+    // all_results[1].style.opacity = "0";
+    // all_results[2].style.opacity = "0";
+    // all_results[3].style.opacity = "0";
+    // all_results[4].style.opacity = "0";
+    // all_results[5].style.opacity = "0";
+    // all_results[6].style.opacity = "0";
+    // all_results[7].style.opacity = "0";
+    // all_results[8].style.opacity = "0";
+    // all_results[9].style.opacity = "0";
+    // all_results[10].style.opacity = "0";
+
+    var comparisons = document.getElementsByClassName("comparison");
+
+    var context_probs = ["{{ taxecon_probs }}","{{ richpoor2_probs }}", "{{ trade4_probs }}", "{{ gw1_probs }}", "{{ immignum_probs }}", "{{ dreamer_probs }}", "{{ refugees_probs }}", "{{ freecol_probs }}", "{{ prek_probs }}", "{{ diversity5_probs }}", "{{ rr2_probs }}"];
+
+    function radio_answer() {
+        var user_response = arguments[0];
+        var page_index = arguments[1];
+
+        if(user_response == 1 && context_probs[page_index] >= 50) {
+            comparisons[page_index].innerHTML = "agree with you"
+        }
+        if(user_response == 0 && context_probs[page_index] < 50) {
+            comparisons[page_index].innerHTML = "agree with you"
+        }
+        if(user_response == 0 && context_probs[page_index] >= 50) {
+            comparisons[page_index].innerHTML = "disagree with you"
+        }
+        if(user_response == 1 && context_probs[page_index] < 50) {
+            comparisons[page_index].innerHTML = "disagree with you"
+        }
+
+        all_questions[page_index].style.display = "none";
+
+        all_results[page_index].style.opacity = "1";
+        all_results[page_index].style.fontSize = "14px";
+
+        user_answers[page_index] = user_response;
+    }
+
+    var pages = document.getElementsByClassName("page");
+
+    pages[0].style.display = "block";
+    pages[1].style.display = "none";
+    pages[2].style.display = "none";
+    pages[3].style.display = "none";
+    pages[4].style.display = "none";
+    pages[5].style.display = "none";
+    pages[6].style.display = "none";
+    pages[7].style.display = "none";
+    pages[8].style.display = "none";
+    pages[9].style.display = "none";
+    pages[10].style.display = "none";
+    pages[11].style.display = "none";
+
+    var current_page_index = 0
+
+    var value = 0;
+    function move_ahead() {
+        if(current_page_index!==11) {
+            pages[current_page_index].style.display = "none";
+            pages[current_page_index + 1].style.display = "block";
+            current_page_index++;
+            value += 9.09;
+            $("#progress_bar")
+            .css("width", value + "%")
+            .attr("aria-valuenow", value)
+        }
+        else {}
+    }
+
+    function move_back() {
+        if(current_page_index!==0) {
+            pages[current_page_index].style.display = "none";
+            pages[current_page_index - 1].style.display = "block";
+            current_page_index--;
+            value -= 9.09;
+            $("#progress_bar")
+            .css("width", value + "%")
+            .attr("aria-valuenow", value)
+        }
+        else {}
+    }
+
+    // function skip_to_1() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[0].style.display = "block";
+    //     current_page_index = 0
+    // }
+    //
+    // function skip_to_2() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[1].style.display = "block";
+    //     current_page_index = 1
+    // }
+    //
+    // function skip_to_3() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[2].style.display = "block";
+    //     current_page_index = 2
+    // }
+    //
+    // function skip_to_4() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[3].style.display = "block";
+    //     current_page_index = 3
+    // }
+    //
+    // function skip_to_5() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[4].style.display = "block";
+    //     current_page_index = 4
+    // }
+    //
+    // function skip_to_6() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[5].style.display = "block";
+    //     current_page_index = 5
+    // }
+    //
+    // function skip_to_7() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[6].style.display = "block";
+    //     current_page_index = 6
+    // }
+    //
+    // function skip_to_8() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[7].style.display = "block";
+    //     current_page_index = 7
+    // }
+    //
+    // function skip_to_9() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[8].style.display = "block";
+    //     current_page_index = 8
+    // }
+    //
+    // function skip_to_10() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[9].style.display = "block";
+    //     current_page_index = 9
+    // }
+    //
+    // function skip_to_11() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[10].style.display = "block";
+    //     current_page_index = 10
+    // }
+    //
+    // function skip_to_12() {
+    //     pages[current_page_index].style.display = "none";
+    //     pages[11].style.display = "block";
+    //     current_page_index = 11
+    // }
+
+    var your_x = "{{ social_liberal_score }}";
+    var your_y = "{{ econ_liberal_score }}";
+
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'scatter',
+        data: {
+            datasets: [{
+                    data: [{
+                        x: your_x,
+                        y: your_y}
+                        ],
+                    label: "You",
+                    backgroundColor: 'rgba(248, 118, 109, 1)',
+                    radius: 7,
+                    pointRadius: 7,
+                    pointHoverRadius: 10
+                }, {
+                    data: [{
+                        x: 0,
+                        y: 4}
+                        ],
+                    label: "Trump",
+                    backgroundColor: 'rgba(183, 159, 0, 1)',
+                    radius: 7,
+                    pointRadius: 7,
+                    pointHoverRadius: 10
+                }, {
+                    data: [{
+                        x: 2,
+                        y: 5}
+                        ],
+                    label: "Romney",
+                    backgroundColor: 'rgba(0, 186, 56, 1)',
+                    radius: 7,
+                    pointRadius: 7,
+                    pointHoverRadius: 10
+                }, {
+                    data: [{
+                        x: 4,
+                        y: 2}
+                        ],
+                    label: "Biden",
+                    backgroundColor: 'rgba(149, 144, 255, 1)',
+                    radius: 7,
+                    pointRadius: 7,
+                    pointHoverRadius: 10
+                }, {
+                    data: [{
+                        x: 5,
+                        y: 0.001}
+                        ],
+                    label: "Sanders",
+                    backgroundColor: 'rgba(245, 100, 227, 1)',
+                    radius: 7,
+                    pointRadius: 7,
+                    pointHoverRadius: 10
+                }
+            ]
+        },
+        options: {
+            legend: {
+                position: 'top',
+                labels: {
+                    defaultFontFamily: 'Helvetica Neue',
+                    fontColor: 'white'
+                }
+            },
+            scales: {
+                yAxes: [{
+                        ticks: {
+                            min: 0.001,
+                            max: 5,
+                            stepSize: 1,
+                            fontColor: 'white'
+                        },
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Fisc. Conservative -->',
+                            fontColor: 'white'
+                        },
+                        gridLines: {
+                            display: true,
+                            color: 'rgba(58, 58, 60, 1)',
+                        },
+                }],
+                xAxes: [{
+                        ticks: {
+                            min: 0,
+                            max: 5,
+                            stepSize: 1,
+                            fontColor: 'white'
+                        },
+                        type: 'linear',
+                        position: 'bottom',
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Socially Progressive -->',
+                            fontColor: 'white'
+                        },
+                        gridLines: {
+                            display: true,
+                            color: 'rgba(58, 58, 60, 1)'
+                        },
+                }]
+            }
+        }
+    });
+
+</script>
+
+{% endblock content %}

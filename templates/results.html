@@ -1,6 +1,19 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% block content %}
+<script>
+    window.onload = function() {
+      var conversationalForm = window.cf.ConversationalForm.startTheConversation({
+        formEl: document.getElementById("questions"),
+        context: document.getElementById("cf-context"),
+        theme: "dark",
+        hideUserInputOnNoneTextInput: true,
+        showProgressBar: true,
+        preventAutoFocus: false,
+      });
+    };
+</script>
+
 <div class="typewriter d-inline-flex">
     <h2><a id="logo_results" href="{% url 'home' %}">INFORMED YOU</a></h2>
 </div>
@@ -9,336 +22,305 @@
   <div class="progress-bar bg-light" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
-<div class="page" id="taxecon">
-    <!-- <a class="navigation_digit">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>1. Taxation: Cutting Taxes</h3>
-    <p>The 2017 Tax Cuts and Jobs Act (TCJA) cut income tax rates, doubled the standard deduction, eliminated personal exemptions, and cut the corporate tax rate from 35% to 21%.</p>
-    <strong><p class="typewriter">Do you think these tax cuts have helped the economy?</p></strong>
+<div class="conversation" id="cf-context" role="cf-context" cf-context>
+    <form action="{% url 'home' %}" id="questions">
 
-    <div class="question" id="billtax_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,0);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,0);">
-    </div>
+        <!-- TAXECON -->
+        <cf-robot-message cf-questions="Hi! I'm <strong>your informed self</strong>." />
+        <fieldset cf-questions="Let's start by talking about <strong>taxes</strong>. The <strong>2017 Tax Cuts and Jobs Act</strong> (TCJA) cut income tax rates, doubled the standard deduction, eliminated personal exemptions, and cut the corporate tax rate from 35% to 21%. <strong>Do you think these tax cuts have helped the economy?</strong>">
+        	<input type="radio" name="taxecon_questions" id="taxecon_yes" value="yes">
+        	<label for="taxecon_yes">Yes</label>
 
-    <div class="result" id="billtax_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
+        	<input type="radio" name="taxecon_questions" id="taxecon_no" value="no">
+        	<label for="taxecon_no">No</label>
+        </fieldset>
 
+        {% if taxecon_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I don't agree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="no" />
+        {% else %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="no" />
+        {% endif %}
+
+        <!-- RICHPOOR2 -->
+        <fieldset cf-questions="OK, let's talk about <strong>inequality</strong>. Many people are concerned about the level of inequality between the rich and the poor. <strong>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?</strong>">
+        	<input type="radio" name="richpoor2_questions" id="richpoor2_yes" value="yes">
+        	<label for="richpoor2_yes">Yes</label>
+
+        	<input type="radio" name="richpoor2_questions" id="richpoor2_no" value="no">
+        	<label for="richpoor2_no">No</label>
+        </fieldset>
+
+        {% if richpoor2_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="no" />
+        {% endif %}
+
+        {% if richpoor2_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="no" />
+        {% endif %}
+
+        <!-- TRADE4 -->
+        <fieldset cf-questions="Let's talk <strong>trade</strong>. Some worry that international trade is bad for the U.S. economy, unless the government steps in to protect it. <strong>Does increasing trade with other countries make the U.S. economy better</strong>">
+        	<input type="radio" name="trade4_questions" id="trade4_yes" value="yes">
+        	<label for="trade4_yes">Yes</label>
+
+        	<input type="radio" name="trade4_questions" id="trade4_no" value="no">
+        	<label for="trade4_no">No</label>
+        </fieldset>
+
+        {% if trade4_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="no" />
+        {% endif %}
+
+        {% if trade4_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="no" />
+        {% endif %}
+
+        <!-- GW1 -->
+        <fieldset cf-questions="OK, switching topics: Let's talk <strong>climate change</strong>. After China, the US emits the largest amount of greenhouse gases, heat-trapping gases that contribute to climate change. <strong>Do you favour increased government regulation on businesses that produce a great deal of greenhouse emissions?</strong>">
+        	<input type="radio" name="gw1_questions" id="gw1_yes" value="yes">
+        	<label for="gw1_yes">Yes</label>
+
+        	<input type="radio" name="gw1_questions" id="gw1_no" value="no">
+        	<label for="gw1_no">No</label>
+        </fieldset>
+
+        {% if gw1_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="no" />
+        {% endif %}
+
+        {% if gw1_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="no" />
+        {% endif %}
+
+        <!-- IMMIGNUM -->
+        <fieldset cf-questions="OK, let's talk <strong>immigration</strong>. Immigration has been a major source of population growth and cultural change throughout much of the history of the United States. <strong>Do you think the number of immigrants from foreign countries who are permitted to come to the U.S. to live should be increased?</strong>">
+        	<input type="radio" name="immignum_questions" id="immignum_yes" value="yes">
+        	<label for="immignum_yes">Yes</label>
+
+        	<input type="radio" name="immignum_questions" id="immignum_no" value="no">
+        	<label for="immignum_no">No</label>
+        </fieldset>
+
+        {% if immignum_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="no" />
+        {% endif %}
+
+        {% if immignum_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="no" />
+        {% endif %}
+
+        <!-- DREAMER -->
+        <fieldset cf-questions="Let's stay on the topic of <strong>immigration</strong>. Daca is a federal government program created in 2012 to protect people brought to the US illegally as children. Those with Daca status are known as Dreamers. By the time President Trump announced his decision in 2017 to rescind the program, 787,580 had been granted approval. <strong>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?</strong>">
+            <input type="radio" name="dreamer_questions" id="dreamer_yes" value="yes">
+            <label for="dreamer_yes">Yes</label>
+
+            <input type="radio" name="dreamer_questions" id="dreamer_no" value="no">
+            <label for="dreamer_no">No</label>
+        </fieldset>
+
+        {% if dreamer_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="no" />
+        {% endif %}
+
+        {% if dreamer_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="no" />
+        {% endif %}
+
+        <!-- REFUGEES -->
+        <fieldset cf-questions="One more question on <strong>immigration</strong>. The US plans to admit a maximum of 18,000 refugees in 2020, down from a cap of 30,000 in 2019. This would be the lowest number of refugees resettled in a single year since 1980, when Congress created the refugee resettlement program. <strong>Do you favor allowing refugees who are fleeing war, persecution, or natural disasters in other countries to come to live in the U.S.?</strong>">
+            <input type="radio" name="refugees_questions" id="refugees_yes" value="yes">
+            <label for="refugees_yes">Yes</label>
+
+            <input type="radio" name="refugees_questions" id="refugees_no" value="no">
+            <label for="refugees_no">No</label>
+        </fieldset>
+
+        {% if refugees_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="no" />
+        {% endif %}
+
+        {% if refugees_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="no" />
+        {% endif %}
+
+        <!-- FREECOL -->
+        <fieldset cf-questions="Let's turn to <strong>government spending</strong>. Several Democratic politicians and members of Congress have endorsed the idea of free College tuition. This  would cost at least $79 billion a year, according to the most recent Department of Education data. Taxpayers would need to foot the bill. <strong>Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted?</strong>">
+            <input type="radio" name="freecol_questions" id="freecol_yes" value="yes">
+            <label for="freecol_yes">Yes</label>
+
+            <input type="radio" name="freecol_questions" id="freecol_no" value="no">
+            <label for="freecol_no">No</label>
+        </fieldset>
+
+        {% if freecol_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="no" />
+        {% endif %}
+
+        {% if freecol_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="no" />
+        {% endif %}
+
+        <!-- PREK -->
+        <fieldset cf-questions="Let's stay on the topic of <strong>spending</strong>. A growing body of research on the benefits of early childhood education has put public funding for pre-kindergarten (“Pre-K”) in the spotlight across the country. Expanding Pre-K to cover everyone would cost $24 billion a year. This would be paid for by higher taxes. <strong>Do you favor expanding funding for pre-kindergarten programs so that it is available for all children nationwide?</strong>">
+            <input type="radio" name="prek_questions" id="prek_yes" value="yes">
+            <label for="prek_yes">Yes</label>
+
+            <input type="radio" name="prek_questions" id="prek_no" value="no">
+            <label for="prek_no">No</label>
+        </fieldset>
+
+        {% if prek_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="no" />
+        {% endif %}
+
+        {% if prek_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="no" />
+        {% endif %}
+
+        <!-- DIVERSITY5 -->
+        <fieldset cf-questions="Let's turn to <strong>diversity</strong>. As the United States becomes more racially and ethnically diverse, American’s differing views about the impact and value of diversity are being brought to the fore. <strong>Does the increasing number of people of many different races and ethnic groups in the U.S. make this country a better place to live?</strong>">
+            <input type="radio" name="diversity5_questions" id="diversity5_yes" value="yes">
+            <label for="diversity5_yes">Yes</label>
+
+            <input type="radio" name="diversity5_questions" id="diversity5_no" value="no">
+            <label for="diversity5_no">No</label>
+        </fieldset>
+
+        {% if diversity5_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="no" />
+        {% endif %}
+
+        {% if diversity5_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="no" />
+        {% endif %}
+
+        <!-- RR2 -->
+        <fieldset cf-questions="Let's talk about <strong>racial discrimination</strong>. Throughout the 17th and 18th centuries people were brought American colonies as slaves. Though the Union victory in the Civil War freed the nation’s four million enslaved people, the legacy of slavery continues to influence American society. <strong>Do you agree with the idea that generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class?</strong>">
+            <input type="radio" name="rr2_questions" id="rr2_yes" value="yes">
+            <label for="rr2_yes">Yes</label>
+
+            <input type="radio" name="rr2_questions" id="rr2_no" value="no">
+            <label for="rr2_no">No</label>
+        </fieldset>
+
+        {% if rr2_probs > 50 %}
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="no" />
+        {% endif %}
+
+        {% if rr2_probs <= 50 %}
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="no" />
+        {% endif %}
+
+
+        <!-- CLOSEST_MATCH -->
+        <fieldset cf-questions="OK, final question now. <strong>Fiscal conservatives</strong> want free markets and small government, while <strong>fiscal progressives</strong> see a substantial role for government in people's lives. <strong>Social progressives</strong> value diversity and social justice, and stand in opposition to <strong>social conservatives</strong>. Different politicians fall on different points on these scales. Let's think about it from this angle: <strong>Which of the following politicians do you identify with most closely?</strong>">
+            <input type="radio" name="closest_match_questions" id="trump" value="trump">
+            <label for="trump">Donald Trump</label>
+
+            <input type="radio" name="closest_match_questions" id="romney" value="romney">
+            <label for="romney">Mitt Romney</label>
+
+            <input type="radio" name="closest_match_questions" id="biden" value="biden">
+            <label for="biden">Joe Biden</label>
+
+            <input type="radio" name="closest_match_questions" id="warren" value="warren">
+            <label for="warren">Elizabeth Warren</label>
+
+            <input type="radio" name="closest_match_questions" id="sanders" value="sanders">
+            <label for="trump">Bernie Sanders</label>
+        </fieldset>
+
+        {% if closest_match == 'Donald Trump' %}
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        {% endif %}
+
+        {% if closest_match == 'Mitt Romney' %}
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>}." cf-conditional-closest_match_questions="warren" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>}." cf-conditional-closest_match_questions="sanders" />
+        {% endif %}
+
+        {% if closest_match == 'Joe Biden' %}
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        {% endif %}
+
+        {% if closest_match == 'Elizabeth Warren' %}
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        {% endif %}
+
+        {% if closest_match == 'Bernie Sanders' %}
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        {% endif %}
+
+        <!-- HOLD -->
+        <fieldset cf-questions="Alright, that's it! Thanks for taking time to visit <strong>If Informed</strong>.">
+            <input type="radio" name="holding_questions" id="holding_yes" value="yes">
+            <label for="holding_yes">Start over</label>
+        </fieldset>
+
+    </form>
 </div>
 
-<div class="page" id="richpoor2">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a class="navigation_digit">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>2. Taxation: Reducing Inequality</h3>
-    <p>Many people are concerned about the level of inequality between the rich and the poor.</p>
-    <strong><p>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?</p></strong>
-
-    <div class="question" id="richpoor2_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,1);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,1);">
-    </div>
-
-    <div class="result" id="richpoor2_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-
-</div>
-
-<div class="page" id="trade4">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a class="navigation_digit">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>3. International Trade: Impact on the Economy</h3>
-    <p>Some worry that international trade is bad for the U.S. economy, unless the government steps in to protect it.</p>
-    <strong><p>Does increasing trade with other countries make the U.S. economy better?</p></strong>
-
-    <div class="question" id="trade4_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,2);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,2);">
-    </div>
-
-    <div class="result" id="trade4_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-
-</div>
-
-<div class="page" id="gw1">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a class="navigation_digit">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>4. Climate Change: Regulating Emissions</h3>
-    <p>After China, the US emits the largest amount of greenhouse gases, heat-trapping gases that contribute to climate change.</p>
-    <strong><p>Do you favour increased government regulation on businesses that produce a great deal of greenhouse emissions?</p></strong>
-
-    <div class="question" id="trade4_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,3);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,3);">
-    </div>
-
-    <div class="result" id="trade4_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="immignum">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a class="navigation_digit">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>5. Immigration: Increase Numbers?</h3>
-    <p>Immigration has been a major source of population growth and cultural change throughout much of the history of the United States.</p>
-    <strong><p>Do you think the number of immigrants from foreign countries who are permitted to come to the U.S. to live should be increased?</p></strong>
-
-    <div class="question" id="immignum_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,4);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,4);">
-    </div>
-
-    <div class="result" id="immignum_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="dreamer">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a class="navigation_digit">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>6. Immigration: Dreamers</h3>
-    <p>Daca is a federal government program created in 2012 to protect people brought to the US illegally as children. Those with Daca status are known as "Dreamers". By the time President Trump announced his decision in 2017 to rescind the program, 787,580 had been granted approval.</p>
-    <strong><p>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?</p></strong>
-
-    <div class="question" id="dreamer_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,5);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,5);">
-    </div>
-
-    <div class="result" id="dreamer_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="refugees">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a class="navigation_digit">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>7. Immigration: Refugees</h3>
-    <p>The US plans to admit a maximum of 18,000 refugees in 2020, down from a cap of 30,000 in 2019. This would be the lowest number of refugees resettled in a single year since 1980, when Congress created the refugee resettlement program.</p>
-    <strong><p>Do you favor allowing refugees who are fleeing war, persecution, or natural disasters in other countries to come to live in the U.S.?</p></strong>
-
-    <div class="question" id="dreamer_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,6);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,6);">
-    </div>
-
-    <div class="result" id="dreamer_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="freecol">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_6()">7</a> |
-    <a class="navigation_digit">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>8. Public Services: Free College</h3>
-    <p>Several Democratic politicians and members of Congress have endorsed the idea of free College tuition. This  would cost at least $79 billion a year, according to the most recent Department of Education data. Taxpayers would need to foot the bill.</p>
-    <strong><p>Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted?</p></strong>
-
-    <div class="question" id="freecol_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,7);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,7);">
-    </div>
-
-    <div class="result" id="freecol_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>.If you were fully informed, you would be <strong>{{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="prek">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a class="navigation_digit">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>9. Public Services: Expanding Pre-K</h3>
-    <p>A growing body of research on the benefits of early childhood education has put public funding for pre-kindergarten (“Pre-K”) in the spotlight across the country. Expanding Pre-K to cover everyone would cost $24 billion a year. This would be paid for by higher taxes.</p>
-    <strong><p>Do you favor expanding funding for pre-kindergarten programs so that it is available for all children nationwide?</p></strong>
-
-    <div class="question" id="prek_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,8);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,8);">
-    </div>
-
-    <div class="result" id="prek_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ prek_position }} ({{ prek_probs }}%) to answer 'yes' </strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="diversity5">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a class="navigation_digit">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>10. Diversity and Race: Is Diversity Good?</h3>
-    <p>As the United States becomes more racially and ethnically diverse, American’s differing views about the impact and value of diversity are being brought to the fore.</p>
-    <strong><p>Does the increasing number of people of many different races and ethnic groups in the U.S. make this country a better place to live?</p></strong>
-
-    <div class="question" id="diversity5_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,9);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,9);">
-    </div>
-
-    <div class="result" id="diversity5_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'</strong> to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="rr2">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a class="navigation_digit">11</a> |
-    <a onclick="skip_to_12()">12</a>
-    <br /> -->
-    <h3>11. Diversity and Race: Slavery and Discrimination</h3>
-    <p>Throughout the 17th and 18th centuries people were brought American colonies as slaves. Though the Union victory in the Civil War freed the nation’s four million enslaved people, the legacy of slavery continues to influence American society.</p>
-    <strong><p>Do you agree with the idea that generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class?</p></strong>
-
-    <div class="question" id="rr2_question">
-        <input type="button" class="btn btn-outline-light" value="Yes" onclick="radio_answer(1,10);">&nbsp;
-        <input type="button" class="btn btn-outline-light" value="No" onclick="radio_answer(0,10);">
-    </div>
-
-    <div class="result" id="rr2_result">Your fully informed self would likely <strong><a class="comparison"></a></strong>. If you were fully informed, you would be <strong>{{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'</strong>  to this question.</div>
-    <br />
-</div>
-
-<div class="page" id="liberal_score">
-    <!-- <a onclick="skip_to_1()">1</a> |
-    <a onclick="skip_to_2()">2</a> |
-    <a onclick="skip_to_3()">3</a> |
-    <a onclick="skip_to_4()">4</a> |
-    <a onclick="skip_to_5()">5</a> |
-    <a onclick="skip_to_6()">6</a> |
-    <a onclick="skip_to_7()">7</a> |
-    <a onclick="skip_to_8()">8</a> |
-    <a onclick="skip_to_9()">9</a> |
-    <a onclick="skip_to_10()">10</a> |
-    <a onclick="skip_to_11()">11</a> |
-    <a class="navigation_digit">12</a>
-    <br /> -->
-    <h3>12. Would you be a fully informed conservative or progressive?</h3>
-    <a id="user_answers"><a>
-    <p>Fiscal conservatives want free markets and small government, while fiscal progressives see a substantial role for government in people's lives.</p>
-    <p>Social progressives value diversity and social justice, and stand in opposition to social conservatives.</p>
-    <p><strong>Where would your fully informed self fall along these two dimensions?</strong></p>
-    <p>Based on the estimates we have already shown you, your fully informed self would likely be <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>.</p>
-    <p>Your positions compare as follows to the answers we would expect from the following politicians:</p>
-    <div class="table-responsive" id="liberal_graph">
-        <canvas id="myChart" style="height:400px" class="table"></canvas>
-    </div>
-    <p id="note_on_scales"><strong>Note on scales:</strong> Your fiscal conservatism score is calculated by adding up the  estimated probabilities of ‘no’ on Q2, 4, 8 9, and of ‘yes’ on Q3 (&#x03B1; = 0.73), and the social progressivism score by adding up the estimated probabilities of ‘yes’ on Q5, 6, 7, 10, 11 (&#x03B1; = 0.77)</p>
-</div>
-
-<input type="button" class="btn btn-outline-light" value="<<" onclick="move_back()">&nbsp;&nbsp;
-<input type="button" class="btn btn-outline-light float-right" value=">>" onclick="move_ahead()">
-<br />
 <br />
 
 <button type="button" class="collapsible">How does this work?</button>
@@ -367,6 +349,14 @@
     <p>Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's, Larry Bartels's, and Scott Althaus's work on 'information effects'.</p>
 </div>
 
+<button type="button" class="collapsible">Why did I get matched up with {{ closest_match }}?</button>
+<div class="collapsible-content">
+    <br />
+    <p>Here's how we do it. Your fiscal conservatism score is calculated by adding up the estimated probabilities of ‘no’ on the questions about free college, free Pre-K, reducing inequality through legislation, and government action on climate change, and ‘yes’ on free trade being good for the U.S. (&#x03B1; = 0.73). Your social progressivism score is calculated by adding up the estimated probabilities of ‘yes’ on the questions about diversity being good, racial discrimination, wanting more immigrants, dreamers being allowed to stay, and letting in refugees (&#x03B1; = 0.77).</p>
+    <p>We then calculate a score for each of the five politicians mentioned, based on the answers we expect they would give to these questions. This gives Trump a social progressivism score of 0 and an economic conservatism score of 4; Romney a social progressivism score of 2 and an economic conservatism score of 5; Biden a social progressivism score of 4 and an economic conservatism score of 2; Warren a social progressivism score of 5 and an economic conservatism score of 1; and Sanders a social progressivism score of 5 and an economic conservatism score of 0.</p>
+    <p>Finally, we calculate the distance in two-dimensional space between the scores of your fully informed self, and the scores of each of these politicians. In your case, your fully informed social progressivism score is {{ social_liberal_score }} and your fully informed economic conservatism score is {{ econ_liberal_score }}, meaning the distance is the smallest between you and {{ closest_match }}.</p>
+</div>
+
 <button type="button" class="collapsible">Technical details</button>
 <div class="collapsible-content">
     <br />
@@ -389,9 +379,9 @@
             }
         });
     }
-
-    var all_results = document.getElementsByClassName("result");
-    var all_questions = document.getElementsByClassName("question");
+    //
+    // var all_results = document.getElementsByClassName("result");
+    // var all_questions = document.getElementsByClassName("question");
 
     // all_results[0].style.display = "none";
     // all_results[1].style.display = "none";
@@ -417,78 +407,78 @@
     // all_results[9].style.opacity = "0";
     // all_results[10].style.opacity = "0";
 
-    var comparisons = document.getElementsByClassName("comparison");
-
-    var context_probs = ["{{ taxecon_probs }}","{{ richpoor2_probs }}", "{{ trade4_probs }}", "{{ gw1_probs }}", "{{ immignum_probs }}", "{{ dreamer_probs }}", "{{ refugees_probs }}", "{{ freecol_probs }}", "{{ prek_probs }}", "{{ diversity5_probs }}", "{{ rr2_probs }}"];
-
-    function radio_answer() {
-        var user_response = arguments[0];
-        var page_index = arguments[1];
-
-        if(user_response == 1 && context_probs[page_index] >= 50) {
-            comparisons[page_index].innerHTML = "agree with you"
-        }
-        if(user_response == 0 && context_probs[page_index] < 50) {
-            comparisons[page_index].innerHTML = "agree with you"
-        }
-        if(user_response == 0 && context_probs[page_index] >= 50) {
-            comparisons[page_index].innerHTML = "disagree with you"
-        }
-        if(user_response == 1 && context_probs[page_index] < 50) {
-            comparisons[page_index].innerHTML = "disagree with you"
-        }
-
-        all_questions[page_index].style.display = "none";
-
-        all_results[page_index].style.opacity = "1";
-        all_results[page_index].style.fontSize = "14px";
-
-        user_answers[page_index] = user_response;
-    }
-
-    var pages = document.getElementsByClassName("page");
-
-    pages[0].style.display = "block";
-    pages[1].style.display = "none";
-    pages[2].style.display = "none";
-    pages[3].style.display = "none";
-    pages[4].style.display = "none";
-    pages[5].style.display = "none";
-    pages[6].style.display = "none";
-    pages[7].style.display = "none";
-    pages[8].style.display = "none";
-    pages[9].style.display = "none";
-    pages[10].style.display = "none";
-    pages[11].style.display = "none";
-
-    var current_page_index = 0
-
-    var value = 0;
-    function move_ahead() {
-        if(current_page_index!==11) {
-            pages[current_page_index].style.display = "none";
-            pages[current_page_index + 1].style.display = "block";
-            current_page_index++;
-            value += 9.09;
-            $("#progress_bar")
-            .css("width", value + "%")
-            .attr("aria-valuenow", value)
-        }
-        else {}
-    }
-
-    function move_back() {
-        if(current_page_index!==0) {
-            pages[current_page_index].style.display = "none";
-            pages[current_page_index - 1].style.display = "block";
-            current_page_index--;
-            value -= 9.09;
-            $("#progress_bar")
-            .css("width", value + "%")
-            .attr("aria-valuenow", value)
-        }
-        else {}
-    }
+    // var comparisons = document.getElementsByClassName("comparison");
+    //
+    // var context_probs = ["{{ taxecon_probs }}","{{ richpoor2_probs }}", "{{ trade4_probs }}", "{{ gw1_probs }}", "{{ immignum_probs }}", "{{ dreamer_probs }}", "{{ refugees_probs }}", "{{ freecol_probs }}", "{{ prek_probs }}", "{{ diversity5_probs }}", "{{ rr2_probs }}"];
+    //
+    // function radio_answer() {
+    //     var user_response = arguments[0];
+    //     var page_index = arguments[1];
+    //
+    //     if(user_response == 1 && context_probs[page_index] >= 50) {
+    //         comparisons[page_index].innerHTML = "agree with you"
+    //     }
+    //     if(user_response == 0 && context_probs[page_index] < 50) {
+    //         comparisons[page_index].innerHTML = "agree with you"
+    //     }
+    //     if(user_response == 0 && context_probs[page_index] >= 50) {
+    //         comparisons[page_index].innerHTML = "disagree with you"
+    //     }
+    //     if(user_response == 1 && context_probs[page_index] < 50) {
+    //         comparisons[page_index].innerHTML = "disagree with you"
+    //     }
+    //
+    //     all_questions[page_index].style.display = "none";
+    //
+    //     all_results[page_index].style.opacity = "1";
+    //     all_results[page_index].style.fontSize = "14px";
+    //
+    //     user_answers[page_index] = user_response;
+    // }
+    //
+    // var pages = document.getElementsByClassName("page");
+    //
+    // pages[0].style.display = "block";
+    // pages[1].style.display = "none";
+    // pages[2].style.display = "none";
+    // pages[3].style.display = "none";
+    // pages[4].style.display = "none";
+    // pages[5].style.display = "none";
+    // pages[6].style.display = "none";
+    // pages[7].style.display = "none";
+    // pages[8].style.display = "none";
+    // pages[9].style.display = "none";
+    // pages[10].style.display = "none";
+    // pages[11].style.display = "none";
+    //
+    // var current_page_index = 0
+    //
+    // var value = 0;
+    // function move_ahead() {
+    //     if(current_page_index!==11) {
+    //         pages[current_page_index].style.display = "none";
+    //         pages[current_page_index + 1].style.display = "block";
+    //         current_page_index++;
+    //         value += 9.09;
+    //         $("#progress_bar")
+    //         .css("width", value + "%")
+    //         .attr("aria-valuenow", value)
+    //     }
+    //     else {}
+    // }
+    //
+    // function move_back() {
+    //     if(current_page_index!==0) {
+    //         pages[current_page_index].style.display = "none";
+    //         pages[current_page_index - 1].style.display = "block";
+    //         current_page_index--;
+    //         value -= 9.09;
+    //         $("#progress_bar")
+    //         .css("width", value + "%")
+    //         .attr("aria-valuenow", value)
+    //     }
+    //     else {}
+    // }
 
     // function skip_to_1() {
     //     pages[current_page_index].style.display = "none";
@@ -562,115 +552,137 @@
     //     current_page_index = 11
     // }
 
-    var your_x = "{{ social_liberal_score }}";
-    var your_y = "{{ econ_liberal_score }}";
-
-    var ctx = document.getElementById('myChart').getContext('2d');
-    var myChart = new Chart(ctx, {
-        type: 'scatter',
-        data: {
-            datasets: [{
-                    data: [{
-                        x: your_x,
-                        y: your_y}
-                        ],
-                    label: "You",
-                    backgroundColor: 'rgba(248, 118, 109, 1)',
-                    radius: 7,
-                    pointRadius: 7,
-                    pointHoverRadius: 10
-                }, {
-                    data: [{
-                        x: 0,
-                        y: 4}
-                        ],
-                    label: "Trump",
-                    backgroundColor: 'rgba(183, 159, 0, 1)',
-                    radius: 7,
-                    pointRadius: 7,
-                    pointHoverRadius: 10
-                }, {
-                    data: [{
-                        x: 2,
-                        y: 5}
-                        ],
-                    label: "Romney",
-                    backgroundColor: 'rgba(0, 186, 56, 1)',
-                    radius: 7,
-                    pointRadius: 7,
-                    pointHoverRadius: 10
-                }, {
-                    data: [{
-                        x: 4,
-                        y: 2}
-                        ],
-                    label: "Biden",
-                    backgroundColor: 'rgba(149, 144, 255, 1)',
-                    radius: 7,
-                    pointRadius: 7,
-                    pointHoverRadius: 10
-                }, {
-                    data: [{
-                        x: 5,
-                        y: 0.001}
-                        ],
-                    label: "Sanders",
-                    backgroundColor: 'rgba(245, 100, 227, 1)',
-                    radius: 7,
-                    pointRadius: 7,
-                    pointHoverRadius: 10
-                }
-            ]
-        },
-        options: {
-            legend: {
-                position: 'top',
-                labels: {
-                    defaultFontFamily: 'Helvetica Neue',
-                    fontColor: 'white'
-                }
-            },
-            scales: {
-                yAxes: [{
-                        ticks: {
-                            min: 0.001,
-                            max: 5,
-                            stepSize: 1,
-                            fontColor: 'white'
-                        },
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Fisc. Conservative -->',
-                            fontColor: 'white'
-                        },
-                        gridLines: {
-                            display: true,
-                            color: 'rgba(58, 58, 60, 1)',
-                        },
-                }],
-                xAxes: [{
-                        ticks: {
-                            min: 0,
-                            max: 5,
-                            stepSize: 1,
-                            fontColor: 'white'
-                        },
-                        type: 'linear',
-                        position: 'bottom',
-                        scaleLabel: {
-                            display: true,
-                            labelString: 'Socially Progressive -->',
-                            fontColor: 'white'
-                        },
-                        gridLines: {
-                            display: true,
-                            color: 'rgba(58, 58, 60, 1)'
-                        },
-                }]
-            }
-        }
-    });
-
-</script>
+//     var your_x = "{{ social_liberal_score }}";
+//     var your_y = "{{ econ_liberal_score }}";
+//
+//     var ctx = document.getElementById('myChart').getContext('2d');
+//     var myChart = new Chart(ctx, {
+//         type: 'scatter',
+//         data: {
+//             datasets: [{
+//                     data: [{
+//                         x: your_x,
+//                         y: your_y}
+//                         ],
+//                     label: "You",
+//                     backgroundColor: 'rgba(248, 118, 109, 1)',
+//                     radius: 7,
+//                     pointRadius: 7,
+//                     pointHoverRadius: 10
+//                 }, {
+//                     data: [{
+//                         x: 0,
+//                         y: 4}
+//                         ],
+//                     label: "Trump",
+//                     backgroundColor: 'rgba(183, 159, 0, 1)',
+//                     radius: 7,
+//                     pointRadius: 7,
+//                     pointHoverRadius: 10
+//                 }, {
+//                     data: [{
+//                         x: 2,
+//                         y: 5}
+//                         ],
+//                     label: "Romney",
+//                     backgroundColor: 'rgba(0, 186, 56, 1)',
+//                     radius: 7,
+//                     pointRadius: 7,
+//                     pointHoverRadius: 10
+//                 }, {
+//                     data: [{
+//                         x: 4,
+//                         y: 2}
+//                         ],
+//                     label: "Biden",
+//                     backgroundColor: 'rgba(149, 144, 255, 1)',
+//                     radius: 7,
+//                     pointRadius: 7,
+//                     pointHoverRadius: 10
+//                 }, {
+//                     data: [{
+//                         x: 5,
+//                         y: 0.001}
+//                         ],
+//                     label: "Sanders",
+//                     backgroundColor: 'rgba(245, 100, 227, 1)',
+//                     radius: 7,
+//                     pointRadius: 7,
+//                     pointHoverRadius: 10
+//                 }
+//             ]
+//         },
+//         options: {
+//             legend: {
+//                 position: 'top',
+//                 labels: {
+//                     defaultFontFamily: 'Helvetica Neue',
+//                     fontColor: 'white'
+//                 }
+//             },
+//             scales: {
+//                 yAxes: [{
+//                         ticks: {
+//                             min: 0.001,
+//                             max: 5,
+//                             stepSize: 1,
+//                             fontColor: 'white'
+//                         },
+//                         scaleLabel: {
+//                             display: true,
+//                             labelString: 'Fisc. Conservative -->',
+//                             fontColor: 'white'
+//                         },
+//                         gridLines: {
+//                             display: true,
+//                             color: 'rgba(58, 58, 60, 1)',
+//                         },
+//                 }],
+//                 xAxes: [{
+//                         ticks: {
+//                             min: 0,
+//                             max: 5,
+//                             stepSize: 1,
+//                             fontColor: 'white'
+//                         },
+//                         type: 'linear',
+//                         position: 'bottom',
+//                         scaleLabel: {
+//                             display: true,
+//                             labelString: 'Socially Progressive -->',
+//                             fontColor: 'white'
+//                         },
+//                         gridLines: {
+//                             display: true,
+//                             color: 'rgba(58, 58, 60, 1)'
+//                         },
+//                 }]
+//             }
+//         }
+//     });
+//
+// </script>
+//
+// <script type="text/javascript">
+//     function taxecon_function(){
+//         var answer = $('#taxecon_select_id').val();
+//         var taxecon_position = "{{ taxecon_position }}";
+//         var taxecon_probs = "{{ taxecon_probs }}";
+//         var str1 = "She would be ";
+//         var str2 = "% likely to answer yes to this question.";
+//         if (answer == "yes" && taxecon_probs > 50) {
+//             document.getElementById('richpoor2_select_label').innerHTML = "She would agree with you.";
+//         }
+//         if (answer == "yes" && taxecon_probs <= 50) {
+//             document.getElementById('richpoor2_select_label').innerHTML = "She would disagree with you.";
+//         }
+//         if (answer == "no" && taxecon_probs <= 50) {
+//             document.getElementById('richpoor2_select_label').innerHTML = "She would agree with you.";
+//         }
+//         if (answer == "no" && taxecon_probs > 50) {
+//             document.getElementById('richpoor2_select_label').innerHTML = "She would disagree with you.";
+//         }
+//     }
+// </script>
 
 {% endblock content %}

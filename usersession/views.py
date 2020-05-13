@@ -8,6 +8,7 @@ from joblib import load
 from django.templatetags.static import static
 from django.contrib.staticfiles.storage import staticfiles_storage
 import os
+import math
 from django.conf import settings
 
 class HomePageView(TemplateView):
@@ -264,5 +265,23 @@ class ResultsView(TemplateView):
             context["social_liberal_position"] = "socially moderate"
         if social_liberal_score > 3:
             context["social_liberal_position"] = "socially progressive"
+
+        trump = [0,4]
+        romney = [2,5]
+        biden = [4,2]
+        sanders = [5,0]
+        warren = [5,1]
+
+        politicians = ["Donald Trump", "Mitt Romney", "Joe Biden", "Bernie Sanders", "Elizabeth Warren"]
+
+        distance_trump = math.sqrt(math.pow(trump[0]-social_liberal_score,2) + math.pow(trump[1]-econ_liberal_score,2))
+        distance_romney = math.sqrt(math.pow(romney[0]-social_liberal_score,2) + math.pow(romney[1]-econ_liberal_score,2))
+        distance_biden = math.sqrt(math.pow(biden[0]-social_liberal_score,2) + math.pow(biden[1]-econ_liberal_score,2))
+        distance_sanders = math.sqrt(math.pow(sanders[0]-social_liberal_score,2) + math.pow(sanders[1]-econ_liberal_score,2))
+        distance_warren = math.sqrt(math.pow(warren[0]-social_liberal_score,2) + math.pow(warren[1]-econ_liberal_score,2))
+
+        politicians_distance = [distance_trump,distance_romney,distance_biden,distance_sanders,distance_warren]
+        minpos = politicians_distance.index(min(politicians_distance))
+        context["closest_match"] = politicians[minpos]
 
         return render(request, 'results.html', context)

@@ -20,38 +20,49 @@
 
 <div class="conversation" id="cf-context" role="cf-context" cf-context>
     <form action="/results/" method="post" id="questions" cf-form>
-        <label for="checking_in_0">Hi there. Welcome to <strong>If Informed</strong>!</label>
-        <select id="checking_in_0">
-            <option name="cfc-intro" id="intro-yes" value="yes">Hi!</option>
-        </select>
+        <fieldset cf-questions="Hi there. Welcome to <strong>If Informed</strong>!">
+        	<input type="radio" name="hello_question" id="hello" value="hello">
+        	<label for="hello">Hi</label>
+        </fieldset>
 
-        <label for="checking_in_1">In a moment, we will ask you a few questions. Using data from the American National Election Studies, we will then estimate what position you likely would have taken on a number of political issues, had you been fully informed.</label>
-        <select id="checking_in_1">
-            <option name="cfc-intro" id="intro-yes" value="yes">Wait, why?</option>
-        </select>
+        <fieldset cf-questions="In a moment, we will <strong>ask you a few questions</strong>. Using data from the American National Election Studies, we will then <strong>estimate what position you likely would have taken on a number of political issues, had you been fully informed</strong>.">
+            <input type="radio" name="ask_some_questions" id="ok_initial" value="ok_initial">
+            <label for="ok_initial">OK, let's do it</label>
+            <input type="radio" name="ask_some_questions" id="why_initial" value="why">
+            <label for="why_initial">Wait, why?</label>
+        </fieldset>
 
-        <label for="checking_in_2">Politics is hard and few of us are able to keep up with the constant flow of political developments. So many of us listen to our more informed friends’ opinions. We think: if this person is 'quite like me' and really knows what’s going on, their opinion is worth hearing. Think of this website as telling you what a particularly knowledgeable friend thinks about a number of political issues—where that friend just happens to be a highly-informed version of you.</label>
-        <select id="checking_in_2">
-            <option name="cfc-intro" id="intro-yes" value="yes">But why do this?</option>
-        </select>
+        <fieldset cf-questions="Politics is hard and few of us are able to keep up with the constant flow of political developments. So <strong>many of us listen to our more informed friends’ opinions</strong>. We think: if this person is 'quite like me' and really knows what’s going on, their opinion is worth hearing. Think of this website as telling you what a particularly knowledgeable friend thinks about a number of political issues — <strong>where that friend just happens to be a highly-informed version of you</strong>.">
+            <input type="radio" name="politics_is_hard" id="ok_politics_is_hard" value="ok" cf-conditional-ask_some_questions="why" />
+            <label for="ok_politics_is_hard">OK</label>
+            <input type="radio" name="politics_is_hard" id="why_politics_is_hard" value="why" cf-conditional-ask_some_questions="why" />
+            <label for="why_politics_is_hard">So you have a crystal ball or something?</label>
+        </fieldset>
 
-        <label for="checking_in_3">George Box, a prominent statistician, supposedly said that all models are wrong, but some are useful. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that we need to have a discussion about knowledge in politics. These models help us have that discussion on the basis of some solid data, rather than pure speculation.</label>
-        <select id="checking_in_3">
-            <option name="cfc-intro" id="intro-yes" value="yes">And who are you?</option>
-        </select>
+        <fieldset cf-questions="George Box, a prominent statistician, supposedly said that <strong>all models are wrong, but some are useful</strong>. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that <strong>we need to have a discussion about knowledge in politics</strong>. These models help us have that discussion on the basis of some solid data, rather than pure speculation.">
+            <input type="radio" name="george_box" id="ok_george_box" value="ok" cf-conditional-politics_is_hard="why" />
+            <label for="ok_george_box">OK, sounds good</label>
+            <input type="radio" name="george_box" id="who_are_you" value="who" cf-conditional-politics_is_hard="why" />
+            <label for="who_are_you">But who are you?</label>
+        </fieldset>
 
-        <label for="checking_in_4">If Informed is a collaboration between <a href="http://www.ahlstromvij.com">Kristoffer Ahlstrom-Vij</a>, a researcher at Birkbeck, University of London, who works on knowledge and politics, and <a href="https://www.linkedin.com/in/alfredmalmros/">Alfred Malmros</a>, founder of the think-tank Early Studies.</label>
-        <select id="checking_in_4">
-            <option>Got it. Let's go.</option>
-        </select>
+        <fieldset cf-questions="If Informed is a collaboration between <a href='http://www.ahlstromvij.com'><strong>Kristoffer Ahlstrom-Vij</strong></a>, a researcher at Birkbeck, University of London, who works on knowledge and politics, and <a href='https://www.linkedin.com/in/alfredmalmros/'><strong>Alfred Malmros</strong></a>, founder of the think-tank Early Studies.">
+            <input type="radio" name="who_we_are" id="got_it" value="ok" cf-conditional-george_box="who" />
+            <label for="got_it">Got it. Let's go.</label>
+        </fieldset>
 
         {% csrf_token %}
         {{ form.as_p }}
 
-        <label for="checking_in_5">That's it! Now for the fun part. On the next page, you'll get a chance to compare yourself to a fully informed version of yourself. Ready?</label>
-        <select id="checking_in_5">
+        <fieldset cf-questions="That's it! Now for the fun part. On the next page, you'll get a chance to <strong>talk to a fully informed version of yourself</strong>. Ready?">
+            <input type="radio" name="lets_go_question" id="lets_go" value="ok">
+            <label for="lets_go">Yes!</label>
+        </fieldset>
+
+        <!-- <label for="lets_go">That's it! Now for the fun part. On the next page, you'll get a chance to compare yourself to a fully informed version of yourself. Ready?</label>
+        <select id="lets_go">
             <option>Yes!</option>
-        </select>
+        </select> -->
 
     </form>
 </div>
