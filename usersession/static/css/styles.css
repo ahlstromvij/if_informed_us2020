@@ -209,6 +209,7 @@ a:hover {
     font-size: 11px;
     text-align: center;
     color: white;
+    padding-bottom: 10px;
 }
 
 .navigation_digit {
