@@ -17,6 +17,9 @@ class HomePageView(TemplateView):
 class IntroPageView(TemplateView):
 	template_name = 'intro.html'
 
+class MoreInfoView(TemplateView):
+	template_name = 'more_info.html'
+
 def questions(request):
     form = UserInputForm()
     return render(request, 'userinputform.html', {'form':form});

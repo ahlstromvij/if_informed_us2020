@@ -91,6 +91,26 @@ p {
   font-family: 'Raleway';
 }
 
+#more_info {
+    padding-top: 30px;
+
+    -webkit-animation: fadein 2s;
+    -moz-animation: fadein 2s;
+    -ms-animation: fadein 2s;
+    -o-animation: fadein 2s;
+    animation: fadein 2s;
+}
+
+.fa {
+    padding-left: 5px;
+    padding-top: 10px;
+    font-size: 20px;
+}
+
+.fa:hover {
+  opacity: 0.7;
+}
+
 /* The typing effect */
 @keyframes typing {
   from { width: 0 }

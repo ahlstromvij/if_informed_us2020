@@ -18,12 +18,15 @@
     <h2><a id="logo_results" href="{% url 'home' %}">INFORMED YOU</a></h2>
 </div>
 
+<a href="https://www.facebook.com" class="fa fa-facebook float-right" target="_blank"> </a>
+<a href="https://twitter.com/intent/tweet?text=https://www.ifinformed.com" class="fa fa-twitter float-right" target="_blank"> </a>
+
 <div class="progress" style="height: 3px;">
-  <div class="progress-bar bg-light" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+  <div class="progress-bar bg-light" id="progress_bar" role="progressbar" style="width: 0%;" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 
 <div class="conversation" id="cf-context" role="cf-context" cf-context>
-    <form action="{% url 'home' %}" id="questions">
+    <form onsubmit="moreInfo();return false" id="questions">
 
         <!-- TAXECON -->
         <cf-robot-message cf-questions="Hi! I'm <strong>your informed self</strong>." />
@@ -323,44 +326,48 @@
 
 <br />
 
-<button type="button" class="collapsible">How does this work?</button>
-<div class="collapsible-content">
-    <br />
-    <p>By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes.</p>
-    <p>Moreover, once you have done that, you can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed.</p>
-    <p>That’s what we’re estimating for you here. We ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.</p>
-    <p>This is known as counterfactual modeling, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realising a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are.</p>
-</div>
+<p id="youre_done"></p>
 
-<button type="button" class="collapsible">Why did you not ask me about my values?</button>
-<div class="collapsible-content">
-    <br />
-    <p class="more-info">Your values are predictive of what political attitudes you <i>will</i> take (they are), but not of what attitudes you <i>would</i> take, if fully informed.</p>
-    <p>This is because, if you were more informed, it's quite possible that you would embrace different values from what you currently do.</p>
-    <p>That means that, if you include values variables in the model, you hold fixed things that in fact vary with increased knowledge, which biases your estimate. (In the counterfactual modeling literature, this is known as 'controlling for a mediator'.)</p>
-</div>
+<div id="more_info">
+    <button type="button" class="collapsible">How does this work?</button>
+    <div class="collapsible-content">
+        <br />
+        <p>By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes.</p>
+        <p>Moreover, once you have done that, you can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed.</p>
+        <p>That’s what we’re estimating for you here. We ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.</p>
+        <p>This is known as counterfactual modeling, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realising a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are.</p>
+    </div>
 
-<button type="button" class="collapsible">How do you measure what it is to be 'fully informed'?</button>
-<div class="collapsible-content">
-    <br />
-    <p>You do it by asking large numbers of people to, for example, pair up named individuals with their political offices, or about political platforms, political practices, and so forth.</p>
-    <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are.</p>
-    <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies,  generally include a number of such factual questions in their national surveys. Researchers can use these to define a 'knowledge score'. That’s the score we set to the maximum in our models, when estimating your fully informed opinions.</p>
-    <p>Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's, Larry Bartels's, and Scott Althaus's work on 'information effects'.</p>
-</div>
+    <button type="button" class="collapsible">Why did you not ask me about my values?</button>
+    <div class="collapsible-content">
+        <br />
+        <p class="more-info">Your values are predictive of what political attitudes you <i>will</i> take (they are), but not of what attitudes you <i>would</i> take, if fully informed.</p>
+        <p>This is because, if you were more informed, it's quite possible that you would embrace different values from what you currently do.</p>
+        <p>That means that, if you include values variables in the model, you hold fixed things that in fact vary with increased knowledge, which biases your estimate. (In the counterfactual modeling literature, this is known as 'controlling for a mediator'.)</p>
+    </div>
 
-<button type="button" class="collapsible">Why did I get matched up with {{ closest_match }}?</button>
-<div class="collapsible-content">
-    <br />
-    <p>Here's how we do it. Your fiscal conservatism score is calculated by adding up the estimated probabilities of ‘no’ on the questions about free college, free Pre-K, reducing inequality through legislation, and government action on climate change, and ‘yes’ on free trade being good for the U.S. (&#x03B1; = 0.73). Your social progressivism score is calculated by adding up the estimated probabilities of ‘yes’ on the questions about diversity being good, racial discrimination, wanting more immigrants, dreamers being allowed to stay, and letting in refugees (&#x03B1; = 0.77).</p>
-    <p>We then calculate a score for each of the five politicians mentioned, based on the answers we expect they would give to these questions. This gives Trump a social progressivism score of 0 and an fiscal conservatism score of 4; Romney a social progressivism score of 2 and a fiscal conservatism score of 5; Biden a social progressivism score of 4 and a fiscal conservatism score of 2; Warren a social progressivism score of 5 and a fiscal conservatism score of 1; and Sanders a social progressivism score of 5 and a fiscal conservatism score of 0.</p>
-    <p>Finally, we calculate the distance (in two-dimensional space) between the scores of your fully informed self, and the scores of each of these politicians. In your case, your fully informed social progressivism score is {{ social_liberal_score }} (making you a {{ social_liberal_position }}) and your fully informed fiscal conservatism score is {{ econ_liberal_score }} (making you a {{econ_liberal_position }}), meaning the distance is the smallest between you and {{ closest_match }}.</p>
-</div>
+    <button type="button" class="collapsible">How do you measure what it is to be 'fully informed'?</button>
+    <div class="collapsible-content">
+        <br />
+        <p>You do it by asking large numbers of people to, for example, pair up named individuals with their political offices, or about political platforms, political practices, and so forth.</p>
+        <p>This is something political scientists have been doing for some time, and it turns out that, by asking people a few, well-chosen factual questions, you can derive a good measure of how politically informed they are.</p>
+        <p>In light of this tradition, the main surveys of political attitudes, such as the American National Election Studies,  generally include a number of such factual questions in their national surveys. Researchers can use these to define a 'knowledge score'. That’s the score we set to the maximum in our models, when estimating your fully informed opinions.</p>
+        <p>Those interested in more details may consult Michael X. Delli Carpini and Scott Keeter's, Larry Bartels's, and Scott Althaus's work on 'information effects'.</p>
+    </div>
 
-<button type="button" class="collapsible">Technical details</button>
-<div class="collapsible-content">
-    <br />
-    <p>The dataset used is the ANES 2019 Pilot Study. The knowledge variable was constructed using an item response theory model in R’s <code>ltm</code> package from four knowledge items in the dataset. Tests on the resulting model suggested unidimensionality, local independence, and a good fit. The causal effect of knowledge on each of the political attitudes items was estimated using doubly robust estimation: propensity scores were calculated using R’s <code>twang</code> package, and then used as weights in a set of logistic regression models, first fitted using <code>glm</code> in R for purposes of diagnostics (to confirm significance of the knowledge variable, measure fit, rule out multicolinearity, and check for robustness in light of any influential observations) and then again using <code>LogisticRegression</code> in <code>scikit-learn</code> for online deployment with Django.</p>
+    <button type="button" class="collapsible">Why did I get matched up with {{ closest_match }}?</button>
+    <div class="collapsible-content">
+        <br />
+        <p>Here's how we do it. Your fiscal conservatism score is calculated by adding up the estimated probabilities of ‘no’ on the questions about free college, free Pre-K, reducing inequality through legislation, and government action on climate change, and ‘yes’ on free trade being good for the U.S. (&#x03B1; = 0.73). Your social progressivism score is calculated by adding up the estimated probabilities of ‘yes’ on the questions about diversity being good, racial discrimination, wanting more immigrants, dreamers being allowed to stay, and letting in refugees (&#x03B1; = 0.77).</p>
+        <p>We then calculate a score for each of the five politicians mentioned, based on the answers we expect they would give to these questions. This gives Trump a social progressivism score of 0 and an fiscal conservatism score of 4; Romney a social progressivism score of 2 and a fiscal conservatism score of 5; Biden a social progressivism score of 4 and a fiscal conservatism score of 2; Warren a social progressivism score of 5 and a fiscal conservatism score of 1; and Sanders a social progressivism score of 5 and a fiscal conservatism score of 0.</p>
+        <p>Finally, we calculate the distance (in two-dimensional space) between the scores of your fully informed self, and the scores of each of these politicians. In your case, your fully informed social progressivism score is {{ social_liberal_score }} (making you {{ social_liberal_position }}) and your fully informed fiscal conservatism score is {{ econ_liberal_score }} (making you  {{econ_liberal_position }}), meaning the distance is the smallest between you and {{ closest_match }}.</p>
+    </div>
+
+    <button type="button" class="collapsible">Technical details</button>
+    <div class="collapsible-content">
+        <br />
+        <p>The dataset used is the ANES 2019 Pilot Study. The knowledge variable was constructed using an item response theory model in R’s <code>ltm</code> package from four knowledge items in the dataset. Tests on the resulting model suggested unidimensionality, local independence, and a good fit. The causal effect of knowledge on each of the political attitudes items was estimated using doubly robust estimation: propensity scores were calculated using R’s <code>twang</code> package, and then used as weights in a set of logistic regression models, first fitted using <code>glm</code> in R for purposes of diagnostics (to confirm significance of the knowledge variable, measure fit, rule out multicolinearity, and check for robustness in light of any influential observations) and then again using <code>LogisticRegression</code> in <code>scikit-learn</code> for online deployment with Django.</p>
+    </div>
 </div>
 
 <script>
@@ -379,6 +386,15 @@
             }
         });
     }
+
+    document.getElementById("questions").addEventListener("submit", moreInfo);
+
+    function moreInfo() {
+        window.location.replace("{% url 'more_info' %}");
+        // document.getElementById("questions").style.display = "none";
+        // document.getElementById("more_info").style.display = "block";
+    }
+
     //
     // var all_results = document.getElementsByClassName("result");
     // var all_questions = document.getElementsByClassName("question");
@@ -661,28 +677,6 @@
 //         }
 //     });
 //
-// </script>
-//
-// <script type="text/javascript">
-//     function taxecon_function(){
-//         var answer = $('#taxecon_select_id').val();
-//         var taxecon_position = "{{ taxecon_position }}";
-//         var taxecon_probs = "{{ taxecon_probs }}";
-//         var str1 = "She would be ";
-//         var str2 = "% likely to answer yes to this question.";
-//         if (answer == "yes" && taxecon_probs > 50) {
-//             document.getElementById('richpoor2_select_label').innerHTML = "She would agree with you.";
-//         }
-//         if (answer == "yes" && taxecon_probs <= 50) {
-//             document.getElementById('richpoor2_select_label').innerHTML = "She would disagree with you.";
-//         }
-//         if (answer == "no" && taxecon_probs <= 50) {
-//             document.getElementById('richpoor2_select_label').innerHTML = "She would agree with you.";
-//         }
-//         if (answer == "no" && taxecon_probs > 50) {
-//             document.getElementById('richpoor2_select_label').innerHTML = "She would disagree with you.";
-//         }
-//     }
 // </script>
 
 {% endblock content %}
