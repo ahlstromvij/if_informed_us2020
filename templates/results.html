@@ -236,9 +236,80 @@
         <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="no" />
         {% endif %}
 
+        <!-- FISCAL_CONSERVATIVE -->
+        <fieldset cf-questions="OK, let's talk <strong>ideology</strong>. Some researchers have suggested that ideology has two dimensions: a fiscal one, and a social one. Let's start with the former. <strong>Fiscal conservatives</strong> want free markets and small government, while <strong>fiscal progressives</strong> see a substantial role for government in people's lives. Moderates fall in between. Where would you place yourself on that scale?">
+            <input type="radio" name="fiscal_questions" id="fiscally_conservative" value="fisc_cons">
+            <label for="fiscally_conservative">Fiscal conservative</label>
+
+            <input type="radio" name="fiscal_questions" id="fiscally_moderate" value="fisc_mod">
+            <label for="fiscally_moderate">Fiscal moderate</label>
+
+            <input type="radio" name="fiscal_questions" id="fiscally_progressive" value="fisc_prog">
+            <label for="fiscally_progressive">Fiscal progressive</label>
+        </fieldset>
+
+        {% if econ_liberal_position == 'fiscally conservative' %}
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>, believing in free markets and small government." cf-conditional-fiscal_questions="fisc_cons" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing in free markets and small government." cf-conditional-fiscal_questions="fisc_mod" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing in free markets and small government." cf-conditional-fiscal_questions="fisc_prog" />
+        {% endif %}
+
+        {% if econ_liberal_position == 'fiscally moderate' %}
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that there's a role for both free markets and government intervention." cf-conditional-fiscal_questions="fisc_cons" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>, believing that there's a role for both free markets and government intervention." cf-conditional-fiscal_questions="fisc_mod" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that there's a role for both free markets and government intervention." cf-conditional-fiscal_questions="fisc_prog" />
+        {% endif %}
+
+        {% if econ_liberal_position == 'fiscally progressive' %}
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that government can be a force for good in people's life." cf-conditional-fiscal_questions="fisc_cons" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that government can be a force for good in people's life." cf-conditional-fiscal_questions="fisc_mod" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>, believing that government can be a force for good in people's life." cf-conditional-fiscal_questions="fisc_prog" />
+        {% endif %}
+
+        <!-- SOCIAL_PROGRESSIVE -->
+        <fieldset cf-questions="Consider now the social dimension of ideology. <strong>Social progressives</strong> value diversity and social justice, and stand in opposition to <strong>social conservatives</strong>. Again, moderates fall in between the two poles. Where would you place yourself on this scale? Hint: you are {{ social_liberal_position }}.">
+            <input type="radio" name="social_questions" id="socially_conservative" value="soc_cons">
+            <label for="socially_conservative">Social conservative</label>
+
+            <input type="radio" name="social_questions" id="socially_moderate" value="soc_mod">
+            <label for="socially_moderate">Social moderate</label>
+
+            <input type="radio" name="social_questions" id="socially_progressive" value="soc_prog">
+            <label for="socially_progressive">Social progressive</label>
+        </fieldset>
+
+        {% if social_liberal_position == 'socially conservative' %}
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>, believing in traditional values." cf-conditional-social_questions="soc_cons" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in traditional values." cf-conditional-social_questions="soc_mod" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in traditional values." cf-conditional-social_questions="soc_prog" />
+        {% endif %}
+
+        {% if social_liberal_position == 'socially moderate' %}
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, seeing a role for both tradtional values and social justice." cf-conditional-social_questions="soc_cons" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>, seeing a role for both tradtional values and social justice." cf-conditional-social_questions="soc_mod" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, seeing a role for both tradtional values and social justice." cf-conditional-social_questions="soc_prog" />
+        {% endif %}
+
+        {% if social_liberal_position == 'socially progressive' %}
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in the importance of things like diversity of social justice." cf-conditional-social_questions="soc_cons" />
+
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in the importance of things like diversity of social justice." cf-conditional-social_questions="soc_mod" />
+
+        <cf-robot-message cf-questions="<strong>Me too!</strong>. As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>, believing in the importance of things like diversity of social justice." cf-conditional-social_questions="soc_prog" />
+        {% endif %}
 
         <!-- CLOSEST_MATCH -->
-        <fieldset cf-questions="OK, final question now. <strong>Fiscal conservatives</strong> want free markets and small government, while <strong>fiscal progressives</strong> see a substantial role for government in people's lives. <strong>Social progressives</strong> value diversity and social justice, and stand in opposition to <strong>social conservatives</strong>. Different politicians fall on different points on these scales. Let's think about it from this angle: <strong>Which of the following politicians do you identify with most closely?</strong>">
+        <fieldset cf-questions="OK, final question now. Different politicians fall on different points on these two scales. Let's think about it from this angle: <strong>Which of the following politicians do you identify with most closely?</strong>">
             <input type="radio" name="closest_match_questions" id="trump" value="trump">
             <label for="trump">Donald Trump</label>
 
@@ -256,63 +327,63 @@
         </fieldset>
 
         {% if closest_match == 'Donald Trump' %}
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Mitt Romney' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Joe Biden' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Elizabeth Warren' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Bernie Sanders' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm <strong>{{ econ_liberal_position }}</strong> and <strong>{{ social_liberal_position }}</strong>, and as such most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         <!-- HOLD -->
