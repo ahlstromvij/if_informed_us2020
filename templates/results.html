@@ -28,9 +28,19 @@
 <div class="conversation" id="cf-context" role="cf-context" cf-context>
     <form onsubmit="moreInfo();return false" id="questions">
 
-        <!-- TAXECON -->
+        <!-- INTRO -->
         <cf-robot-message cf-questions="Hi! I'm <strong>your informed self</strong>." />
-        <fieldset cf-questions="Let's start by talking about <strong>taxes</strong>. The <strong>2017 Tax Cuts and Jobs Act</strong> (TCJA) cut income tax rates, doubled the standard deduction, eliminated personal exemptions, and cut the corporate tax rate from 35% to 21%. <strong>Do you think these tax cuts have helped the economy?</strong>">
+        <fieldset cf-questions="I’m going to ask you some <strong>political questions</strong>. After each one, I’ll tell you what I think, with all the knowledge I have, so we can <strong>compare notes</strong>.">
+            <input type="radio" name="intro_questions_1" id="disagree" value="ok">
+            <label for="disagree">And what if we disagree?</label>
+        </fieldset>
+        <fieldset cf-questions="You’ll likely be annoyed, as <strong>politics is very personal</strong>. If it helps, think of me as that friend who lives and breathes politics, and sometimes irritates you. But that doesn’t mean their opinions aren't worth reflecting on.">
+            <input type="radio" name="intro_questions_2" id="got_it" value="ok">
+            <label for="got_it">Got it</label>
+        </fieldset>
+
+        <!-- TAXECON -->
+        <fieldset cf-questions="Great! Let's start by talking about <strong>taxes</strong>. The 2017 Tax Cuts and Jobs Act (TCJA) cut income tax rates, doubled the standard deduction, eliminated personal exemptions, and cut the corporate tax rate from 35% to 21%. Do you think these tax cuts have helped the economy?">
         	<input type="radio" name="taxecon_questions" id="taxecon_yes" value="yes">
         	<label for="taxecon_yes">Yes</label>
 
@@ -39,15 +49,15 @@
         </fieldset>
 
         {% if taxecon_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I don't agree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
         {% else %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ taxecon_position }} ({{ taxecon_probs }}%) to answer 'yes'" cf-conditional-taxecon_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
         {% endif %}
 
         <!-- RICHPOOR2 -->
-        <fieldset cf-questions="OK, let's talk about <strong>inequality</strong>. Many people are concerned about the level of inequality between the rich and the poor. <strong>Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?</strong>">
+        <fieldset cf-questions="OK, let's talk about <strong>inequality</strong>. Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?">
         	<input type="radio" name="richpoor2_questions" id="richpoor2_yes" value="yes">
         	<label for="richpoor2_yes">Yes</label>
 
@@ -56,17 +66,17 @@
         </fieldset>
 
         {% if richpoor2_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="no" />
         {% endif %}
 
         {% if richpoor2_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ richpoor2_position }} ({{ richpoor2_probs }}%) to answer 'yes'" cf-conditional-richpoor2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="no" />
         {% endif %}
 
         <!-- TRADE4 -->
-        <fieldset cf-questions="Let's talk <strong>trade</strong>. Some worry that international trade is bad for the U.S. economy, unless the government steps in to protect it. <strong>Does increasing trade with other countries make the U.S. economy better</strong>">
+        <fieldset cf-questions="Let's talk <strong>trade</strong>. Does increasing trade with other countries make the U.S. economy better?">
         	<input type="radio" name="trade4_questions" id="trade4_yes" value="yes">
         	<label for="trade4_yes">Yes</label>
 
@@ -75,17 +85,17 @@
         </fieldset>
 
         {% if trade4_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="no" />
         {% endif %}
 
         {% if trade4_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ trade4_position }} ({{ trade4_probs }}%) to answer 'yes'" cf-conditional-trade4_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="no" />
         {% endif %}
 
         <!-- GW1 -->
-        <fieldset cf-questions="OK, switching topics: Let's talk <strong>climate change</strong>. After China, the U.S. emits the largest amount of greenhouse gases, heat-trapping gases that contribute to climate change. <strong>Do you favour increased government regulation on businesses that produce a great deal of greenhouse emissions?</strong>">
+        <fieldset cf-questions="OK, switching topics: Let's talk <strong>climate change</strong>. Do you favour increased government regulation on businesses that produce a great deal of greenhouse emissions?">
         	<input type="radio" name="gw1_questions" id="gw1_yes" value="yes">
         	<label for="gw1_yes">Yes</label>
 
@@ -94,17 +104,17 @@
         </fieldset>
 
         {% if gw1_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="no" />
         {% endif %}
 
         {% if gw1_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ gw1_position }} ({{ gw1_probs }}%) to answer 'yes'" cf-conditional-gw1_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="no" />
         {% endif %}
 
         <!-- IMMIGNUM -->
-        <fieldset cf-questions="OK, let's talk <strong>immigration</strong>. Immigration has been a major source of population growth and cultural change throughout much of the history of the United States. <strong>Do you think the number of immigrants from foreign countries who are permitted to come to the U.S. to live should be increased?</strong>">
+        <fieldset cf-questions="OK, let's talk <strong>immigration</strong>. Do you think the number of immigrants from foreign countries who are permitted to come to the U.S. to live should be increased?">
         	<input type="radio" name="immignum_questions" id="immignum_yes" value="yes">
         	<label for="immignum_yes">Yes</label>
 
@@ -113,17 +123,17 @@
         </fieldset>
 
         {% if immignum_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="no" />
         {% endif %}
 
         {% if immignum_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ immignum_position }} ({{ immignum_probs }}%) to answer 'yes'" cf-conditional-immignum_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="no" />
         {% endif %}
 
         <!-- DREAMER -->
-        <fieldset cf-questions="Let's stay on the topic of <strong>immigration</strong>. Daca is a federal government program created in 2012 to protect people brought to the US illegally as children. Those with Daca status are known as Dreamers. By the time President Trump announced his decision in 2017 to rescind the program, 787,580 had been granted approval. <strong>Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?</strong>">
+        <fieldset cf-questions="Let's stay on the topic of <strong>immigration</strong>. Should immigrants who were brought to the U.S. illegally as children, have lived here for at least 10 years, and graduated from high school, be allowed to live and work in the United States?">
             <input type="radio" name="dreamer_questions" id="dreamer_yes" value="yes">
             <label for="dreamer_yes">Yes</label>
 
@@ -132,17 +142,17 @@
         </fieldset>
 
         {% if dreamer_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="no" />
         {% endif %}
 
         {% if dreamer_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ dreamer_position }} ({{ dreamer_probs }}%) to answer 'yes'" cf-conditional-dreamer_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="no" />
         {% endif %}
 
         <!-- REFUGEES -->
-        <fieldset cf-questions="One more question on <strong>immigration</strong>. The US plans to admit a maximum of 18,000 refugees in 2020, down from a cap of 30,000 in 2019. This would be the lowest number of refugees resettled in a single year since 1980, when Congress created the refugee resettlement program. <strong>Do you favor allowing refugees who are fleeing war, persecution, or natural disasters in other countries to come to live in the U.S.?</strong>">
+        <fieldset cf-questions="One more question on <strong>immigration</strong>. Do you favor allowing refugees who are fleeing war, persecution, or natural disasters in other countries to come to live in the U.S.?">
             <input type="radio" name="refugees_questions" id="refugees_yes" value="yes">
             <label for="refugees_yes">Yes</label>
 
@@ -151,17 +161,17 @@
         </fieldset>
 
         {% if refugees_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="no" />
         {% endif %}
 
         {% if refugees_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ refugees_position }} ({{ refugees_probs }}%) to answer 'yes'" cf-conditional-refugees_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="no" />
         {% endif %}
 
         <!-- FREECOL -->
-        <fieldset cf-questions="Let's turn to <strong>government spending</strong>. Several Democratic politicians and members of Congress have endorsed the idea of free College tuition. This  would cost at least $79 billion a year, according to the most recent Department of Education data. Taxpayers would need to foot the bill. <strong>Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted?</strong>">
+        <fieldset cf-questions="Let's turn to <strong>government spending</strong>. Do you favor guaranteeing free tuition at public colleges or universities for anyone admitted? According to the most recent Department of Education data, this would cost about $79 billion a year.">
             <input type="radio" name="freecol_questions" id="freecol_yes" value="yes">
             <label for="freecol_yes">Yes</label>
 
@@ -170,17 +180,17 @@
         </fieldset>
 
         {% if freecol_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="no" />
         {% endif %}
 
         {% if freecol_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ freecol_position }} ({{ freecol_probs }}%) to answer 'yes'" cf-conditional-freecol_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="no" />
         {% endif %}
 
         <!-- PREK -->
-        <fieldset cf-questions="Let's stay on the topic of <strong>spending</strong>. A growing body of research on the benefits of early childhood education has put public funding for pre-kindergarten (“Pre-K”) in the spotlight across the country. Expanding Pre-K to cover everyone would cost $24 billion a year. This would be paid for by higher taxes. <strong>Do you favor expanding funding for pre-kindergarten programs so that it is available for all children nationwide?</strong>">
+        <fieldset cf-questions="Let's stay on the topic of <strong>spending</strong>. Do you favor expanding funding for pre-kindergarten (“Pre-K”) programs so that it is available for all children nationwide? This would cost approximately $24 billion a year.">
             <input type="radio" name="prek_questions" id="prek_yes" value="yes">
             <label for="prek_yes">Yes</label>
 
@@ -189,17 +199,17 @@
         </fieldset>
 
         {% if prek_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="no" />
         {% endif %}
 
         {% if prek_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ prek_position }} ({{ prek_probs }}%) to answer 'yes'" cf-conditional-prek_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="no" />
         {% endif %}
 
         <!-- DIVERSITY5 -->
-        <fieldset cf-questions="Let's turn to <strong>diversity</strong>. As the United States becomes more racially and ethnically diverse, American’s differing views about the impact and value of diversity are being brought to the fore. <strong>Does the increasing number of people of many different races and ethnic groups in the U.S. make this country a better place to live?</strong>">
+        <fieldset cf-questions="Let's turn to <strong>diversity</strong>. Does increasing the number of people of many different races and ethnic groups in the U.S. make this country a better place to live?">
             <input type="radio" name="diversity5_questions" id="diversity5_yes" value="yes">
             <label for="diversity5_yes">Yes</label>
 
@@ -208,17 +218,17 @@
         </fieldset>
 
         {% if diversity5_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="no" />
         {% endif %}
 
         {% if diversity5_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ diversity5_position }} ({{ diversity5_probs }}%) to answer 'yes'" cf-conditional-diversity5_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="no" />
         {% endif %}
 
         <!-- RR2 -->
-        <fieldset cf-questions="Let's talk about <strong>racial discrimination</strong>. Throughout the 17th and 18th centuries people were brought American colonies as slaves. Though the Union victory in the Civil War freed the nation’s four million enslaved people, the legacy of slavery continues to influence American society. <strong>Do you agree with the idea that generations of slavery and discrimination have created conditions that make it difficult for blacks to work their way out of the lower class?</strong>">
+        <fieldset cf-questions="Let's talk about <strong>racial discrimination</strong>. Have generations of slavery and discrimination created conditions that make it difficult for blacks to work their way out of the lower class?">
             <input type="radio" name="rr2_questions" id="rr2_yes" value="yes">
             <label for="rr2_yes">Yes</label>
 
@@ -227,17 +237,17 @@
         </fieldset>
 
         {% if rr2_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="no" />
         {% endif %}
 
         {% if rr2_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you were fully informed, you too would be {{ rr2_position }} ({{ rr2_probs }}%) to answer 'yes'" cf-conditional-rr2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="no" />
         {% endif %}
 
         <!-- FISCAL_CONSERVATIVE -->
-        <fieldset cf-questions="OK, let's talk <strong>ideology</strong>. Some researchers have suggested that ideology has two dimensions: a fiscal one, and a social one. Let's start with the former. <strong>Fiscal conservatives</strong> want free markets and small government, while <strong>fiscal progressives</strong> see a substantial role for government in people's lives. Moderates fall in between. Where would you place yourself on that scale?">
+        <fieldset cf-questions="OK, let's talk <strong>ideology</strong>. Some researchers have suggested that ideology has two dimensions: a fiscal one, and a social one. Let's start with the former. <strong>Fiscal conservatives</strong> want free markets and small government, while <strong>fiscal progressives</strong> see a big role for government in people's lives. Moderates fall in between. Where would you place yourself on that scale?">
             <input type="radio" name="fiscal_questions" id="fiscally_conservative" value="fisc_cons">
             <label for="fiscally_conservative">Fiscal conservative</label>
 
@@ -249,31 +259,31 @@
         </fieldset>
 
         {% if econ_liberal_position == 'fiscally conservative' %}
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>, believing in free markets and small government." cf-conditional-fiscal_questions="fisc_cons" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_cons" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing in free markets and small government." cf-conditional-fiscal_questions="fisc_mod" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_mod" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing in free markets and small government." cf-conditional-fiscal_questions="fisc_prog" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_prog" />
         {% endif %}
 
         {% if econ_liberal_position == 'fiscally moderate' %}
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that there's a role for both free markets and government intervention." cf-conditional-fiscal_questions="fisc_cons" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_cons" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>, believing that there's a role for both free markets and government intervention." cf-conditional-fiscal_questions="fisc_mod" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_mod" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that there's a role for both free markets and government intervention." cf-conditional-fiscal_questions="fisc_prog" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_prog" />
         {% endif %}
 
         {% if econ_liberal_position == 'fiscally progressive' %}
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that government can be a force for good in people's life." cf-conditional-fiscal_questions="fisc_cons" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_cons" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>, believing that government can be a force for good in people's life." cf-conditional-fiscal_questions="fisc_mod" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_mod" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>, believing that government can be a force for good in people's life." cf-conditional-fiscal_questions="fisc_prog" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ econ_liberal_position }}</strong>." cf-conditional-fiscal_questions="fisc_prog" />
         {% endif %}
 
         <!-- SOCIAL_PROGRESSIVE -->
-        <fieldset cf-questions="Consider now the social dimension of ideology. <strong>Social progressives</strong> value diversity and social justice, and stand in opposition to <strong>social conservatives</strong>. Again, moderates fall in between the two poles. Where would you place yourself on this scale?">
+        <fieldset cf-questions="Consider now the social dimension of ideology. <strong>Social progressives</strong> value diversity and social justice, while <strong>social conservatives</strong> place greater emphasis on traditional values. Again, moderates fall in between the two. Where would you place yourself on this scale?">
             <input type="radio" name="social_questions" id="socially_conservative" value="soc_cons">
             <label for="socially_conservative">Social conservative</label>
 
@@ -285,31 +295,31 @@
         </fieldset>
 
         {% if social_liberal_position == 'socially conservative' %}
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>, believing in traditional values." cf-conditional-social_questions="soc_cons" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_cons" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in traditional values." cf-conditional-social_questions="soc_mod" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_mod" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in traditional values." cf-conditional-social_questions="soc_prog" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_prog" />
         {% endif %}
 
         {% if social_liberal_position == 'socially moderate' %}
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, seeing a role for both tradtional values and social justice." cf-conditional-social_questions="soc_cons" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_cons" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>, seeing a role for both tradtional values and social justice." cf-conditional-social_questions="soc_mod" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_mod" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, seeing a role for both tradtional values and social justice." cf-conditional-social_questions="soc_prog" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_prog" />
         {% endif %}
 
         {% if social_liberal_position == 'socially progressive' %}
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in the importance of things like diversity of social justice." cf-conditional-social_questions="soc_cons" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_cons" />
 
-        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>, believing in the importance of things like diversity of social justice." cf-conditional-social_questions="soc_mod" />
+        <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_mod" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong>. As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>, believing in the importance of things like diversity of social justice." cf-conditional-social_questions="soc_prog" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong>. As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_prog" />
         {% endif %}
 
         <!-- CLOSEST_MATCH -->
-        <fieldset cf-questions="OK, final question now. Different politicians fall on different points on these two scales. Let's think about it from this angle: <strong>Which of the following politicians do you identify with most closely?</strong>">
+        <fieldset cf-questions="OK, final question now. Different politicians fall on different points on these two scales. <strong>Of the following politicians, whose platform do you identify with most closely?</strong>">
             <input type="radio" name="closest_match_questions" id="trump" value="trump">
             <label for="trump">Donald Trump</label>
 
@@ -327,63 +337,63 @@
         </fieldset>
 
         {% if closest_match == 'Donald Trump' %}
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>'s platform'." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Mitt Romney' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Joe Biden' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Elizabeth Warren' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         {% if closest_match == 'Bernie Sanders' %}
-        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="Intresting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="trump" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="romney" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="romney" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="biden" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="biden" />
 
-        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="warren" />
+        <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="warren" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>." cf-conditional-closest_match_questions="sanders" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="sanders" />
         {% endif %}
 
         <!-- HOLD -->
