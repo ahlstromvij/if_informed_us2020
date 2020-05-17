@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+realizing{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 <script>
@@ -32,7 +32,7 @@
         <p>By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes.</p>
         <p>Moreover, once you have done that, you can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed.</p>
         <p>That’s what we’re estimating for you here. We ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.</p>
-        <p>This is known as <strong>counterfactual modeling</strong>, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realising a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are.</p>
+        <p>This is known as <strong>counterfactual modelling</strong>, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realizing a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are.</p>
         <p>For those interested in learning more, <a href="http://bayes.cs.ucla.edu/BOOK-2K/" target="_blank"><strong>Judea Pearl's <i>Causality: Models, Reasoning, and Inference</i></strong></a> is the central text here. See also <strong><a href="https://www.cambridge.org/core/books/counterfactuals-and-causal-inference/5CC81E6DF63C5E5A8B88F79D45E1D1B7" target="_blank">Stephen Morgan and Christopher Winship's <i>Counterfactuals and Causal Inference</i></a></strong> on causal modelling in the social sciences in particular, and the type of 'doubly robust' estimation used here.</p>
     </div>
 
@@ -43,8 +43,8 @@
         <p>You might mean what political scientists call 'partisanship' - roughly, your sense of identification with some political party or cause. The reason we do not ask you about that is that, while predictive of what political attitudes you <i>will</i> take, partisanship is not necessarily predictive of what attitudes you <i>would</i> have taken, had you been fully informed. </p>
         <p>This is because, if you were more informed, you might have identified with a different partisan cause than you currently do, given that partisanship is likely affected by political knowledge - specifically, knowledge of party and candidate positioning.</p>
         <p>This means that, if you include partisanship in the models that estimate the attitudes of your fully informed self, you hold fixed things that in fact vary with increased knowledge, which biases your estimates. (In the counterfactual modeling literature, this is known as 'controlling for a mediator'.)</p>
-        <p>Alternatively, you might mean by 'values' something more fundamental, something like the foundations for partisanship, and specifically the political bonds and attachments formed very early in life as part of a broader process of socialisation. So, why are we not asking you about those? </p>
-        <p>Well, in a sense, we are. Socialisation is centred around group-identity considerations relating to religion, race, gender, and the like - all helping shape our conceptions of who we are, and consequently also what positions ‘people like us’ take in politics. Consequently, in so far as we ask you about your gender, race, and religion, we are likely already capturing a substantial part of the very factors that provide the foundation for your most fundamental values.</p>
+        <p>Alternatively, you might mean by 'values' something more fundamental, something like the foundations for partisanship, and specifically the political bonds and attachments formed very early in life as part of a broader process of socialization. So, why are we not asking you about those? </p>
+        <p>Well, in a sense, we are. Socialization is centered around group-identity considerations relating to religion, race, gender, and the like - all helping shape our conceptions of who we are, and consequently also what positions ‘people like us’ take in politics. Consequently, in so far as we ask you about your gender, race, and religion, we are likely already capturing a substantial part of the very factors that provide the foundation for your most fundamental values.</p>
     </div>
 
     <button type="button" class="collapsible">How do you measure what it is to be 'fully informed'?</button>
