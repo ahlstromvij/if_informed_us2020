@@ -333,7 +333,7 @@
             <label for="warren">Elizabeth Warren</label>
 
             <input type="radio" name="closest_match_questions" id="sanders" value="sanders">
-            <label for="trump">Bernie Sanders</label>
+            <label for="sanders">Bernie Sanders</label>
         </fieldset>
 
         {% if closest_match == 'Donald Trump' %}
@@ -398,7 +398,9 @@
 
         <!-- HOLD -->
         <fieldset cf-questions="Alright, that's it! Thanks for taking time to visit <strong>If Informed</strong>.">
-            <input type="radio" name="more_info_question" id="more_info" value="yes">
+            <input type="radio" name="more_info_question" id="share" value="share">
+            <label for="share">Share</label>
+            <input type="radio" name="more_info_question" id="more_info" value="more_info">
             <label for="more_info">Wait, I have lots of questions</label>
         </fieldset>
 
@@ -409,311 +411,19 @@
 
 <script>
 
-    var coll = document.getElementsByClassName("collapsible");
-    var i;
-
-    for (i = 0; i < coll.length; i++) {
-        coll[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var content = this.nextElementSibling;
-            if (content.style.maxHeight){
-                content.style.maxHeight = null;
-            } else {
-                content.style.maxHeight = content.scrollHeight + "px";
-            }
-        });
-    }
-
     document.getElementById("questions").addEventListener("submit", moreInfo);
 
     function moreInfo() {
-        window.location.replace("{% url 'more_info' %}");
-        // document.getElementById("questions").style.display = "none";
-        // document.getElementById("more_info").style.display = "block";
+        var choice = document.querySelector('input[name = "more_info_question"]:checked').value;
+        if (choice == "more_info") {
+            window.location.replace("{% url 'more_info' %}");
+        }
+        if (choice == "share") {
+            window.location.replace("https://twitter.com/intent/tweet?text=I%20just%20met%20my%20fully%20informed%20self:%20https://www.ifinformed.com");
+        }
+
     }
 
-    //
-    // var all_results = document.getElementsByClassName("result");
-    // var all_questions = document.getElementsByClassName("question");
-
-    // all_results[0].style.display = "none";
-    // all_results[1].style.display = "none";
-    // all_results[2].style.display = "none";
-    // all_results[3].style.display = "none";
-    // all_results[4].style.display = "none";
-    // all_results[5].style.display = "none";
-    // all_results[6].style.display = "none";
-    // all_results[7].style.display = "none";
-    // all_results[8].style.display = "none";
-    // all_results[9].style.display = "none";
-    // all_results[10].style.display = "none";
-
-    // all_results[0].style.opacity = "0";
-    // all_results[1].style.opacity = "0";
-    // all_results[2].style.opacity = "0";
-    // all_results[3].style.opacity = "0";
-    // all_results[4].style.opacity = "0";
-    // all_results[5].style.opacity = "0";
-    // all_results[6].style.opacity = "0";
-    // all_results[7].style.opacity = "0";
-    // all_results[8].style.opacity = "0";
-    // all_results[9].style.opacity = "0";
-    // all_results[10].style.opacity = "0";
-
-    // var comparisons = document.getElementsByClassName("comparison");
-    //
-    // var context_probs = ["{{ taxecon_probs }}","{{ richpoor2_probs }}", "{{ trade4_probs }}", "{{ gw1_probs }}", "{{ immignum_probs }}", "{{ dreamer_probs }}", "{{ refugees_probs }}", "{{ freecol_probs }}", "{{ prek_probs }}", "{{ diversity5_probs }}", "{{ rr2_probs }}"];
-    //
-    // function radio_answer() {
-    //     var user_response = arguments[0];
-    //     var page_index = arguments[1];
-    //
-    //     if(user_response == 1 && context_probs[page_index] >= 50) {
-    //         comparisons[page_index].innerHTML = "agree with you"
-    //     }
-    //     if(user_response == 0 && context_probs[page_index] < 50) {
-    //         comparisons[page_index].innerHTML = "agree with you"
-    //     }
-    //     if(user_response == 0 && context_probs[page_index] >= 50) {
-    //         comparisons[page_index].innerHTML = "disagree with you"
-    //     }
-    //     if(user_response == 1 && context_probs[page_index] < 50) {
-    //         comparisons[page_index].innerHTML = "disagree with you"
-    //     }
-    //
-    //     all_questions[page_index].style.display = "none";
-    //
-    //     all_results[page_index].style.opacity = "1";
-    //     all_results[page_index].style.fontSize = "14px";
-    //
-    //     user_answers[page_index] = user_response;
-    // }
-    //
-    // var pages = document.getElementsByClassName("page");
-    //
-    // pages[0].style.display = "block";
-    // pages[1].style.display = "none";
-    // pages[2].style.display = "none";
-    // pages[3].style.display = "none";
-    // pages[4].style.display = "none";
-    // pages[5].style.display = "none";
-    // pages[6].style.display = "none";
-    // pages[7].style.display = "none";
-    // pages[8].style.display = "none";
-    // pages[9].style.display = "none";
-    // pages[10].style.display = "none";
-    // pages[11].style.display = "none";
-    //
-    // var current_page_index = 0
-    //
-    // var value = 0;
-    // function move_ahead() {
-    //     if(current_page_index!==11) {
-    //         pages[current_page_index].style.display = "none";
-    //         pages[current_page_index + 1].style.display = "block";
-    //         current_page_index++;
-    //         value += 9.09;
-    //         $("#progress_bar")
-    //         .css("width", value + "%")
-    //         .attr("aria-valuenow", value)
-    //     }
-    //     else {}
-    // }
-    //
-    // function move_back() {
-    //     if(current_page_index!==0) {
-    //         pages[current_page_index].style.display = "none";
-    //         pages[current_page_index - 1].style.display = "block";
-    //         current_page_index--;
-    //         value -= 9.09;
-    //         $("#progress_bar")
-    //         .css("width", value + "%")
-    //         .attr("aria-valuenow", value)
-    //     }
-    //     else {}
-    // }
-
-    // function skip_to_1() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[0].style.display = "block";
-    //     current_page_index = 0
-    // }
-    //
-    // function skip_to_2() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[1].style.display = "block";
-    //     current_page_index = 1
-    // }
-    //
-    // function skip_to_3() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[2].style.display = "block";
-    //     current_page_index = 2
-    // }
-    //
-    // function skip_to_4() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[3].style.display = "block";
-    //     current_page_index = 3
-    // }
-    //
-    // function skip_to_5() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[4].style.display = "block";
-    //     current_page_index = 4
-    // }
-    //
-    // function skip_to_6() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[5].style.display = "block";
-    //     current_page_index = 5
-    // }
-    //
-    // function skip_to_7() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[6].style.display = "block";
-    //     current_page_index = 6
-    // }
-    //
-    // function skip_to_8() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[7].style.display = "block";
-    //     current_page_index = 7
-    // }
-    //
-    // function skip_to_9() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[8].style.display = "block";
-    //     current_page_index = 8
-    // }
-    //
-    // function skip_to_10() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[9].style.display = "block";
-    //     current_page_index = 9
-    // }
-    //
-    // function skip_to_11() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[10].style.display = "block";
-    //     current_page_index = 10
-    // }
-    //
-    // function skip_to_12() {
-    //     pages[current_page_index].style.display = "none";
-    //     pages[11].style.display = "block";
-    //     current_page_index = 11
-    // }
-
-//     var your_x = "{{ social_liberal_score }}";
-//     var your_y = "{{ econ_liberal_score }}";
-//
-//     var ctx = document.getElementById('myChart').getContext('2d');
-//     var myChart = new Chart(ctx, {
-//         type: 'scatter',
-//         data: {
-//             datasets: [{
-//                     data: [{
-//                         x: your_x,
-//                         y: your_y}
-//                         ],
-//                     label: "You",
-//                     backgroundColor: 'rgba(248, 118, 109, 1)',
-//                     radius: 7,
-//                     pointRadius: 7,
-//                     pointHoverRadius: 10
-//                 }, {
-//                     data: [{
-//                         x: 0,
-//                         y: 4}
-//                         ],
-//                     label: "Trump",
-//                     backgroundColor: 'rgba(183, 159, 0, 1)',
-//                     radius: 7,
-//                     pointRadius: 7,
-//                     pointHoverRadius: 10
-//                 }, {
-//                     data: [{
-//                         x: 2,
-//                         y: 5}
-//                         ],
-//                     label: "Romney",
-//                     backgroundColor: 'rgba(0, 186, 56, 1)',
-//                     radius: 7,
-//                     pointRadius: 7,
-//                     pointHoverRadius: 10
-//                 }, {
-//                     data: [{
-//                         x: 4,
-//                         y: 2}
-//                         ],
-//                     label: "Biden",
-//                     backgroundColor: 'rgba(149, 144, 255, 1)',
-//                     radius: 7,
-//                     pointRadius: 7,
-//                     pointHoverRadius: 10
-//                 }, {
-//                     data: [{
-//                         x: 5,
-//                         y: 0.001}
-//                         ],
-//                     label: "Sanders",
-//                     backgroundColor: 'rgba(245, 100, 227, 1)',
-//                     radius: 7,
-//                     pointRadius: 7,
-//                     pointHoverRadius: 10
-//                 }
-//             ]
-//         },
-//         options: {
-//             legend: {
-//                 position: 'top',
-//                 labels: {
-//                     defaultFontFamily: 'Helvetica Neue',
-//                     fontColor: 'white'
-//                 }
-//             },
-//             scales: {
-//                 yAxes: [{
-//                         ticks: {
-//                             min: 0.001,
-//                             max: 5,
-//                             stepSize: 1,
-//                             fontColor: 'white'
-//                         },
-//                         scaleLabel: {
-//                             display: true,
-//                             labelString: 'Fisc. Conservative -->',
-//                             fontColor: 'white'
-//                         },
-//                         gridLines: {
-//                             display: true,
-//                             color: 'rgba(58, 58, 60, 1)',
-//                         },
-//                 }],
-//                 xAxes: [{
-//                         ticks: {
-//                             min: 0,
-//                             max: 5,
-//                             stepSize: 1,
-//                             fontColor: 'white'
-//                         },
-//                         type: 'linear',
-//                         position: 'bottom',
-//                         scaleLabel: {
-//                             display: true,
-//                             labelString: 'Socially Progressive -->',
-//                             fontColor: 'white'
-//                         },
-//                         gridLines: {
-//                             display: true,
-//                             color: 'rgba(58, 58, 60, 1)'
-//                         },
-//                 }]
-//             }
-//         }
-//     });
-//
-// </script>
+</script>
 
 {% endblock content %}
