@@ -34,7 +34,7 @@
             <input type="radio" name="intro_questions_1" id="disagree" value="ok">
             <label for="disagree">And what if we disagree?</label>
         </fieldset>
-        <fieldset cf-questions="You’ll likely be annoyed, as <strong>politics is very personal</strong>. If it helps, think of me as that friend who lives and breathes politics, and sometimes irritates you. But that doesn’t mean their opinions aren't worth reflecting on.">
+        <fieldset cf-questions="You’ll likely be annoyed, since <strong>politics is very personal</strong>. If it helps, think of me as that friend who lives and breathes politics, and sometimes irritates you. But that doesn’t mean their opinions aren't worth reflecting on.">
             <input type="radio" name="intro_questions_2" id="got_it" value="ok">
             <label for="got_it">Got it</label>
         </fieldset>
@@ -49,11 +49,11 @@
         </fieldset>
 
         {% if taxecon_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
+        <cf-robot-message cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
         {% else %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
+        <cf-robot-message cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
         {% endif %}
 
         <!-- RICHPOOR2 -->
@@ -66,13 +66,13 @@
         </fieldset>
 
         {% if richpoor2_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I think so, too</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I actually disagree with you here</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="no" />
         {% endif %}
 
         {% if richpoor2_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I actually disagree with you here</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I think so, too</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ richpoor2_probs }}%, meaning it's {{ richpoor2_position }}." cf-conditional-richpoor2_questions="no" />
         {% endif %}
 
         <!-- TRADE4 -->
@@ -85,13 +85,13 @@
         </fieldset>
 
         {% if trade4_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="no" />
         {% endif %}
 
         {% if trade4_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="no" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ trade4_probs }}%, meaning it's {{ trade4_position }}." cf-conditional-trade4_questions="no" />
         {% endif %}
 
         <!-- GW1 -->
@@ -104,13 +104,13 @@
         </fieldset>
 
         {% if gw1_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="no" />
+        <cf-robot-message cf-questions="<strong>Same here - I agree with you</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I see - I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="no" />
         {% endif %}
 
         {% if gw1_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="no" />
+        <cf-robot-message cf-questions="<strong>I see - I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="yes" />
+        <cf-robot-message cf-questions="<strong>Same here - I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ gw1_probs }}%, meaning it's {{ gw1_position }}." cf-conditional-gw1_questions="no" />
         {% endif %}
 
         <!-- IMMIGNUM -->
@@ -123,13 +123,13 @@
         </fieldset>
 
         {% if immignum_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you here</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree with you on this one</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="no" />
         {% endif %}
 
         {% if immignum_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="no" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree with you on this one</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you here</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ immignum_probs }}%, meaning it's {{ immignum_position }}." cf-conditional-immignum_questions="no" />
         {% endif %}
 
         <!-- DREAMER -->
@@ -142,13 +142,13 @@
         </fieldset>
 
         {% if dreamer_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="no" />
+        <cf-robot-message cf-questions="<strong>Same here - I agree</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I see - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="no" />
         {% endif %}
 
         {% if dreamer_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="no" />
+        <cf-robot-message cf-questions="<strong>I see - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="yes" />
+        <cf-robot-message cf-questions="<strong>Same here - I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ dreamer_probs }}%, meaning it's {{ dreamer_position }}." cf-conditional-dreamer_questions="no" />
         {% endif %}
 
         <!-- REFUGEES -->
@@ -161,13 +161,13 @@
         </fieldset>
 
         {% if refugees_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="no" />
+        <cf-robot-message cf-questions="<strong>I do, too</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I disagree, I'm afraid</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="no" />
         {% endif %}
 
         {% if refugees_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="no" />
+        <cf-robot-message cf-questions="<strong>I disagree, I'm afraid</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I don't either</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ refugees_probs }}%, meaning it's {{ refugees_position }}." cf-conditional-refugees_questions="no" />
         {% endif %}
 
         <!-- FREECOL -->
@@ -180,13 +180,13 @@
         </fieldset>
 
         {% if freecol_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="no" />
         {% endif %}
 
         {% if freecol_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="no" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ freecol_probs }}%, meaning it's {{ freecol_position }}." cf-conditional-freecol_questions="no" />
         {% endif %}
 
         <!-- PREK -->
@@ -199,13 +199,13 @@
         </fieldset>
 
         {% if prek_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I see - I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="no" />
         {% endif %}
 
         {% if prek_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="no" />
+        <cf-robot-message cf-questions="<strong>I see - I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ prek_probs }}%, meaning it's {{ prek_position }}." cf-conditional-prek_questions="no" />
         {% endif %}
 
         <!-- DIVERSITY5 -->
@@ -218,13 +218,13 @@
         </fieldset>
 
         {% if diversity5_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I don't agree, I'm afraid</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="no" />
         {% endif %}
 
         {% if diversity5_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="no" />
+        <cf-robot-message cf-questions="<strong>I don't agree, I'm afraid</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ diversity5_probs }}%, meaning it's {{ diversity5_position }}." cf-conditional-diversity5_questions="no" />
         {% endif %}
 
         <!-- RR2 -->
@@ -237,13 +237,13 @@
         </fieldset>
 
         {% if rr2_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I agree with you here</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="no" />
         {% endif %}
 
         {% if rr2_probs <= 50 %}
-        <cf-robot-message cf-questions="<strong>I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree with you</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="no" />
+        <cf-robot-message cf-questions="<strong>I'm afraid I disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="yes" />
+        <cf-robot-message cf-questions="<strong>I agree with you here</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ rr2_probs }}%, meaning it's {{ rr2_position }}." cf-conditional-rr2_questions="no" />
         {% endif %}
 
         <!-- FISCAL_CONSERVATIVE -->
