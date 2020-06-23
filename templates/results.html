@@ -49,15 +49,39 @@
         </fieldset>
 
         {% if taxecon_probs > 50 %}
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
-        <cf-robot-message cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
+        <fieldset cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your (still) answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}.">
+            <input type="radio" name="knowledge_question1" id="knowledge_question1_accept" value="why" cf-conditional-taxecon_questions="yes" />
+            <label for="knowledge_question1_accept">What do you know that I don't?</label>
+        </fieldset>
+
+        <fieldset cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}">
+            <input type="radio" name="knowledge_question2" id="knowledge_question2_accept" value="why" cf-conditional-taxecon_questions="no" />
+            <label for="knowledge_question2_accept">What do you know that I don't?</label>
+        </fieldset>
+
         {% else %}
-        <cf-robot-message cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="yes" />
-        <cf-robot-message cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}." cf-conditional-taxecon_questions="no" />
+        <fieldset cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}.">
+            <input type="radio" name="knowledge_question3" id="knowledge_question3_accept" value="why" cf-conditional-taxecon_questions="yes" />
+            <label for="knowledge_question3_accept">What do you know that I don't?</label>
+        </fieldset>
+
+        <fieldset cf-questions="<strong>I agree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be only {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}.">
+            <input type="radio" name="knowledge_question4" id="knowledge_question4_accept" value="why" cf-conditional-taxecon_questions="no" />
+            <label for="knowledge_question4_accept">What do you know that I don't?</label>
+        </fieldset>
+
         {% endif %}
 
+        <!-- ELABORATE ON KNOWLEDGE -->
+
+        <cf-robot-message cf-questions="I wish I could tell you! Remember what I am: I am just like you, save for having spent years learning everything there is to know about politics, economics, sociology, psychology - you name it. <strong>So there will be a gap between everything I know and what you know. But I can't tell you <i>where</i> that gap is</strong>. The survey data used to generate me just isn’t fine-grained enough: it tells us <i>who</i> is informed, and what political positions they take, but not about the details of all that they know." />
+        <fieldset cf-questions="But you can try to fill in the details yourself: <strong>when we disagree, ask yourself why that might be - if you had spent lots of time learning more about whatever we're discussing, what might you have learned?</strong> Your guess will likely be better than mine!">
+            <input type="radio" name="elaborate_knowledge" id="ok_elaborate_knowledge" value="ok">
+            <label for="ok_elaborate_knowledge">Got it</label>
+        </fieldset>
+
         <!-- RICHPOOR2 -->
-        <fieldset cf-questions="OK, let's talk about <strong>inequality</strong>. Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?">
+        <fieldset cf-questions="OK, let's switch topics, and talk about <strong>inequality</strong>. Is it very important that our elected officials pass laws and regulations that reduce the inequality between rich and poor people?">
         	<input type="radio" name="richpoor2_questions" id="richpoor2_yes" value="yes">
         	<label for="richpoor2_yes">Yes</label>
 

@@ -30,18 +30,25 @@
             <label for="why_initial">Wait, what?</label>
         </fieldset>
 
-        <fieldset cf-questions="Politics is hard and few of us can keep up with the constant flow of political developments. But imagine an alternative reality where you for years have spent all of your waking hours to following politics and learning all the facts on which political policy turns: about economics, sociology, psychology - you name it. <strong>What you’re now imagining is your fully informed self</strong>, and that’s the person you will soon get to meet.">
+        <fieldset cf-questions="Politics is hard and few of us can keep up with the constant flow of political developments. But imagine an alternative reality where you for years have spent all of your waking hours following politics and learning all the facts on which political policy turns: about economics, sociology, psychology - you name it. <strong>What you’re now imagining is your fully informed self</strong>, and that’s the person you will soon get to meet.">
             <input type="radio" name="politics_is_hard" id="ok_politics_is_hard" value="ok" cf-conditional-ask_some_questions="why" />
             <label for="ok_politics_is_hard">Sounds good</label>
-            <input type="radio" name="politics_is_hard" id="why_politics_is_hard" value="why" cf-conditional-ask_some_questions="why" />
-            <label for="why_politics_is_hard">So you have a crystal ball or something?</label>
+            <input type="radio" name="politics_is_hard" id="how_politics_is_hard" value="how" cf-conditional-ask_some_questions="why" />
+            <label for="how_politics_is_hard">How does it work?</label>
         </fieldset>
 
-        <fieldset cf-questions="Not quite. We use a type of statistical modeling known as <strong>counterfactual modeling</strong>. George Box, a prominent statistician, supposedly said that <strong>all models are wrong, but some are useful</strong>. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that <strong>we need to have a discussion about the role of knowledge in politics</strong>. These models help us have that discussion on the basis of some solid data, rather than pure speculation.">
-            <input type="radio" name="george_box" id="ok_george_box" value="ok" cf-conditional-politics_is_hard="why" />
+        <fieldset cf-questions="By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes. And once you have done that, you can <strong>estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed</strong>. That’s what we will be estimating for you here. We will ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.">
+            <input type="radio" name="how_it_works" id="ok_how_it_works" value="ok" cf-conditional-politics_is_hard="how" />
+            <label for="ok_how_it_works">OK, got it</label>
+            <input type="radio" name="how_it_works" id="more_how_it_works" value="more" cf-conditional-politics_is_hard="how" />
+            <label for="more_how_it_works">Tell me more</label>
+        </fieldset>
+
+        <fieldset cf-questions="We use a type of statistical modeling known as <strong>counterfactual modeling</strong>, the idea being the we are estimating what would happen if we could somehow flip a switch to make you fully informed, thereby realizing a situation that is not (hence, counterfactual): one where you are fully informed, but otherwise exactly the way you are. Now, George Box, a prominent statistician, supposedly said that <strong>all models are wrong, but some are useful</strong>. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that <strong>we need to have a discussion about the role of knowledge in politics</strong>. These models help us have that discussion on the basis of some solid data, rather than pure speculation.">
+            <input type="radio" name="george_box" id="ok_george_box" value="ok" cf-conditional-how_it_works="more" />
             <label for="ok_george_box">Sounds good</label>
-            <input type="radio" name="george_box" id="who_are_you" value="who" cf-conditional-politics_is_hard="why" />
-            <label for="who_are_you">But who are you?</label>
+            <input type="radio" name="george_box" id="who_george_box" value="who" cf-conditional-how_it_works="more" />
+            <label for="who_george_box">And who are you?</label>
         </fieldset>
 
         <fieldset cf-questions="If Informed is a collaboration between <a href='http://www.ahlstromvij.com' target='_blank'><strong>Kristoffer Ahlstrom-Vij</strong></a>, a researcher at Birkbeck, University of London, who works on knowledge and politics, and <a href='https://www.linkedin.com/in/alfredmalmros/' target='_blank'><strong>Alfred Malmros</strong></a>, founder of the think-tank Early Studies.">
