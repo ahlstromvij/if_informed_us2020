@@ -30,14 +30,14 @@
             <label for="why_initial">Wait, what?</label>
         </fieldset>
 
-        <fieldset cf-questions="Politics is hard and few of us can keep up with the constant flow of political developments. But imagine an alternative reality where you for years have spent all your waking hours following politics and learning all the facts on which political policy turns: about economics, sociology, psychology - you name it. <strong>What you’re now imagining is your fully informed self</strong>, and that’s the person you will soon get to meet.">
+        <fieldset cf-questions="Politics is hard and few of us can keep up with the constant flow of political developments. But imagine an alternative reality where you have spent years and every waking hour following politics and learning all the facts on which political policy turns: about economics, sociology, psychology - you name it. <strong>What you’re now imagining is your fully informed self</strong>, and that’s the person you will soon get to meet.">
             <input type="radio" name="politics_is_hard" id="ok_politics_is_hard" value="ok" cf-conditional-ask_some_questions="why" />
             <label for="ok_politics_is_hard">OK</label>
             <input type="radio" name="politics_is_hard" id="how_politics_is_hard" value="how" cf-conditional-ask_some_questions="why" />
             <label for="how_politics_is_hard">How does it work?</label>
         </fieldset>
 
-        <fieldset cf-questions="By looking at large-scale survey data, you can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes. And once you have done that, <strong>you can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed</strong>. That’s what we will be doing for you. We will ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.">
+        <fieldset cf-questions="By looking at large-scale survey data, we can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes. And once we have done that, <strong>we can estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed</strong>. That’s what we will be doing for you. We will ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.">
             <input type="radio" name="how_it_works" id="ok_how_it_works" value="ok" cf-conditional-politics_is_hard="how" />
             <label for="ok_how_it_works">OK, got it</label>
             <input type="radio" name="how_it_works" id="more_how_it_works" value="more" cf-conditional-politics_is_hard="how" />
