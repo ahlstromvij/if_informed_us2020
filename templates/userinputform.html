@@ -44,7 +44,8 @@
             <label for="more_how_it_works">Tell me more</label>
         </fieldset>
 
-        <fieldset cf-questions="We use a type of statistical modeling known as <strong>counterfactual modeling</strong>. Now, George Box, a prominent statistician, supposedly said that <strong>all models are wrong, but some are useful</strong>. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that <strong>we need to have a discussion about the role of knowledge in politics</strong>. These models help us have that discussion on the basis of some solid data, rather than pure speculation.">
+        <cf-robot-message cf-questions="We use a type of statistical modeling known as <strong>counterfactual modeling</strong>. Now, George Box, a prominent statistician, supposedly said that <strong>all models are wrong, but some are useful</strong>. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that <strong>we need to have a discussion about the role of knowledge in politics</strong>. These models help us have that discussion on the basis of some solid data, rather than pure speculation." />
+        <fieldset cf-questions="If you want even more details, you can visit <strong>our FAQ page</strong> by clicking <a href='{% url 'more_info' %}'><strong>here</strong></a>.">
             <input type="radio" name="george_box" id="ok_george_box" value="ok" cf-conditional-how_it_works="more" />
             <label for="ok_george_box">OK</label>
             <input type="radio" name="george_box" id="who_george_box" value="who" cf-conditional-how_it_works="more" />
