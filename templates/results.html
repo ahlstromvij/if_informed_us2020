@@ -32,7 +32,7 @@
         <cf-robot-message cf-questions="Hi! I'm <strong>your informed self</strong>." />
         <fieldset cf-questions="I’m going to ask you some <strong>political questions</strong>. After each one, I’ll tell you what I think, with all the knowledge I have, so we can <strong>compare notes</strong>.">
             <input type="radio" name="intro_questions_1" id="disagree" value="ok">
-            <label for="disagree">And what if we disagree?</label>
+            <label for="disagree">What if we disagree?</label>
         </fieldset>
         <fieldset cf-questions="You’ll likely be annoyed, since <strong>politics is personal</strong>. If it helps, think of me as that friend who lives and breathes politics, and sometimes irritates you. But if they really know what they're talking about, their opinions are worth reflecting on.">
             <input type="radio" name="intro_questions_2" id="got_it" value="ok">
@@ -54,7 +54,7 @@
             <label for="knowledge_question1_accept">What do you know that I don't?</label>
         </fieldset>
 
-        <fieldset cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}">
+        <fieldset cf-questions="<strong>Interesting - I actually disagree</strong>. If you knew everything I do, the probability of your answering ‘yes’ to this question would be {{ taxecon_probs }}%, meaning it’s {{ taxecon_position }}.">
             <input type="radio" name="knowledge_question2" id="knowledge_question2_accept" value="why" cf-conditional-taxecon_questions="no" />
             <label for="knowledge_question2_accept">What do you know that I don't?</label>
         </fieldset>
@@ -74,7 +74,7 @@
 
         <!-- ELABORATE ON KNOWLEDGE -->
 
-        <cf-robot-message cf-questions="I wish I could tell you! Remember: I'm just like you, but have spent years learning everything there is to know about politics. So there will be a gap between everything I know and what you know. <strong>But I can't tell you <i>where</i> that gap is</strong>. The survey data used to generate me just isn’t fine-grained enough: it tells us <i>who</i> is informed, and what political positions they take, but not about the details of all that they know." />
+        <cf-robot-message cf-questions="I wish I could tell you! Remember: I'm just like you, but have spent years learning everything there is to know about politics. So there will be a gap between what I know and what you know. <strong>But I can't tell you <i>where</i> that gap is</strong>. The survey data used to generate me just isn’t fine-grained enough." />
         <fieldset cf-questions="But you can try to fill in the details yourself: <strong>when we disagree, ask yourself why that might be. If you had spent lots of time learning more, what might you have found?</strong> Your guess will likely be better than mine!">
             <input type="radio" name="elaborate_knowledge" id="ok_elaborate_knowledge" value="ok">
             <label for="ok_elaborate_knowledge">Got it</label>
@@ -339,7 +339,7 @@
 
         <cf-robot-message cf-questions="I see. As a fully informed version of yourself, I'm actually <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_mod" />
 
-        <cf-robot-message cf-questions="<strong>Me too!</strong>. As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_prog" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also <strong>{{ social_liberal_position }}</strong>." cf-conditional-social_questions="soc_prog" />
         {% endif %}
 
         <!-- CLOSEST_MATCH -->
@@ -361,7 +361,7 @@
         </fieldset>
 
         {% if closest_match == 'Donald Trump' %}
-        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>'s platform'." cf-conditional-closest_match_questions="trump" />
+        <cf-robot-message cf-questions="<strong>Me too!</strong> As a fully informed version of yourself, I'm also most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="trump" />
 
         <cf-robot-message cf-questions="Interesting. As a fully informed version of yourself, I'm actually most closely aligned with <strong>{{ closest_match }}</strong>'s platform." cf-conditional-closest_match_questions="romney" />
 
