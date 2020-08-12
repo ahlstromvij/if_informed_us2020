@@ -22,33 +22,48 @@
     <form action="/results/" method="post" id="questions" cf-form>
         <fieldset cf-questions="Hi there. Welcome to <strong>If Informed</strong>!">
         	<input type="radio" name="hello_question" id="hello" value="hello">
-        	<label for="hello">Hi</label>
+        	<label for="hello">Hello</label>
         </fieldset>
 
         <!-- <fieldset cf-questions="Hi there. Welcome to <strong>If Informed</strong>! What's your name?">
         	<input type="text" name="hello_question" id="hello">
         </fieldset> -->
 
-        <fieldset cf-questions="In a moment, we will <strong>ask you a few questions</strong>. (Privacy note: we don't store your answers.) By analysing your answers alongside data from the American National Election Studies, we will then be able to <strong>introduce you to your fully informed self</strong>.">
-            <input type="radio" name="ask_some_questions" id="why_initial" value="why">
-            <label for="why_initial">Wait, what?</label>
+        <fieldset cf-questions="Have you ever wondered whether you would think differently if you knew a LOT more about politics? Would you like to find out?">
+            <input type="radio" name="have_you_ever_wondered" id="wondered" value="wondered">
+            <label for="wondered">Er... how?</label>
         </fieldset>
 
-        <fieldset cf-questions="Politics is hard and few of us can keep up with the constant flow of political developments. But imagine an alternative reality where you for years have spent every waking hour following politics and learning all the facts on which political policy turns: about economics, sociology, psychology - you name it. <strong>What you’re now imagining is your fully informed self</strong>, and that’s the person you will soon get to meet.">
-            <input type="radio" name="politics_is_hard" id="ok_politics_is_hard" value="ok" cf-conditional-ask_some_questions="why" />
-            <label for="ok_politics_is_hard">OK</label>
-            <input type="radio" name="politics_is_hard" id="how_politics_is_hard" value="how" cf-conditional-ask_some_questions="why" />
-            <label for="how_politics_is_hard">How does it work?</label>
+        <fieldset cf-questions="We’re going to create a parallel universe with a more informed version of YOU in it!">
+            <input type="radio" name="create_parallel_universe" id="parallel_universe" value="parallel_universe">
+            <label for="parallel_universe">Really?!</label>
         </fieldset>
 
-        <fieldset cf-questions="By looking at large-scale survey data, we can tease out what combinations of demographic factors (e.g., age, gender, race) and levels of political knowledge tend to go with what political attitudes. Once we have done that, <strong>we can also estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed</strong>. That’s what we will be doing for you. We will ask you to plug in a variety of demographic variables. But our models have an additional variable that you don’t get to set: how politically informed you are. We’ve already set that one to the maximum value.">
-            <input type="radio" name="how_it_works" id="ok_how_it_works" value="ok" cf-conditional-politics_is_hard="how" />
+        <fieldset cf-questions="Well, no, that would be impossible. So we’re going to use data instead, to see if a 'more informed version of you' thinks differently about politics.">
+            <input type="radio" name="that_would_be_impossible" id="impossible" value="how">
+            <label for="impossible">How?</label>
+        </fieldset>
+
+        <fieldset cf-questions="We’re going to ask you a few of questions - about your age, gender, race, religion, education, things like that. (Don’t worry, we don’t store any of this.) Then we’re going to use your profile to find 'people like you' who know a LOT more about politics than the average person.">
+            <input type="radio" name="people_like_you" id="like_you" value="how">
+            <label for="like_you">What do you mean, 'people like me'?</label>
+        </fieldset>
+
+        <fieldset cf-questions="People who are the same age, gender, religion, race, etc., as you. Let's call them your <strong>'profile twins'</strong>. By using survey data from the <strong>American National Election Studies</strong>, we can find your 'twins', and look at the political attitudes of the ones that have scored highest on being 'politically informed'. They're really switched on, plugged in, and... informed. But in every other way, they’re just like you.">
+            <input type="radio" name="profile_twins" id="ok_twins" value="ok">
+            <label for="ok_how_it_works">OK</label>
+            <input type="radio" name="profile_twins" id="more_how_it_works" value="more">
+            <label for="more_how_it_works">What are we doing with them?</label>
+        </fieldset>
+
+        <fieldset cf-questions="Once you've answered the demographic questions, we’ll <strong>introduce you to a fully informed 'twin'</strong>. We will ask you some questions about political policies, and then tell you what their answers are so you can compare. Because we've constructed this twin from ‘politically savvy’ people who otherwise are just like you, it will be like comparing yourself to a more informed version of yourself.">
+            <input type="radio" name="how_it_works" id="ok_how_it_works" value="ok" cf-conditional-profile_twins="more" />
             <label for="ok_how_it_works">OK, got it</label>
-            <input type="radio" name="how_it_works" id="more_how_it_works" value="more" cf-conditional-politics_is_hard="how" />
+            <input type="radio" name="how_it_works" id="more_how_it_works" value="more" cf-conditional-profile_twins="more" />
             <label for="more_how_it_works">Tell me more</label>
         </fieldset>
 
-        <fieldset cf-questions="We use a type of statistical modeling known as <strong>counterfactual modeling</strong>. (For more details, visit <strong><a href='{% url 'more_info' %}'>our FAQ page</a></strong>.) Now, George Box, a prominent statistician, supposedly said that <strong>all models are wrong, but some are useful</strong>. In the same vein, we are under no illusion that our models' estimates are 100% accurate, and neither should you be. What we do know, however, is that <strong>we need to have a discussion about the role of knowledge in politics</strong>. These models help us have that discussion on the basis of some solid data, rather than pure speculation.">
+        <fieldset cf-questions="We use a type of statistical modeling known as <strong>counterfactual modeling</strong> to tease out what combinations of demographic factors and levels of political knowledge tend to go with what political attitudes, and then estimate what attitudes people <i>would have</i> taken, had they been just the way they are across those demographic factors, but also highly politically informed. For more details, visit <strong><a href='{% url 'more_info' %}'>our FAQ page</a></strong>.">
             <input type="radio" name="george_box" id="ok_george_box" value="ok" cf-conditional-how_it_works="more" />
             <label for="ok_george_box">OK</label>
             <input type="radio" name="george_box" id="who_george_box" value="who" cf-conditional-how_it_works="more" />
